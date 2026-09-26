@@ -1,0 +1,179 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 480,
+  "autosize": {"type": "fit-x", "contains": "padding"},
+  "title": {
+    "text": "Capital City Inflation Pressures Across Australia",
+    "subtitle": "Circle size encodes price surge magnitude; colour encodes annual CPI change (ABS Cat 6401.0)",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "anchor": "start",
+    "color": "#121619"
+  },
+  "params": [
+    {
+      "name": "selected_date",
+      "value": "2026-07",
+      "bind": {
+        "input": "select",
+        "options": ["2025-07", "2026-07"],
+        "labels": ["Jul 2025", "Jul 2026 (Latest)"],
+        "name": "Select CPI Release: "
+      }
+    }
+  ],
+  "projection": {
+    "type": "equirectangular",
+    "center": [133.5, -28.0],
+    "scale": 600
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.json",
+        "format": {
+          "type": "topojson",
+          "feature": "australia_states.topojson"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#faf8f2",
+        "stroke": "#bcb382",
+        "strokeWidth": 1.1
+      }
+    },
+    {
+      "data": {
+        "url": "data/cpi_australia_capital_city.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.Date == selected_date"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.88,
+        "stroke": "#121619",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "CPI_Annual_Change_Pct",
+          "type": "quantitative",
+          "title": "Annual Inflation (%)",
+          "scale": {
+            "domain": [2.0, 5.0],
+            "range": [140, 750]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "titleFontSize": 11,
+            "labelFontSize": 10
+          }
+        },
+        "color": {
+          "field": "CPI_Annual_Change_Pct",
+          "type": "quantitative",
+          "title": "Inflation Rate (%)",
+          "scale": {
+            "domain": [2.0, 3.5, 4.8],
+            "range": ["#e5c687", "#d97706", "#dc2626"]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 200,
+            "titleFontSize": 11,
+            "labelFontSize": 10
+          }
+        },
+        "tooltip": [
+          {"field": "City", "type": "nominal", "title": "Capital City"},
+          {"field": "State", "type": "nominal", "title": "State / Territory"},
+          {"field": "Date", "type": "nominal", "title": "Reference Period"},
+          {
+            "field": "CPI_Annual_Change_Pct",
+            "type": "quantitative",
+            "title": "Annual Inflation Rate (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/cpi_australia_capital_city.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.Date == selected_date"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "fill": "#121619"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "City",
+          "type": "nominal"
+        },
+        "align": {
+          "condition": [
+            {"test": "datum.City == 'Canberra'", "value": "right"},
+            {"test": "datum.City == 'Sydney'", "value": "left"},
+            {"test": "datum.City == 'Melbourne'", "value": "center"},
+            {"test": "datum.City == 'Hobart'", "value": "left"},
+            {"test": "datum.City == 'Perth'", "value": "right"},
+            {"test": "datum.City == 'Brisbane'", "value": "left"},
+            {"test": "datum.City == 'Adelaide'", "value": "right"},
+            {"test": "datum.City == 'Darwin'", "value": "center"}
+          ],
+          "value": "center"
+        },
+        "dx": {
+          "condition": [
+            {"test": "datum.City == 'Canberra'", "value": -16},
+            {"test": "datum.City == 'Sydney'", "value": 16},
+            {"test": "datum.City == 'Hobart'", "value": 16},
+            {"test": "datum.City == 'Perth'", "value": -16},
+            {"test": "datum.City == 'Brisbane'", "value": 16},
+            {"test": "datum.City == 'Adelaide'", "value": -16}
+          ],
+          "value": 0
+        },
+        "dy": {
+          "condition": [
+            {"test": "datum.City == 'Darwin'", "value": -16},
+            {"test": "datum.City == 'Melbourne'", "value": 18},
+            {"test": "datum.City == 'Canberra'", "value": 12},
+            {"test": "datum.City == 'Sydney'", "value": -6}
+          ],
+          "value": 0
+        }
+      }
+    }
+  ]
+}

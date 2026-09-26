@@ -1,0 +1,195 @@
+/* ==========================================================================
+   FIT3179 - AUSTRALIA'S INFLATION SQUEEZE (2021–2026)
+   Theme: Banknote Green, Currency Gold, and Editorial Typography
+   ========================================================================== */
+
+:root {
+  /* Canvas & Containers */
+  --bg-canvas: #f9f7f1;        /* Warm newsprint / paper cream */
+  --bg-card: #ffffff;          /* Crisp white container cards */
+  --border-card: #d8d4c7;      /* Subtle paper boundary lines */
+
+  /* Palette 2 Theme Colors */
+  --color-onyx: #121619;       /* Deep charcoal for body text */
+  --color-pine: #2d4739;       /* Banknote pine teal (Primary Hero) */
+  --color-seagreen: #09814a;   /* Fresh cash green */
+  --color-sage: #bcb382;       /* Dry sage for borders and neutral marks */
+  --color-fawn: #e5c687;       /* Soft gold fawn for highlights */
+  --color-alert-red: #dc2626;  /* Inflation peak alert */
+
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --max-width: 100%;           /* Changed from 1240px to 100% to fill the screen */
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-canvas);
+  color: var(--color-onyx);
+  line-height: 1.6;
+  padding: 24px 32px;          /* Clean edge margins instead of huge empty gutters */
+  display: block;              /* Removes flex-center so it spans full width naturally */
+}
+
+.page-container {
+  width: 100%;
+  max-width: 100%;             /* Spans the full width of your browser */
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Authoritative Banknote Green Header */
+.dashboard-header {
+  background: var(--color-pine);
+  border-radius: 8px;
+  padding: 32px 36px;
+  color: #f9f7f1;
+  box-shadow: 0 4px 12px rgba(18, 22, 25, 0.08);
+}
+
+.header-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-title-block h1 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.header-title-block p.subtitle {
+  font-size: 14px;
+  color: var(--color-fawn);
+  font-style: italic;
+  max-width: 780px;
+}
+
+.header-metadata {
+  font-size: 12px;
+  color: #d1dcce;
+  text-align: right;
+  line-height: 1.6;
+}
+
+.header-metadata strong {
+  color: #ffffff;
+}
+
+/* Sections */
+.dashboard-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 8px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 2px 6px rgba(18, 22, 25, 0.03);
+}
+
+.section-banner {
+  border-bottom: 2px solid var(--color-pine);
+  padding-bottom: 10px;
+}
+
+.section-banner h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-pine);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.section-banner p {
+  font-size: 13px;
+  color: #55625a;
+  margin-top: 3px;
+}
+
+/* Grid System */
+.grid-row {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Left Narrative Story Box: Fixed comfortable reading width */
+.story-card {
+  flex: 0 0 340px;             /* Keeps narrative column at a readable line length */
+  background: #faf8f2;
+  border: 1px solid var(--border-card);
+  border-left: 5px solid var(--color-pine);
+  border-radius: 6px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+.story-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-pine);
+  margin-bottom: 10px;
+}
+
+.story-card p {
+  color: var(--color-onyx);
+}
+
+/* Right Chart Container */
+.chart-card {
+  flex: 1 1 auto;              
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 520px;
+  overflow: visible;
+}
+
+#vis1_map {
+  width: 100%;
+}
+
+/* Footer */
+.dashboard-footer {
+  border-top: 2px solid var(--border-card);
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 11.5px;
+  color: #6a786f;
+}
+
+.dashboard-footer strong {
+  color: var(--color-onyx);
+}
+
+@media (max-width: 960px) {
+  .grid-row {
+    flex-direction: column;
+  }
+  .story-card, .chart-card {
+    flex: 1 1 100%;
+  }
+  .header-metadata {
+    text-align: left;
+  }
+}
