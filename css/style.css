@@ -162,7 +162,15 @@ body {
   overflow: visible;
 }
 
-#vis1_map {
+/* Full-width container for wide charts (e.g., grouped bar chart) */
+.chart-card-wide {
+  width: 100%;
+  flex: 1 1 100%;
+  min-height: 420px;
+  margin-top: 16px;
+}
+
+#vis1_map, #vis2_bar{
   width: 100%;
 }
 

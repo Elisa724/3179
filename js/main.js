@@ -9,14 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer: 'canvas' // High-performance canvas rendering
   };
 
-  // Embed Map 1: Capital City Proportional Symbol Map
+  // Visualization 1: Proportional Symbol Map of Capital Cities
   vegaEmbed('#vis1_map', 'json/map1_capital_cities.json', embedOptions)
-    .then(result => {
-      console.log("Map 1 successfully rendered.");
-    })
-    .catch(error => {
-      console.error("Error loading Map 1:", error);
-      document.querySelector('#vis1_map').innerHTML = 
-        `<p style="color: red; padding: 20px;">Failed to load Map 1. Check file paths and CSV data.</p>`;
-    });
+    .catch(console.error);
+
+  // Visualization 2: Essential vs. Discretionary Grouped Bar Chart
+  vegaEmbed('#vis2_bar', 'json/bar1_essential_discretionary.json', embedOptions)
+    .catch(console.error);
 });
