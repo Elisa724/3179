@@ -1,16 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container",
-  "height": 480,
-  "autosize": {"type": "fit-x", "contains": "padding"},
   "title": {
     "text": "Capital City Inflation Pressures Across Australia",
-    "subtitle": "Circle size encodes price surge magnitude; colour encodes annual CPI change (ABS Cat 6401.0)",
+    "subtitle": "Circle size & colour encode annual CPI % change (ABS Cat 6401.0)",
     "fontSize": 15,
-    "subtitleFontSize": 11,
+    "subtitleFontSize": 12,
     "anchor": "start",
     "color": "#121619"
   },
+  "width": "container",
+  "height": 410,
+  "autosize": {"type": "fit-x", "contains": "padding"},
   "params": [
     {
       "name": "selected_date",
@@ -19,14 +19,14 @@
         "input": "select",
         "options": ["2025-07", "2026-07"],
         "labels": ["Jul 2025", "Jul 2026 (Latest)"],
-        "name": "Select CPI Release: "
+        "name": "Select CPI Period: "
       }
     }
   ],
   "projection": {
     "type": "equirectangular",
     "center": [133.5, -28.0],
-    "scale": 600
+    "scale": 510
   },
   "layer": [
     {
@@ -49,9 +49,7 @@
         "url": "data/cpi_australia_capital_city.csv"
       },
       "transform": [
-        {
-          "filter": "datum.Date == selected_date"
-        }
+        {"filter": "datum.Date == selected_date"}
       ],
       "mark": {
         "type": "circle",
@@ -60,21 +58,15 @@
         "strokeWidth": 1.2
       },
       "encoding": {
-        "longitude": {
-          "field": "Lon",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "Lat",
-          "type": "quantitative"
-        },
+        "longitude": {"field": "Lon", "type": "quantitative"},
+        "latitude": {"field": "Lat", "type": "quantitative"},
         "size": {
           "field": "CPI_Annual_Change_Pct",
           "type": "quantitative",
           "title": "Annual Inflation (%)",
           "scale": {
             "domain": [2.0, 5.0],
-            "range": [140, 750]
+            "range": [120, 620]
           },
           "legend": {
             "orient": "bottom",
@@ -94,7 +86,7 @@
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-            "gradientLength": 200,
+            "gradientLength": 160,
             "titleFontSize": 11,
             "labelFontSize": 10
           }
@@ -103,12 +95,7 @@
           {"field": "City", "type": "nominal", "title": "Capital City"},
           {"field": "State", "type": "nominal", "title": "State / Territory"},
           {"field": "Date", "type": "nominal", "title": "Reference Period"},
-          {
-            "field": "CPI_Annual_Change_Pct",
-            "type": "quantitative",
-            "title": "Annual Inflation Rate (%)",
-            "format": ".1f"
-          }
+          {"field": "CPI_Annual_Change_Pct", "type": "quantitative", "title": "Annual Inflation Rate (%)", "format": ".1f"}
         ]
       }
     },
@@ -117,9 +104,7 @@
         "url": "data/cpi_australia_capital_city.csv"
       },
       "transform": [
-        {
-          "filter": "datum.Date == selected_date"
-        }
+        {"filter": "datum.Date == selected_date"}
       ],
       "mark": {
         "type": "text",
@@ -128,18 +113,9 @@
         "fill": "#121619"
       },
       "encoding": {
-        "longitude": {
-          "field": "Lon",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "Lat",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "City",
-          "type": "nominal"
-        },
+        "longitude": {"field": "Lon", "type": "quantitative"},
+        "latitude": {"field": "Lat", "type": "quantitative"},
+        "text": {"field": "City", "type": "nominal"},
         "align": {
           "condition": [
             {"test": "datum.City == 'Canberra'", "value": "right"},

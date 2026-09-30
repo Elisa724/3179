@@ -14,6 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(console.error);
 
   // Visualization 2: Essential vs. Discretionary Grouped Bar Chart
-  vegaEmbed('#vis2_bar', 'json/bar1_essential_discretionary.json', embedOptions)
+  vegaEmbed('#vis2_bar', 'json/bar1_state_essential_discretionary.json', embedOptions)
     .catch(console.error);
 });

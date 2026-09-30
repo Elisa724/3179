@@ -1,10 +1,9 @@
 /* ==========================================================================
    FIT3179 - AUSTRALIA'S INFLATION SQUEEZE (2021–2026)
-   Theme: Banknote Green, Currency Gold, and Editorial Typography
+   Theme: Banknote Pine Teal, Currency Gold, and Editorial Typography
    ========================================================================== */
 
 :root {
-  /* Canvas & Containers */
   --bg-canvas: #f9f7f1;        /* Warm newsprint / paper cream */
   --bg-card: #ffffff;          /* Crisp white container cards */
   --border-card: #d8d4c7;      /* Subtle paper boundary lines */
@@ -18,33 +17,42 @@
   --color-alert-red: #dc2626;  /* Inflation peak alert */
 
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --max-width: 100%;           /* Changed from 1240px to 100% to fill the screen */
+  --max-width: 1400px;         /* Balanced maximum reading width */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: var(--font-family);
   background-color: var(--bg-canvas);
   color: var(--color-onyx);
-  line-height: 1.6;
-  padding: 24px 32px;          /* Clean edge margins instead of huge empty gutters */
-  display: block;              /* Removes flex-center so it spans full width naturally */
+  line-height: 1.65;
+  padding: 32px 36px;
+  display: flex;
+  justify-content: center;
 }
 
 .page-container {
   width: 100%;
-  max-width: 100%;             /* Spans the full width of your browser */
+  max-width: var(--max-width);
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
 }
 
-/* Authoritative Banknote Green Header */
+/* ==========================================================================
+   HERO HEADER
+   ========================================================================== */
 .dashboard-header {
   background: var(--color-pine);
   border-radius: 8px;
-  padding: 32px 36px;
+  padding: 36px 42px;
   color: #f9f7f1;
-  box-shadow: 0 4px 12px rgba(18, 22, 25, 0.08);
+  box-shadow: 0 4px 14px rgba(18, 22, 25, 0.08);
 }
 
 .header-top-row {
@@ -52,27 +60,28 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 
 .header-title-block h1 {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   color: #ffffff;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .header-title-block p.subtitle {
-  font-size: 14px;
+  font-size: 15.5px;
   color: var(--color-fawn);
   font-style: italic;
-  max-width: 780px;
+  max-width: 820px;
+  line-height: 1.5;
 }
 
 .header-metadata {
-  font-size: 12px;
+  font-size: 13.5px;
   color: #d1dcce;
   text-align: right;
   line-height: 1.6;
@@ -82,25 +91,27 @@ body {
   color: #ffffff;
 }
 
-/* Sections */
+/* ==========================================================================
+   DASHBOARD SECTIONS
+   ========================================================================== */
 .dashboard-section {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: 8px;
-  padding: 28px 32px;
+  padding: 32px 36px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  box-shadow: 0 2px 6px rgba(18, 22, 25, 0.03);
+  gap: 24px;
+  box-shadow: 0 2px 8px rgba(18, 22, 25, 0.03);
 }
 
 .section-banner {
   border-bottom: 2px solid var(--color-pine);
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }
 
 .section-banner h2 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--color-pine);
   text-transform: uppercase;
@@ -108,37 +119,27 @@ body {
 }
 
 .section-banner p {
-  font-size: 13px;
+  font-size: 15px;
   color: #55625a;
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
-/* Grid System */
-.grid-row {
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-  align-items: stretch;
-  width: 100%;
-}
-
-/* Left Narrative Story Box: Fixed comfortable reading width */
+/* ==========================================================================
+   STORY NARRATIVE BOX (Editorial Context Block)
+   ========================================================================== */
 .story-card {
-  flex: 0 0 340px;             /* Keeps narrative column at a readable line length */
+  width: 100%;
   background: #faf8f2;
   border: 1px solid var(--border-card);
-  border-left: 5px solid var(--color-pine);
+  border-left: 6px solid var(--color-pine);
   border-radius: 6px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 13.5px;
-  line-height: 1.65;
+  padding: 22px 28px;
+  font-size: 15.5px;
+  line-height: 1.7;
 }
 
 .story-card h3 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--color-pine);
   margin-bottom: 10px;
@@ -148,41 +149,51 @@ body {
   color: var(--color-onyx);
 }
 
-/* Right Chart Container */
+.story-card p strong {
+  color: var(--color-pine);
+}
+
+/* ==========================================================================
+   DUAL CHART ROW (Side-by-Side 50/50 Visual Split)
+   ========================================================================== */
+.charts-row {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  width: 100%;
+  align-items: stretch;
+}
+
 .chart-card {
-  flex: 1 1 auto;              
-  background: var(--bg-card);
+  flex: 1 1 500px;
+  min-width: 0;
+  background: #ffffff;
   border: 1px solid var(--border-card);
   border-radius: 6px;
-  padding: 20px;
+  padding: 22px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 520px;
+  min-height: 460px;
   overflow: visible;
 }
 
-/* Full-width container for wide charts (e.g., grouped bar chart) */
-.chart-card-wide {
-  width: 100%;
-  flex: 1 1 100%;
-  min-height: 420px;
-  margin-top: 16px;
-}
-
-#vis1_map, #vis2_bar{
+#vis1_map, #vis2_bar {
   width: 100%;
 }
 
-/* Footer */
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 .dashboard-footer {
   border-top: 2px solid var(--border-card);
-  padding-top: 16px;
+  padding-top: 18px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
-  font-size: 11.5px;
+  font-size: 13px;
   color: #6a786f;
 }
 
@@ -190,14 +201,17 @@ body {
   color: var(--color-onyx);
 }
 
-@media (max-width: 960px) {
-  .grid-row {
+@media (max-width: 1024px) {
+  .charts-row {
     flex-direction: column;
   }
-  .story-card, .chart-card {
+  .chart-card {
     flex: 1 1 100%;
   }
-  .header-metadata {
-    text-align: left;
+  body {
+    padding: 20px 16px;
+  }
+  .dashboard-header, .dashboard-section {
+    padding: 24px 20px;
   }
 }

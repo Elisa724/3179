@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Essential vs. Discretionary Inflation Across Capital Cities",
+    "subtitle": "Through-the-year price change by capital city (proxying states), ABS Cat 6401.0 Table 16",
+    "fontSize": 15,
+    "subtitleFontSize": 11.5,
+    "anchor": "start",
+    "color": "#121619"
+  },
+  "width": "container",
+  "height": 400,
+  "autosize": {"type": "fit-x", "contains": "padding"},
+  "data": {
+    "url": "data/cpi_state_essential_discretionary.csv"
+  },
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "title": null,
+      "axis": {
+        "labelFontSize": 11,
+        "labelFontWeight": "bold",
+        "labelColor": "#121619"
+      }
+    },
+    "yOffset": {
+      "field": "Basket_Type"
+    },
+    "x": {
+      "field": "Inflation_Rate_Pct",
+      "type": "quantitative",
+      "title": "Annual Inflation Rate (%)",
+      "scale": {"domain": [0, 7]},
+      "axis": {
+        "grid": true,
+        "gridColor": "#e5e7eb",
+        "titleFontSize": 11.5,
+        "labelFontSize": 10.5
+      }
+    },
+    "color": {
+      "field": "Basket_Type",
+      "type": "nominal",
+      "title": "Expenditure Basket",
+      "scale": {
+        "domain": ["Essential", "Discretionary"],
+        "range": ["#2D4739", "#E5C687"]
+      },
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "titleFontSize": 11,
+        "labelFontSize": 10.5
+      }
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal", "title": "State (Capital City)"},
+      {"field": "Basket_Type", "type": "nominal", "title": "Basket Type"},
+      {"field": "Inflation_Rate_Pct", "type": "quantitative", "title": "Annual Change (%)", "format": ".1f"}
+    ]
+  }
+}

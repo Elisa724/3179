@@ -39,34 +39,34 @@
         <p>Tracking spatial inflation distribution alongside the divergence between essential and discretionary living expenses.</p>
       </div>
 
-      <!-- ROW 1: Story Narrative + Capital City Map -->
-      <div class="grid-row">
-        <article class="story-card">
-          <h3>The Dual Pressure Points</h3>
-          <p>
-            Australia's inflation surge has been structurally uneven. While headline numbers stabilized around <strong>3.2%–4.5%</strong> across major state capitals, the underlying burden is concentrated in inelastic household essentials.
-          </p>
-          <br>
-          <p>
-            Non-negotiable living costs such as housing, health, and education accelerated significantly faster than discretionary goods like furnishings and recreational leisure.
-          </p>
-        </article>
+      <!-- STORY CARD: Top Full-Width Editorial Context -->
+      <article class="story-card">
+        <h3>The Dual Pressure Points: Capital Disparities vs. The Inelastic Basket</h3>
+        <p>
+          Australia's inflation surge has been structurally uneven across state capitals. While headline annual rates moderated around <strong>3.2%</strong> in Sydney and Melbourne, smaller economies like Adelaide (<strong>4.4%</strong>) and Hobart (<strong>4.5%</strong>) faced persistent supply frictions. Crucially, the burden is concentrated in non-negotiable living essentials—housing, food, and energy grew at more than double the rate of discretionary recreational spending.
+        </p>
+      </article>
 
+      <!-- VISUALIZATIONS ROW: Side-by-Side 50/50 Split -->
+      <div class="charts-row">
+        <!-- Visualisation 1: Capital City Map -->
         <div class="chart-card">
           <div id="vis1_map"></div>
         </div>
-      </div>
 
-      <!-- ROW 2: Essential vs Discretionary Bar Chart (Full Width) -->
-      <div class="chart-card chart-card-wide">
-        <div id="vis2_bar"></div>
-      </div>
+        <!-- Visualisation 2: Essential vs Discretionary Bar Chart -->
+        <div class="chart-card">
+          <div id="vis2_bar"></div>
+          <p class="chart-caption" style="font-size: 0.82rem; color: #64748b; margin-top: 8px; line-height: 1.4;">
+            <strong>Geographic Note:</strong> State-level inflation is proxied by the respective Greater Capital City Statistical Area (e.g., Sydney for NSW, Melbourne for VIC) per ABS Consumer Price Index methodology (ABS Cat 6401.0, Table 16). Non-discretionary basket encompasses essential household expenditures including food, housing, energy, health, and transport.
+          </p>
+        </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="dashboard-footer">
       <div>
-        <strong>Data Sources:</strong> Australian Bureau of Statistics (ABS Cat 6401.0, Table 1).
+        <strong>Data Sources:</strong> Australian Bureau of Statistics (ABS Cat 6401.0, Table 1 & Table 2).
       </div>
       <div>
         FIT3179 Data Visualisation 2

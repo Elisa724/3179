@@ -1,0 +1,17 @@
+﻿State,Basket_Type,Inflation_Rate_Pct
+NSW (Sydney),Essential,4.8
+NSW (Sydney),Discretionary,2.7
+VIC (Melbourne),Essential,4
+VIC (Melbourne),Discretionary,2.9
+QLD (Brisbane),Essential,4.9
+QLD (Brisbane),Discretionary,3.1
+SA (Adelaide),Essential,5.9
+SA (Adelaide),Discretionary,3
+WA (Perth),Essential,4.7
+WA (Perth),Discretionary,3.7
+TAS (Hobart),Essential,5.3
+TAS (Hobart),Discretionary,4.1
+ACT (Canberra),Essential,4.6
+ACT (Canberra),Discretionary,3.4
+NT (Darwin),Essential,5.3
+NT (Darwin),Discretionary,3.6
