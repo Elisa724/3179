@@ -179,8 +179,20 @@ body {
   overflow: visible;
 }
 
-#vis1_map, #vis2_bar {
+#vis1_map, #vis2_bar{
   width: 100%;
+}
+
+#vis3_treemap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#vis3_treemap svg, #vis3_treemap canvas {
+  max-width: 100% !important;
+  height: auto !important;
 }
 
 /* ==========================================================================

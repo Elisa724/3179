@@ -9,11 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer: 'canvas' // High-performance canvas rendering
   };
 
-  // Visualization 1: Proportional Symbol Map of Capital Cities
-  vegaEmbed('#vis1_map', 'json/map1_capital_cities.json', embedOptions)
-    .catch(console.error);
-
-  // Visualization 2: Essential vs. Discretionary Grouped Bar Chart
-  vegaEmbed('#vis2_bar', 'json/bar1_state_essential_discretionary.json', embedOptions)
-    .catch(console.error);
+  // Section 1 Visualisations
+  vegaEmbed('#vis1_map', 'json/map1_capital_cities.json', {actions: false}).catch(console.error);
+  vegaEmbed('#vis2_bar', 'json/bar1_state_essential_discretionary.json', {actions: false}).catch(console.error);
+  
+  // Section 2 Visualisation 
+  vegaEmbed('#vis3_treemap', 'json/treemap_cpi_weights.json', {actions: false}).catch(console.error);
 });

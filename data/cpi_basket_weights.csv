@@ -1,0 +1,12 @@
+﻿Categories,Display Name,Classification,Weight_Pct,Inflation_Rate_Pct
+Food and non-alcoholic beverages,Food & non-alcoholic ,Essential,17.44,3.2
+Alcohol and tobacco,Alcohol & tobacco,Discretionary,6.58,4.5
+Clothing and footwear,Clothing & footwear,Discretionary,3.25,4.9
+Housing,Housing,Essential,21.39,5
+"Furnishings, household equipment and services",Furnishings & equipment,Discretionary,8.02,1.6
+Health,Health,Essential,6.73,3.8
+Transport,Transport,Essential,11.45,1.6
+Communication,Communication,Essential,2.13,2.5
+Recreation and culture,Recreation & culture,Discretionary,12.74,2.6
+Education,Education ,Essential,4.69,4.8
+Insurance and financial services,Insurance & financial,Discretionary,5.58,3.1
