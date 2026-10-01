@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 420,
+  "height": 430,
   "autosize": {
     "type": "fit",
     "contains": "padding"
@@ -16,29 +16,31 @@
       "axis": {
         "title": "Year (June Quarter Snapshot)",
         "labelAngle": 0,
-        "labelFontSize": 10.5,
-        "titleFontSize": 11,
+        "labelFontSize": 11,
+        "titleFontSize": 12,
         "titleFontWeight": "bold",
-        "titlePadding": 8,
+        "titlePadding": 10,
         "grid": true,
-        "gridDash": [
-          2,
-          2
-        ],
+        "gridDash": [2, 2],
         "gridColor": "#e2e8f0"
       }
     },
     "y": {
       "field": "Rank",
-      "type": "ordinal",
-      "sort": "ascending",
+      "type": "quantitative",
+      "scale": {
+        "domain": [1, 11],
+        "reverse": true
+      },
       "axis": {
-        "title": "Rank",
+        "title": "Inflation Rank",
+        "tickMinStep": 1,
+        "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
         "labelExpr": "'#' + datum.value",
-        "labelFontSize": 10,
-        "titleFontSize": 11,
+        "labelFontSize": 11,
+        "titleFontSize": 12,
         "titleFontWeight": "bold",
-        "titlePadding": 6
+        "titlePadding": 8
       }
     }
   },
@@ -48,71 +50,62 @@
         "type": "line",
         "interpolate": "monotone"
       },
-      "encoding": {
-        "strokeWidth": {
-          "condition": {
-            "param": "highlightCategory",
-            "empty": false,
-            "value": 4
-          },
-          "value": 2
-        },
-        "opacity": {
-          "condition": {
-            "param": "highlightCategory",
-            "empty": false,
-            "value": 1.0
-          },
-          "value": 0.4
-        },
-        "color": {
-          "field": "Display Name",
-          "type": "nominal",
-          "legend": {
-            "title": "Category",
-            "orient": "bottom",
-            "columns": 3,
-            "titleFontSize": 10,
-            "titleFontWeight": "bold",
-            "labelFontSize": 9.5,
-            "labelLimit": 220,
-            "symbolType": "stroke",
-            "symbolStrokeWidth": 2.5
-          },
-          "scale": {
-            "scheme": "category20"
-          }
-        }
-      },
       "params": [
         {
           "name": "highlightCategory",
           "select": {
             "type": "point",
-            "fields": [
-              "Display Name"
-            ],
+            "fields": ["Display Name"],
             "on": "mouseover",
             "clear": "mouseout"
           }
         }
-      ]
-    },
-    {
-      "mark": {
-        "type": "circle",
-        "size": 75,
-        "fill": "#ffffff",
-        "strokeWidth": 2
-      },
+      ],
       "encoding": {
-        "stroke": {
+        "color": {
           "field": "Display Name",
           "type": "nominal",
-          "legend": null,
           "scale": {
-            "scheme": "category20"
+            "range": [
+              "#dc2626",
+              "#2563eb",
+              "#d97706",
+              "#16a34a",
+              "#7c3aed",
+              "#ea580c",
+              "#0284c7",
+              "#78350f",
+              "#0d9488",
+              "#db2777",
+              "#475569"
+            ]
+          },
+          "legend": {
+            "title": "Expenditure Category",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 4,
+            "columnPadding": 55,
+            "rowPadding": 10,
+            "titleFontSize": 12.5,
+            "titleFontWeight": "bold",
+            "titlePadding": 10,
+            "labelFontSize": 11.5,
+            "labelFontWeight": "500",
+            "labelLimit": 240,
+            "labelOffset": 6,
+            "symbolType": "stroke",
+            "symbolStrokeWidth": 3.5,
+            "symbolSize": 85
           }
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "highlightCategory",
+            "empty": false,
+            "value": 4.5
+          },
+          "value": 2.2
         },
         "opacity": {
           "condition": {
@@ -120,7 +113,45 @@
             "empty": false,
             "value": 1.0
           },
-          "value": 0.85
+          "value": 0.48
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 85,
+        "fill": "#ffffff",
+        "strokeWidth": 2.4
+      },
+      "encoding": {
+        "stroke": {
+          "field": "Display Name",
+          "type": "nominal",
+          "scale": {
+            "range": [
+              "#dc2626",
+              "#2563eb",
+              "#d97706",
+              "#16a34a",
+              "#7c3aed",
+              "#ea580c",
+              "#0284c7",
+              "#78350f",
+              "#0d9488",
+              "#db2777",
+              "#475569"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "param": "highlightCategory",
+            "empty": false,
+            "value": 1.0
+          },
+          "value": 0.82
         },
         "tooltip": [
           {

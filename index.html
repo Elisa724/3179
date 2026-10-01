@@ -32,59 +32,109 @@
       </div>
     </header>
 
-        <!-- SECTION 1: GEOGRAPHIC BASELINE & ESSENTIAL SQUEEZE -->
+   <!-- INTRO SECTION: MACRO CONTEXT -->
+    <section class="dashboard-section" id="section-intro">
+      <div class="intro-card">
+        <div class="intro-text">
+          <h2>The Price Pressure Squeeze</h2>
+          <p>
+            Between 2021 and 2026, Australian households encountered an extraordinary economic shift. Pandemic supply shocks, global trade friction, and surging housing demands pushed consumer prices to multi-decade peaks.
+          </p>
+          <p>
+            Much like a balloon pumped past its capacity, household budgets have stretched thin. While headline inflation has begun to ease, the compounding effect of higher living costs continues to weigh heavily across state capitals. This visual report tracks where price pressure hit hardest, which consumer categories drove the surge, and how the economic burden played out across the nation.
+          </p>
+          <div class="intro-citation">
+            <span>Illustration Source:</span>
+            <a href="https://share.google/UrVJkBBrHoDWdryq6" target="_blank" rel="noopener noreferrer">
+              Economic Inflation Concept Vector
+            </a>
+          </div>
+        </div>
+
+        <div class="intro-illu-container">
+          <img src="image/inflation_balloon.png" alt="Inflation balloon concept" class="intro-balloon-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: WHERE DID PRICES SURGE? -->
     <section class="dashboard-section" id="section-1">
       <div class="section-banner">
-        <h2>1. Geographic Baseline &amp; The Non-Negotiable Squeeze</h2>
-        <p>Tracking spatial inflation distribution alongside the divergence between essential and discretionary living expenses.</p>
+        <h2>1. Where Did Prices Surge?</h2>
+        <p>Mapping capital city inflation rates and the divide between everyday essentials and optional spending.</p>
       </div>
 
-      <!-- STORY CARD: Top Full-Width Editorial Context -->
-      <article class="story-card">
-        <h3>The Dual Pressure Points: Capital Disparities vs. The Inelastic Basket</h3>
-        <p>
-          Australia's inflation surge has been structurally uneven across state capitals. While headline annual rates moderated around <strong>3.2%</strong> in Sydney and Melbourne, smaller economies like Adelaide (<strong>4.4%</strong>) and Hobart (<strong>4.5%</strong>) faced persistent supply frictions. Crucially, the burden is concentrated in non-negotiable living essentials&mdash;housing, food, and energy grew at more than double the rate of discretionary recreational spending.
-        </p>
+      <!-- Top Story Card matching Section 2 styling -->
+      <article class="story-card story-with-illu">
+        <div class="story-text">
+          <h3>Shifting Hotspots and the Everyday Squeeze</h3>
+          <p>
+            Inflation pressure across Australia has moved over time. In 2025, <strong>Brisbane</strong> was the clear national hotspot with the highest price increases. By 2026, pressure eased in Brisbane but flared up across southern capitals, leaving <strong>Hobart (4.5%)</strong> and <strong>Adelaide (4.4%)</strong> with the steepest rates in the country. This regional shift can be seen by switching the period selector below the map.
+          </p>
+          <p>
+            Even as local hotspots change, one pattern remains true everywhere. Prices for daily essentials like groceries, housing, and electricity are climbing much faster than optional spending. The divide is largest in <strong>Adelaide</strong>, where essentials grew by <strong>5.9%</strong> compared to just <strong>3.0%</strong> for discretionary goods. Because households cannot walk away from basic bills, daily living costs feel heavy no matter which capital city you live in.
+          </p>
+        </div>
+        <div class="story-illu-container">
+          <img src="image/consumer_receipt.png" alt="Consumer shocked by grocery receipt" class="editorial-character-img">
+        </div>
       </article>
 
-      <!-- VISUALIZATIONS ROW: Side-by-Side 50/50 Split -->
+      <!-- Visualisations Row -->
       <div class="charts-row">
-        <!-- Visualisation 1: Capital City Map -->
         <div class="chart-card">
           <div id="vis1_map"></div>
         </div>
-
-        <!-- Visualisation 2: Essential vs Discretionary Bar Chart -->
         <div class="chart-card">
           <div id="vis2_bar"></div>
           <p class="chart-caption">
-            <strong>Geographic Note:</strong> State-level inflation is proxied by the respective Greater Capital City Statistical Area (e.g., Sydney for NSW, Melbourne for VIC) per ABS Consumer Price Index methodology (ABS Cat 6401.0, Table 16). Non-discretionary basket encompasses essential household expenditures including food, housing, energy, health, and transport.
+            <strong>Geographic Note:</strong> State-level inflation is proxied by the respective Greater Capital City Statistical Area (ABS Cat 6401.0, Table 16).
           </p>
         </div>
-      </div><!-- /.charts-row -->
+      </div>
     </section>
 
-    <!-- SECTION 2: CONSUMER BASKET ANATOMY & VOLATILITY -->
+   <!-- SECTION 2: WHAT DROVE THE RISE? -->
     <section class="dashboard-section" id="section-2">
       <div class="section-banner">
-        <h2>2. Consumer Basket Anatomy &amp; Inflation Volatility</h2>
-        <p>Comparing baseline household expenditure weights alongside the shifting annual inflation rankings across Australian consumer categories (2021&ndash;2026).</p>
+        <h2>2. What Drove the Rise?</h2>
+        <p>Breaking down household spending weights and tracking price shifts across key consumer categories (2021&ndash;2026).</p>
       </div>
 
-      <div class="charts-grid">
-        <!-- Visualisation 3: Treemap -->
-        <div class="viz-card">
+      <!-- Tier 1: Treemap on Left, Story Card + Cart on Right (50 / 50 Split) -->
+      <div class="section2-top-row">
+        <!-- Left: Treemap Card -->
+        <div class="viz-card treemap-card">
           <h3>Expenditure Weight Distribution</h3>
           <p class="viz-sub">Proportion of total Australian household basket (%) classified by essential vs. discretionary status.</p>
           <div id="vis3_treemap"></div>
         </div>
 
-        <!-- Visualisation 4: Bump chart -->
-        <div class="viz-card">
-          <h3>Inflation Rank Volatility (2021&ndash;2026)</h3>
-          <p class="viz-sub">Relative rank shifts (#1 fastest price growth to #11 lowest) across the 11 major CPI expenditure groups.</p>
-          <div id="vis4_bumpchart"></div>
-        </div>
+        <!-- Right: Narrative Story Card with Cart Icon -->
+        <article class="narrative-col section2-narrative">
+          <div class="narrative-text">
+            <h3>Shifting Costs: The Swapping Price Pressures</h3>
+            <p>
+              Most Australian family spending goes toward three essentials: <strong>housing (21.4%)</strong>, <strong>food (17.4%)</strong>, and <strong>transport (11.5%)</strong>. When basic bills climb, households have very little room to cut back.
+            </p>
+            <p>
+              Looking at the rank chart below, the biggest story is the dramatic shift between transport and medical care. Back in 2021, global fuel spikes pushed <strong>transport to rank #1</strong>. By 2026, lower global oil prices pulled transport into negative territory at <strong>-0.7% (rank #11)</strong>.
+            </p>
+            <p>
+              Meanwhile, <strong>health climbed from rank #9 in 2022 all the way to rank #1 in 2026 (2.2%)</strong>, driven by rising private health premiums and higher out-of-pocket doctor fees. Along with education jumping to <strong>rank #2 (1.5%)</strong>, unavoidable service bills have replaced fuel as the main driver of everyday living costs.
+            </p>
+          </div>
+          <div class="cart-illu-container">
+            <img src="image/shopping_cart.png" alt="Shopping cart with dollar coin" class="editorial-cart-img">
+          </div>
+        </article>
+      </div>
+
+      <!-- Tier 2: Expanded Full-Width Bump Chart -->
+      <div class="viz-card bumpchart-expanded-card">
+        <h3>Inflation Rank Volatility (2021&ndash;2026)</h3>
+        <p class="viz-sub">Relative rank shifts (#1 fastest price growth to #11 lowest) across the 11 major CPI expenditure groups.</p>
+        <div id="vis4_bumpchart"></div>
       </div>
 
       <p class="method-note">
@@ -95,7 +145,13 @@
     <!-- FOOTER -->
     <footer class="dashboard-footer">
       <div>
-        <strong>Data Sources:</strong> Australian Bureau of Statistics (ABS Cat 6401.0, Table 1 & Table 2).
+        <strong>Data Sources:</strong> Australian Bureau of Statistics (ABS Cat 6401.0, Table 1 &amp; Table 2).
+      </div>
+      <div>
+        <strong>Asset Credits:</strong> Spot illustrations via DALL-E &amp; 
+        <a href="https://share.google/UrVJkBBrHoDWdryq6" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">
+          Economic Inflation Vector[cite: 24]
+        </a>.
       </div>
       <div>
         FIT3179 Data Visualisation 2

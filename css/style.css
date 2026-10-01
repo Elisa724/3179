@@ -123,38 +123,253 @@ body {
   color: #55625a;
   margin-top: 4px;
 }
-
 /* ==========================================================================
-   STORY NARRATIVE BOX (Editorial Context Block)
+   UNIFIED EDITORIAL NARRATIVE CARDS (Intro, Section 1, Section 2)
    ========================================================================== */
-.story-card {
-  width: 100%;
+
+/* Shared base card style across all narrative blocks */
+.story-card,
+.narrative-col,
+.intro-card {
   background: #faf8f2;
   border: 1px solid var(--border-card);
-  border-left: 6px solid var(--color-pine);
   border-radius: 6px;
-  padding: 22px 28px;
-  font-size: 15.5px;
-  line-height: 1.7;
+  padding: 24px 28px;
+  box-shadow: 0 1px 3px rgba(18, 22, 25, 0.04);
 }
 
-.story-card h3 {
+/* Headings inside narrative boxes */
+.story-card h3,
+.narrative-col h3,
+.intro-text h2 {
   font-size: 18px;
   font-weight: 700;
   color: var(--color-pine);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
-.story-card p {
+/* Paragraph text inside narrative boxes */
+.story-card p,
+.narrative-col p,
+.intro-text p {
+  font-size: 14.5px;
   color: var(--color-onyx);
+  line-height: 1.68;
+  margin-bottom: 12px;
 }
 
-.story-card p strong {
+.story-card p:last-child,
+.narrative-col p:last-child,
+.intro-text p:last-child {
+  margin-bottom: 0;
+}
+
+.story-card strong,
+.narrative-col strong,
+.intro-text strong {
   color: var(--color-pine);
+  font-weight: 700;
 }
 
 /* ==========================================================================
-   DUAL CHART ROW (Side-by-Side 50/50 Visual Split)
+   INTRO SECTION SPECIFIC SIZING
+   ========================================================================== */
+.intro-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  margin-bottom: 8px;
+}
+
+.intro-text {
+  flex: 1 1 auto;
+}
+
+.intro-illu-container {
+  flex: 0 0 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-balloon-img {
+  max-width: 100%;
+  max-height: 190px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.intro-citation {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 8px;
+}
+
+.intro-citation a {
+  color: var(--color-pine);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   SECTION 1 TOP STORY CARD (Clean Flex Row, No Thick Green Stripe)
+   ========================================================================== */
+.story-with-illu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  /* Removed border-left: 6px solid var(--color-pine) to fix misalignment */
+}
+
+.story-with-illu .story-text {
+  flex: 1 1 auto;
+}
+
+.story-with-illu .story-illu-container {
+  flex: 0 0 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editorial-character-img {
+  max-width: 150px !important;
+  max-height: 220px !important;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(18, 22, 25, 0.08));
+}
+
+/* ==========================================================================
+   SECTION 2 NARRATIVE COLUMN & CART ICON
+   ========================================================================== */
+/* Narrative text container across all cards */
+.narrative-text {
+  max-width: 620px; /* Enforces ~10-12 words per line */
+}
+   .narrative-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.cart-illu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.editorial-cart-img {
+  max-width: 175px !important;
+  max-height: 140px !important;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(18, 22, 25, 0.08));
+}
+
+/* ==========================================================================
+   SECTION 2: 2-TIER EXPANDED LAYOUT
+   ========================================================================== */
+
+/* Top Row: Treemap (Left) and Narrative (Right) */
+.section2-top-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+  width: 100%;
+}
+
+.treemap-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+/* Narrative Card Styling */
+.section2-narrative {
+  background: #faf8f2;
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  padding: 24px 22px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.section2-narrative .narrative-text h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-pine);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.section2-narrative .narrative-text p {
+  font-size: 13.5px;
+  color: var(--color-onyx);
+  line-height: 1.62;
+  margin-bottom: 12px;
+}
+
+.section2-narrative .cart-illu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.section2-narrative .editorial-cart-img {
+  max-width: 160px !important;
+  max-height: 130px !important;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(18, 22, 25, 0.08));
+}
+
+/* Bottom Tier: Full-Width Bump Chart Card */
+.bumpchart-expanded-card {
+  width: 100%;
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bumpchart-expanded-card #vis4_bumpchart {
+  width: 100%;
+  min-height: 440px;
+}
+
+/* Responsive collapse for tablet/mobile */
+@media (max-width: 1024px) {
+  .section2-top-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Chart row to make it proper show chart 
    ========================================================================== */
 .charts-row {
   display: flex;
@@ -211,6 +426,46 @@ body {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1.25rem;
   align-items: stretch;
+}
+
+/* ==========================================================================
+   PROMINENT INTERACTIVE FILTER (MAP TIMELINE SELECTOR)
+   ========================================================================== */
+#vis1_map .vega-bind {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: 14px !important;
+  padding: 8px 14px !important;
+  background: #f1ede4 !important;      /* Soft warm accent pill */
+  border: 1px solid var(--border-card) !important;
+  border-radius: 6px !important;
+  width: fit-content !important;
+}
+
+#vis1_map .vega-bind-name {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: var(--color-pine) !important;
+}
+
+#vis1_map .vega-bind select {
+  font-family: var(--font-family) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--color-onyx) !important;
+  background: #ffffff !important;
+  border: 1.5px solid var(--color-pine) !important;
+  border-radius: 4px !important;
+  padding: 5px 12px !important;
+  cursor: pointer !important;
+  outline: none !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+}
+
+#vis1_map .vega-bind select:hover {
+  background-color: #fafaf8 !important;
+  border-color: var(--color-seagreen) !important;
 }
 
 /* ==========================================================================
