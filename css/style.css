@@ -183,16 +183,34 @@ body {
   width: 100%;
 }
 
-#vis3_treemap {
+/* Section 2 chart containers: must be plain full-width blocks so Vega's
+   containerSize() / width:"container" can measure them correctly */
+#vis3_treemap,
+#vis4_bumpchart {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  min-width: 0;
+  display: block;
 }
 
-#vis3_treemap svg, #vis3_treemap canvas {
-  max-width: 100% !important;
-  height: auto !important;
+#vis3_treemap .vega-embed,
+#vis4_bumpchart .vega-embed {
+  width: 100%;
+  display: block;
+}
+
+.chart-caption {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* Section 2 two-column grid (minmax(0,1fr) stops charts blowing out columns) */
+.charts-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
 }
 
 /* ==========================================================================
@@ -213,12 +231,57 @@ body {
   color: var(--color-onyx);
 }
 
+/* Section 2 chart cards */
+.viz-card {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.viz-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-pine);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.viz-sub {
+  font-size: 13px;
+  color: #55625a;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.viz-card > div[id^="vis"] {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.method-note {
+  font-size: 13px;
+  color: #6a786f;
+  line-height: 1.5;
+}
+
+.method-note strong {
+  color: var(--color-onyx);
+}
+
 @media (max-width: 1024px) {
   .charts-row {
     flex-direction: column;
   }
   .chart-card {
     flex: 1 1 100%;
+  }
+  .charts-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
   body {
     padding: 20px 16px;

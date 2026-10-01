@@ -32,10 +32,10 @@
       </div>
     </header>
 
-    <!-- SECTION 1: GEOGRAPHIC BASELINE & ESSENTIAL SQUEEZE -->
+        <!-- SECTION 1: GEOGRAPHIC BASELINE & ESSENTIAL SQUEEZE -->
     <section class="dashboard-section" id="section-1">
       <div class="section-banner">
-        <h2>1. Geographic Baseline & The Non-Negotiable Squeeze</h2>
+        <h2>1. Geographic Baseline &amp; The Non-Negotiable Squeeze</h2>
         <p>Tracking spatial inflation distribution alongside the divergence between essential and discretionary living expenses.</p>
       </div>
 
@@ -43,7 +43,7 @@
       <article class="story-card">
         <h3>The Dual Pressure Points: Capital Disparities vs. The Inelastic Basket</h3>
         <p>
-          Australia's inflation surge has been structurally uneven across state capitals. While headline annual rates moderated around <strong>3.2%</strong> in Sydney and Melbourne, smaller economies like Adelaide (<strong>4.4%</strong>) and Hobart (<strong>4.5%</strong>) faced persistent supply frictions. Crucially, the burden is concentrated in non-negotiable living essentials—housing, food, and energy grew at more than double the rate of discretionary recreational spending.
+          Australia's inflation surge has been structurally uneven across state capitals. While headline annual rates moderated around <strong>3.2%</strong> in Sydney and Melbourne, smaller economies like Adelaide (<strong>4.4%</strong>) and Hobart (<strong>4.5%</strong>) faced persistent supply frictions. Crucially, the burden is concentrated in non-negotiable living essentials&mdash;housing, food, and energy grew at more than double the rate of discretionary recreational spending.
         </p>
       </article>
 
@@ -57,32 +57,41 @@
         <!-- Visualisation 2: Essential vs Discretionary Bar Chart -->
         <div class="chart-card">
           <div id="vis2_bar"></div>
-          <p class="chart-caption" style="font-size: 0.82rem; color: #64748b; margin-top: 8px; line-height: 1.4;">
+          <p class="chart-caption">
             <strong>Geographic Note:</strong> State-level inflation is proxied by the respective Greater Capital City Statistical Area (e.g., Sydney for NSW, Melbourne for VIC) per ABS Consumer Price Index methodology (ABS Cat 6401.0, Table 16). Non-discretionary basket encompasses essential household expenditures including food, housing, energy, health, and transport.
           </p>
         </div>
+      </div><!-- /.charts-row -->
     </section>
 
-    <!-- Section 2: Consumer Basket Anatomy -->
-    <section class="dashboard-section" id="section-2" style="margin-top: 32px;">
-      <div class="section-header" style="margin-bottom: 14px;">
-        <h2 style="font-size: 1.35rem; color: #121619; margin-bottom: 4px;">2. Consumer Basket Anatomy</h2>
-        <p class="section-lead" style="font-size: 0.95rem; color: #475569; margin: 0;">
-          Exploring official expenditure weights reveals how heavily Australian households are committed to non-negotiable living essentials.
-        </p>
+    <!-- SECTION 2: CONSUMER BASKET ANATOMY & VOLATILITY -->
+    <section class="dashboard-section" id="section-2">
+      <div class="section-banner">
+        <h2>2. Consumer Basket Anatomy &amp; Inflation Volatility</h2>
+        <p>Comparing baseline household expenditure weights alongside the shifting annual inflation rankings across Australian consumer categories (2021&ndash;2026).</p>
       </div>
 
-      <div class="chart-card" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px;">
-        <!-- Treemap Container -->
-        <div id="vis3_treemap" style="width: 100%; display: flex; justify-content: center;"></div>
-        
-        <!-- Methodology & Data Source Clarification -->
-        <p class="chart-caption" style="font-size: 0.82rem; color: #64748b; margin-top: 12px; line-height: 1.45; border-top: 1px solid #f1f5f9; padding-top: 10px;">
-          <strong>Methodology Note:</strong> Rectangular tile areas encode the official ABS Consumer Price Index expenditure weighting pattern (representing the proportional share of total household expenditure summing to 100%). Color hue separates non-negotiable baseline commitments (<em>Essential</em>, pine teal) from optional purchases (<em>Discretionary</em>, gold). Tooltips display through-the-year price inflation rates as of June 2026 (ABS Cat 6401.0).
-        </p>
+      <div class="charts-grid">
+        <!-- Visualisation 3: Treemap -->
+        <div class="viz-card">
+          <h3>Expenditure Weight Distribution</h3>
+          <p class="viz-sub">Proportion of total Australian household basket (%) classified by essential vs. discretionary status.</p>
+          <div id="vis3_treemap"></div>
+        </div>
+
+        <!-- Visualisation 4: Bump chart -->
+        <div class="viz-card">
+          <h3>Inflation Rank Volatility (2021&ndash;2026)</h3>
+          <p class="viz-sub">Relative rank shifts (#1 fastest price growth to #11 lowest) across the 11 major CPI expenditure groups.</p>
+          <div id="vis4_bumpchart"></div>
+        </div>
       </div>
+
+      <p class="method-note">
+        <strong>Methodology Note:</strong> Treemap tile sizes encode official ABS Consumer Price Index expenditure weighting patterns. Bump chart rankings are evaluated at the June quarter snapshot of each calendar year (2021&ndash;2026) using through-the-year price percentage movements (ABS Cat 6401.0, Table 18).
+      </p>
     </section>
-    
+
     <!-- FOOTER -->
     <footer class="dashboard-footer">
       <div>

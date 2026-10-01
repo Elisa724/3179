@@ -1,9 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 780,
+  "width": 520,
   "height": 420,
-  "padding": {"top": 10, "left": 10, "right": 10, "bottom": 35},
-  "autosize": {"type": "fit", "contains": "padding"},
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "signals": [
+    {
+      "name": "width",
+      "init": "containerSize()[0] ? containerSize()[0] : 520",
+      "on": [
+        {
+          "events": "window:resize",
+          "update": "containerSize()[0] ? containerSize()[0] : 520"
+        }
+      ]
+    }
+  ],
   "data": [
     {
       "name": "raw",
@@ -29,9 +43,15 @@
       "transform": [
         {
           "type": "aggregate",
-          "ops": ["sum"],
-          "fields": ["Weight_Pct"],
-          "as": ["Weight_Pct"]
+          "ops": [
+            "sum"
+          ],
+          "fields": [
+            "Weight_Pct"
+          ],
+          "as": [
+            "Weight_Pct"
+          ]
         },
         {
           "type": "formula",
@@ -42,6 +62,11 @@
           "type": "formula",
           "expr": "null",
           "as": "parent"
+        },
+        {
+          "type": "formula",
+          "expr": "0",
+          "as": "Weight_Pct"
         }
       ]
     },
@@ -58,7 +83,10 @@
     },
     {
       "name": "tree",
-      "source": ["root_node", "child_nodes"],
+      "source": [
+        "root_node",
+        "child_nodes"
+      ],
       "transform": [
         {
           "type": "stratify",
@@ -68,11 +96,21 @@
         {
           "type": "treemap",
           "field": "Weight_Pct",
-          "sort": {"field": "value", "order": "descending"},
+          "sort": {
+            "field": "value",
+            "order": "descending"
+          },
           "round": true,
           "method": "squarify",
-          "ratio": 1.6,
-          "size": [{"signal": "width"}, {"signal": "height - 30"}]
+          "ratio": 1.45,
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ]
         },
         {
           "type": "filter",
@@ -85,8 +123,14 @@
     {
       "name": "colorScale",
       "type": "ordinal",
-      "domain": ["Essential", "Discretionary"],
-      "range": ["#2D4739", "#E5C687"]
+      "domain": [
+        "Essential",
+        "Discretionary"
+      ],
+      "range": [
+        "#2D4739",
+        "#E5C687"
+      ]
     }
   ],
   "legends": [
@@ -105,75 +149,134 @@
   "marks": [
     {
       "type": "rect",
-      "from": {"data": "tree"},
+      "from": {
+        "data": "tree"
+      },
       "encode": {
         "enter": {
-          "stroke": {"value": "#ffffff"},
-          "strokeWidth": {"value": 2}
+          "stroke": {
+            "value": "#ffffff"
+          },
+          "strokeWidth": {
+            "value": 2
+          }
         },
         "update": {
-          "x": {"field": "x0"},
-          "y": {"field": "y0"},
-          "x2": {"field": "x1"},
-          "y2": {"field": "y1"},
-          "fill": {"scale": "colorScale", "field": "Classification"},
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          },
+          "fill": {
+            "scale": "colorScale",
+            "field": "Classification"
+          },
           "tooltip": {
             "signal": "{\"Category\": datum.Categories, \"Classification\": datum.Classification, \"Basket Weight\": datum.Weight_Pct + '%', \"Annual Inflation (Jun 2026)\": datum.Inflation_Rate_Pct + '%'}"
           }
         },
         "hover": {
-          "fill": {"value": "#b87c28"}
+          "fill": {
+            "value": "#b87c28"
+          }
         }
       }
     },
     {
       "type": "text",
-      "from": {"data": "tree"},
+      "from": {
+        "data": "tree"
+      },
       "interactive": false,
       "encode": {
         "enter": {
-          "align": {"value": "center"},
-          "baseline": {"value": "middle"},
-          "fontWeight": {"value": "bold"}
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontWeight": {
+            "value": "bold"
+          }
         },
         "update": {
-          "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
-          "y": {"signal": "0.5 * (datum.y0 + datum.y1) - 6"},
-          "text": {"signal": "datum.Clean_Name"},
+          "x": {
+            "signal": "0.5 * (datum.x0 + datum.x1)"
+          },
+          "y": {
+            "signal": "0.5 * (datum.y0 + datum.y1) - 6"
+          },
+          "text": {
+            "signal": "datum.Clean_Name"
+          },
           "fontSize": {
             "signal": "(datum.x1 - datum.x0 < 60 || datum.y1 - datum.y0 < 35) ? 8 : 10.5"
           },
-          "limit": {"signal": "max(8, datum.x1 - datum.x0 - 2)"},
+          "limit": {
+            "signal": "max(8, datum.x1 - datum.x0 - 2)"
+          },
           "fill": {
             "signal": "datum.Classification === 'Essential' ? '#ffffff' : '#121619'"
           },
-          "opacity": {"value": 1}
+          "opacity": {
+            "value": 1
+          }
         }
       }
     },
     {
       "type": "text",
-      "from": {"data": "tree"},
+      "from": {
+        "data": "tree"
+      },
       "interactive": false,
       "encode": {
         "enter": {
-          "align": {"value": "center"},
-          "baseline": {"value": "middle"}
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          }
         },
         "update": {
-          "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
-          "y": {"signal": "0.5 * (datum.y0 + datum.y1) + 7"},
-          "text": {"signal": "datum.Weight_Pct + '%'"},
+          "x": {
+            "signal": "0.5 * (datum.x0 + datum.x1)"
+          },
+          "y": {
+            "signal": "0.5 * (datum.y0 + datum.y1) + 7"
+          },
+          "text": {
+            "signal": "datum.Weight_Pct + '%'"
+          },
           "fontSize": {
             "signal": "(datum.x1 - datum.x0 < 60 || datum.y1 - datum.y0 < 35) ? 7.5 : 9.5"
           },
-          "limit": {"signal": "max(8, datum.x1 - datum.x0 - 2)"},
+          "limit": {
+            "signal": "max(8, datum.x1 - datum.x0 - 2)"
+          },
           "fill": {
             "signal": "datum.Classification === 'Essential' ? '#e2e8f0' : '#2b2b2b'"
           },
-          "opacity": {"value": 1}
+          "opacity": {
+            "value": 1
+          }
         }
       }
     }
-  ]
+  ],
+  "padding": {
+    "top": 4,
+    "left": 4,
+    "right": 4,
+    "bottom": 4
+  }
 }
