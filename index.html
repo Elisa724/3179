@@ -3,36 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Australia's Inflation Squeeze: 2021–2026</title>
+  <title>Australia's Inflation Squeeze (2021–2026) | FIT3179</title>
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- Vega & Vega-Lite CDNs -->
+  <!-- Vega & Vega-Lite Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <div class="page-container">
 
-    <!-- MASTER HEADER -->
+    <!-- HERO HEADER -->
     <header class="dashboard-header">
       <div class="header-top-row">
         <div class="header-title-block">
-          <h1>AUSTRALIA'S INFLATION SQUEEZE: 2021–2026</h1>
-          <p class="subtitle">How rising prices, changing consumption patterns, and monetary policy reshaped household purchasing power.</p>
+          <h1>Australia's Inflation Squeeze (2021–2026)</h1>
+          <p class="subtitle">Tracking the asymmetric geography of living costs and the non-negotiable household basket</p>
         </div>
         <div class="header-metadata">
-          <p><strong>Course:</strong> FIT3179 Studio</p>
-          <p><strong>Topic:</strong> Macroeconomic Living Squeeze</p>
-          <p><strong>Date:</strong> 2026</p>
+          <p><strong>Course:</strong> FIT3179 Data Visualisation 2</p>
+          <p><strong>Author:</strong> Elisa Puan (34989064)</p>
+          <p><strong>Date:</strong> October 2026</p>
         </div>
       </div>
     </header>
 
-   <!-- INTRO SECTION: MACRO CONTEXT -->
+    <!-- INTRO SECTION -->
     <section class="dashboard-section" id="section-intro">
       <div class="intro-card">
         <div class="intro-text">
@@ -43,14 +43,7 @@
           <p>
             Much like a balloon pumped past its capacity, household budgets have stretched thin. While headline inflation has begun to ease, the compounding effect of higher living costs continues to weigh heavily across state capitals. This visual report tracks where price pressure hit hardest, which consumer categories drove the surge, and how the economic burden played out across the nation.
           </p>
-          <div class="intro-citation">
-            <span>Illustration Source:</span>
-            <a href="https://share.google/UrVJkBBrHoDWdryq6" target="_blank" rel="noopener noreferrer">
-              Economic Inflation Concept Vector
-            </a>
-          </div>
         </div>
-
         <div class="intro-illu-container">
           <img src="image/inflation_balloon.png" alt="Inflation balloon concept" class="intro-balloon-img">
         </div>
@@ -64,53 +57,48 @@
         <p>Mapping capital city inflation rates and the divide between everyday essentials and optional spending.</p>
       </div>
 
-      <!-- Top Story Card matching Section 2 styling -->
+      <!-- Narrative Story Card -->
       <article class="story-card story-with-illu">
         <div class="story-text">
           <h3>Shifting Hotspots and the Everyday Squeeze</h3>
           <p>
-            Inflation pressure across Australia has moved over time. In 2025, <strong>Brisbane</strong> was the clear national hotspot with the highest price increases. By 2026, pressure eased in Brisbane but flared up across southern capitals, leaving <strong>Hobart (4.5%)</strong> and <strong>Adelaide (4.4%)</strong> with the steepest rates in the country. This regional shift can be seen by switching the period selector below the map.
+            Inflation pressure across Australia has moved over time. In 2025, <strong>Brisbane</strong> was the clear national hotspot with the highest price increases. By 2026, pressure eased in Brisbane but flared up across southern capitals, leaving <strong>Hobart (4.5%)</strong> and <strong>Adelaide (4.4%)</strong> with the steepest rates in the country. This regional shift can be seen directly by switching the period selector below the map.
           </p>
           <p>
             Even as local hotspots change, one pattern remains true everywhere. Prices for daily essentials like groceries, housing, and electricity are climbing much faster than optional spending. The divide is largest in <strong>Adelaide</strong>, where essentials grew by <strong>5.9%</strong> compared to just <strong>3.0%</strong> for discretionary goods. Because households cannot walk away from basic bills, daily living costs feel heavy no matter which capital city you live in.
           </p>
         </div>
         <div class="story-illu-container">
-          <img src="image/consumer_receipt.png" alt="Consumer shocked by grocery receipt" class="editorial-character-img">
+          <img src="image/consumer_receipt.png" alt="Consumer with grocery receipt" class="editorial-character-img">
         </div>
       </article>
 
-      <!-- Visualisations Row -->
+      <!-- Charts Row: Vis 1 & Vis 2 -->
       <div class="charts-row">
         <div class="chart-card">
           <div id="vis1_map"></div>
         </div>
         <div class="chart-card">
           <div id="vis2_bar"></div>
-          <p class="chart-caption">
-            <strong>Geographic Note:</strong> State-level inflation is proxied by the respective Greater Capital City Statistical Area (ABS Cat 6401.0, Table 16).
-          </p>
         </div>
       </div>
     </section>
 
-   <!-- SECTION 2: WHAT DROVE THE RISE? -->
+    <!-- SECTION 2: WHAT DROVE THE RISE? -->
     <section class="dashboard-section" id="section-2">
       <div class="section-banner">
         <h2>2. What Drove the Rise?</h2>
         <p>Breaking down household spending weights and tracking price shifts across key consumer categories (2021&ndash;2026).</p>
       </div>
 
-      <!-- Tier 1: Treemap on Left, Story Card + Cart on Right (50 / 50 Split) -->
+      <!-- Tier 1: Vis 3 (Treemap) + Narrative -->
       <div class="section2-top-row">
-        <!-- Left: Treemap Card -->
         <div class="viz-card treemap-card">
           <h3>Expenditure Weight Distribution</h3>
           <p class="viz-sub">Proportion of total Australian household basket (%) classified by essential vs. discretionary status.</p>
           <div id="vis3_treemap"></div>
         </div>
 
-        <!-- Right: Narrative Story Card with Cart Icon -->
         <article class="narrative-col section2-narrative">
           <div class="narrative-text">
             <h3>Shifting Costs: The Swapping Price Pressures</h3>
@@ -125,41 +113,36 @@
             </p>
           </div>
           <div class="cart-illu-container">
-            <img src="image/shopping_cart.png" alt="Shopping cart with dollar coin" class="editorial-cart-img">
+            <img src="image/shopping_cart.png" alt="Shopping cart with coin" class="editorial-cart-img">
           </div>
         </article>
       </div>
 
-      <!-- Tier 2: Expanded Full-Width Bump Chart -->
+      <!-- Tier 2: Vis 4 (Bump Chart) -->
       <div class="viz-card bumpchart-expanded-card">
         <h3>Inflation Rank Volatility (2021&ndash;2026)</h3>
         <p class="viz-sub">Relative rank shifts (#1 fastest price growth to #11 lowest) across the 11 major CPI expenditure groups.</p>
         <div id="vis4_bumpchart"></div>
       </div>
-
-      <p class="method-note">
-        <strong>Methodology Note:</strong> Treemap tile sizes encode official ABS Consumer Price Index expenditure weighting patterns. Bump chart rankings are evaluated at the June quarter snapshot of each calendar year (2021&ndash;2026) using through-the-year price percentage movements (ABS Cat 6401.0, Table 18).
-      </p>
     </section>
 
-    <!-- FOOTER -->
+    <!-- SUBTLE COMPACT FOOTER -->
+    <!-- SUBTLE COMPACT FOOTER -->
     <footer class="dashboard-footer">
-      <div>
-        <strong>Data Sources:</strong> Australian Bureau of Statistics (ABS Cat 6401.0, Table 1 &amp; Table 2).
-      </div>
-      <div>
-        <strong>Asset Credits:</strong> Spot illustrations via DALL-E &amp; 
-        <a href="https://share.google/UrVJkBBrHoDWdryq6" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">
-          Economic Inflation Vector[cite: 24]
-        </a>.
-      </div>
-      <div>
-        FIT3179 Data Visualisation 2
-      </div>
+      <p class="footnote-line">
+        <strong>Data Sources:</strong> Australian Bureau of Statistics (ABS Cat 6401.0, 2021–2026): Map 1 (Table 1), Bar Chart (Table 6), Treemap (Table 2), Bump Chart (Table 18).
+      </p>
+      <p class="footnote-line">
+        <strong>Visual Credits:</strong> Intro vector illustration sourced via <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer">Google Shared Asset</a>. Spot cartoon characters generated using DALL-E 3 for editorial illustration.
+      </p>
+      <p class="footnote-meta">
+        Monash University &bull; FIT3179 Data Visualisation 2
+      </p>
     </footer>
 
-  </div>
+  </div><!-- /.page-container -->
 
+<!-- External JS File (Handles all Vega embeds) -->
   <script src="js/main.js"></script>
 </body>
 </html>

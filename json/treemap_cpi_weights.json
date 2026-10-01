@@ -139,9 +139,10 @@
       "title": "Expenditure Type",
       "orient": "bottom",
       "direction": "horizontal",
-      "titleFontSize": 11,
+      "titleFontSize": 12,
       "titleFontWeight": "bold",
-      "labelFontSize": 10.5,
+      "labelFontSize": 11.5,
+      "labelFontWeight": "500",
       "symbolType": "square",
       "symbolSize": 100
     }

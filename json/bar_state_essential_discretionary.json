@@ -4,9 +4,11 @@
     "text": "Essential vs. Discretionary Inflation Across Capital Cities",
     "subtitle": "Through-the-year price change by capital city (proxying states), ABS Cat 6401.0 Table 16",
     "fontSize": 15,
-    "subtitleFontSize": 11.5,
+    "fontWeight": "bold",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5e6b64",
     "anchor": "start",
-    "color": "#121619"
+    "color": "#1b382b"
   },
   "width": "container",
   "height": 400,
@@ -40,8 +42,9 @@
       "axis": {
         "grid": true,
         "gridColor": "#e5e7eb",
-        "titleFontSize": 11.5,
-        "labelFontSize": 10.5
+        "titleFontSize": 12,
+        "titleFontWeight": "bold",
+        "labelFontSize": 11
       }
     },
     "color": {
@@ -55,8 +58,11 @@
       "legend": {
         "orient": "bottom",
         "direction": "horizontal",
-        "titleFontSize": 11,
-        "labelFontSize": 10.5
+        "titleFontSize": 12,
+        "titleFontWeight": "bold",
+        "labelFontSize": 11.5,
+        "labelFontWeight": "500",
+        "columnPadding": 28
       }
     },
     "tooltip": [

@@ -4,9 +4,11 @@
     "text": "Capital City Inflation Pressures Across Australia",
     "subtitle": "Circle size & colour encode annual CPI % change (ABS Cat 6401.0)",
     "fontSize": 15,
+    "fontWeight": "bold",
     "subtitleFontSize": 12,
+    "subtitleColor": "#5e6b64",
     "anchor": "start",
-    "color": "#121619"
+    "color": "#1b382b"
   },
   "width": "container",
   "height": 410,
@@ -71,8 +73,10 @@
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-            "titleFontSize": 11,
-            "labelFontSize": 10
+            "titleFontSize": 12,
+            "titleFontWeight": "bold",
+            "labelFontSize": 11,
+            "columnPadding": 24
           }
         },
         "color": {
@@ -87,8 +91,9 @@
             "orient": "bottom",
             "direction": "horizontal",
             "gradientLength": 160,
-            "titleFontSize": 11,
-            "labelFontSize": 10
+            "titleFontSize": 12,
+            "titleFontWeight": "bold",
+            "labelFontSize": 11
           }
         },
         "tooltip": [
