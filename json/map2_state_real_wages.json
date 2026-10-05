@@ -1,18 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "State Real Wage Gap Across Key Milestones",
-    "subtitle": "Real Wage Gap (%) = Annual WPI Growth - Annual CPI Inflation (June Quarter)",
-    "font": "Newsreader, Georgia, serif",
-    "fontSize": 17,
-    "fontWeight": 700,
-    "color": "#1b382b",
-    "anchor": "start",
-    "subtitleFont": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-    "subtitleFontSize": 12,
-    "subtitleColor": "#5e6b64",
-    "subtitlePadding": 4
-  },
   "width": "container",
   "height": 410,
   "autosize": {
