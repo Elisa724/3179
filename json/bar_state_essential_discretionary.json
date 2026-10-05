@@ -11,64 +11,101 @@
     "color": "#1b382b"
   },
   "width": "container",
-  "height": 400,
+  "height": 410,
   "autosize": {"type": "fit-x", "contains": "padding"},
   "data": {
     "url": "data/cpi_state_essential_discretionary.csv"
   },
-  "mark": {
-    "type": "bar",
-    "cornerRadiusEnd": 3
-  },
-  "encoding": {
-    "y": {
-      "field": "State",
-      "type": "nominal",
-      "title": null,
-      "axis": {
-        "labelFontSize": 11,
-        "labelFontWeight": "bold",
-        "labelColor": "#121619"
-      }
-    },
-    "yOffset": {
-      "field": "Basket_Type"
-    },
-    "x": {
-      "field": "Inflation_Rate_Pct",
-      "type": "quantitative",
-      "title": "Annual Inflation Rate (%)",
-      "scale": {"domain": [0, 7]},
-      "axis": {
-        "grid": true,
-        "gridColor": "#e5e7eb",
-        "titleFontSize": 12,
-        "titleFontWeight": "bold",
-        "labelFontSize": 11
-      }
-    },
-    "color": {
-      "field": "Basket_Type",
-      "type": "nominal",
-      "title": "Expenditure Basket",
-      "scale": {
-        "domain": ["Essential", "Discretionary"],
-        "range": ["#2D4739", "#E5C687"]
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3
       },
-      "legend": {
-        "orient": "bottom",
-        "direction": "horizontal",
-        "titleFontSize": 12,
-        "titleFontWeight": "bold",
-        "labelFontSize": 11.5,
-        "labelFontWeight": "500",
-        "columnPadding": 28
+      "encoding": {
+        "y": {
+          "field": "State",
+          "type": "nominal",
+          "title": null,
+          "axis": {
+            "labelFontSize": 11,
+            "labelFontWeight": "bold",
+            "labelColor": "#121619"
+          }
+        },
+        "yOffset": {
+          "field": "Basket_Type"
+        },
+        "x": {
+          "field": "Inflation_Rate_Pct",
+          "type": "quantitative",
+          "title": "Annual Inflation Rate (%)",
+          "scale": {
+            "domain": [0, 8.2],
+            "zero": true
+          },
+          "axis": {
+            "grid": true,
+            "gridColor": "#e5e7eb",
+            "titleFontSize": 12,
+            "titleFontWeight": "bold",
+            "labelFontSize": 11
+          }
+        },
+        "color": {
+          "field": "Basket_Type",
+          "type": "nominal",
+          "title": "Expenditure Basket",
+          "scale": {
+            "domain": ["Essential", "Discretionary"],
+            "range": ["#2D4739", "#E5C687"]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "titleFontSize": 12,
+            "titleFontWeight": "bold",
+            "labelFontSize": 11.5,
+            "labelFontWeight": "500",
+            "columnPadding": 28
+          }
+        },
+        "tooltip": [
+          {"field": "State", "type": "nominal", "title": "State (Capital City)"},
+          {"field": "Basket_Type", "type": "nominal", "title": "Basket Type"},
+          {"field": "Inflation_Rate_Pct", "type": "quantitative", "title": "Annual Change (%)", "format": ".1f"}
+        ]
       }
     },
-    "tooltip": [
-      {"field": "State", "type": "nominal", "title": "State (Capital City)"},
-      {"field": "Basket_Type", "type": "nominal", "title": "Basket Type"},
-      {"field": "Inflation_Rate_Pct", "type": "quantitative", "title": "Annual Change (%)", "format": ".1f"}
-    ]
-  }
+    {
+      "data": {
+        "values": [
+          {
+            "State": "SA (Adelaide)",
+            "Inflation_Rate_Pct": 5.9,
+            "annotation": [
+              "Adelaide Peak:",
+              "Essential (+5.9%)"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "lineHeight": 14,
+        "dx": 8,
+        "dy": 6,
+        "fontSize": 10.5,
+        "fontWeight": "bold",
+        "fill": "#1b382b"
+      },
+      "encoding": {
+        "y": {"field": "State", "type": "nominal"},
+        "x": {"field": "Inflation_Rate_Pct", "type": "quantitative"},
+        "text": {"field": "annotation"}
+      }
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 /* ==========================================================================
    FIT3179 - AUSTRALIA'S INFLATION SQUEEZE (2021–2026)
    Theme: Banknote Pine Teal, Currency Gold & Editorial Typography
-   ========================================================================== */
+   ========================================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,600&display=swap');
 
@@ -11,19 +11,19 @@
   --bg-narrative: #fdfbf7;     /* Warm ivory editorial reading cards */
   --border-card: #dcd7c9;      /* Subtle paper boundaries */
 
-  /* Banknote Theme Palette */
-  --color-onyx: #181d20;       /* Deep charcoal body text */
+  /* Palette: Banknote Colors */
+  --color-onyx: #181d20;       /* Charcoal body text */
   --color-pine: #1b382b;       /* Banknote pine teal (Primary Hero) */
   --color-pine-light: #284c3c;
   --color-seagreen: #09814a;   /* Accent cash green */
   --color-sage: #bcb382;       /* Dry sage */
   --color-fawn: #edd8ab;       /* Muted gold fawn */
-  --color-muted: #5e6b64;      /* Muted captions & metadata */
+  --color-muted: #5e6b64;      /* Muted captions & secondary text */
 
-  /* Unified Typography */
+  /* Standardized Typography Scale */
   --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --max-width: 1380px;
+  --max-width: 1400px;
 }
 
 * {
@@ -165,6 +165,7 @@ body {
   color: var(--color-onyx);
   line-height: 1.7;
   margin-bottom: 14px;
+  max-width: 100%;
 }
 
 .story-card p:last-child,
@@ -181,7 +182,7 @@ body {
 }
 
 /* ==========================================================================
-   INTRO SECTION: MACRO CONTEXT
+   ILLUSTRATION CONTAINERS & BALANCED SIZING
    ========================================================================== */
 .intro-card {
   display: flex;
@@ -193,11 +194,6 @@ body {
 
 .intro-text {
   flex: 1 1 auto;
-  max-width: 100%;
-}
-
-.intro-text p {
-  max-width: 100%;             /* Let text expand naturally across the card */
 }
 
 .intro-illu-container {
@@ -217,21 +213,6 @@ body {
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08));
 }
 
-.intro-citation {
-  font-size: 12.5px;
-  color: var(--color-muted);
-  margin-top: 10px;
-}
-
-.intro-citation a {
-  color: var(--color-pine);
-  text-decoration: underline;
-  font-weight: 500;
-}
-
-/* ==========================================================================
-   SECTION 1: CHARTS & STORY CARD
-   ========================================================================== */
 .story-with-illu {
   display: flex;
   flex-direction: row;
@@ -242,11 +223,6 @@ body {
 
 .story-with-illu .story-text {
   flex: 1 1 auto;
-  max-width: 100%;
-}
-
-.story-with-illu .story-text p {
-  max-width: 100%;             /* Fills naturally right to the character image */
 }
 
 .story-with-illu .story-illu-container {
@@ -263,97 +239,6 @@ body {
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 10px rgba(18, 22, 25, 0.09));
-}
-
-.charts-row {
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-  width: 100%;
-  align-items: stretch;
-}
-
-.chart-card {
-  flex: 1 1 500px;
-  min-width: 0;
-  background: var(--bg-card);
-  border: 1px solid var(--border-card);
-  border-radius: 6px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 460px;
-}
-
-#vis1_map,
-#vis2_bar {
-  width: 100%;
-}
-
-.chart-caption {
-  font-size: 12.5px;
-  color: var(--color-muted);
-  margin-top: 10px;
-  line-height: 1.45;
-  width: 100%;
-}
-
-/* Interactive Timeline Dropdown Badge */
-#vis1_map .vega-bind {
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  margin-top: 14px !important;
-  padding: 8px 14px !important;
-  background: #f1ede4 !important;
-  border: 1px solid var(--border-card) !important;
-  border-radius: 6px !important;
-  width: fit-content !important;
-}
-
-#vis1_map .vega-bind-name {
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  color: var(--color-pine) !important;
-}
-
-#vis1_map .vega-bind select {
-  font-family: var(--font-sans) !important;
-  font-size: 13px !important;
-  font-weight: 600 !important;
-  color: var(--color-onyx) !important;
-  background: #ffffff !important;
-  border: 1.5px solid var(--color-pine) !important;
-  border-radius: 4px !important;
-  padding: 5px 12px !important;
-  cursor: pointer !important;
-}
-
-/* ==========================================================================
-   SECTION 2: 2-TIER EXPANDED LAYOUT
-   ========================================================================== */
-.section2-top-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 24px;
-  align-items: stretch;
-  width: 100%;
-}
-
-.treemap-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  min-width: 0;
-}
-
-.section2-narrative {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 0;
 }
 
 .cart-illu-container {
@@ -373,23 +258,39 @@ body {
   filter: drop-shadow(0 4px 8px rgba(18, 22, 25, 0.08));
 }
 
-.bumpchart-expanded-card {
+/* ==========================================================================
+   STANDARDIZED GRID SYSTEMS (Ensures uniform sight lines)
+   ========================================================================== */
+/* 2-Column Layout (Section 1 & 2) */
+.charts-row,
+.charts-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
   width: 100%;
-  min-width: 0;
-  background: var(--bg-card);
-  border: 1px solid var(--border-card);
-  border-radius: 6px;
-  padding: 26px 28px;
-  display: flex;
-  flex-direction: column;
+  align-items: stretch;
 }
 
-.bumpchart-expanded-card #vis4_bumpchart {
+/* 3-Column Layout (Section 3: Map 2 + Heatmap + Slope) */
+.charts-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
   width: 100%;
-  min-height: 440px;
+  align-items: stretch;
 }
 
-/* Visualization Card Anatomy */
+/* Section 2: 2-Tier Layout */
+.section2-top-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Standard Visual Card */
+.chart-card,
 .viz-card {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
@@ -417,70 +318,135 @@ body {
   margin-bottom: 16px;
 }
 
-.method-note {
-  font-size: 12.5px;
-  color: var(--color-muted);
-  line-height: 1.5;
-  margin-top: -6px;
+.bumpchart-expanded-card {
+  width: 100%;
+  min-width: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
 }
 
-.method-note strong {
-  color: var(--color-onyx);
+.bumpchart-expanded-card #vis4_bumpchart {
+  width: 100%;
+  min-height: 440px;
 }
 
-/* Container safety for Vega */
-#vis3_treemap,
-#vis4_bumpchart {
+/* Ensures Vega responsive sizing works inside container */
+div[id^="vis"] {
   width: 100%;
   min-width: 0;
   display: block;
 }
 
-#vis3_treemap .vega-embed,
-#vis4_bumpchart .vega-embed {
+div[id^="vis"] .vega-embed {
   width: 100%;
   display: block;
 }
 
 /* ==========================================================================
-   FOOTER & CITATIONS
+   STANDARDIZED GLOBAL VEGA TOOLTIP (Solves Assignment 1 Inconsistency)
+   ========================================================================== */
+#vg-tooltip-element {
+  font-family: var(--font-sans) !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  background-color: #ffffff !important;
+  color: var(--color-onyx) !important;
+  border: 1px solid var(--border-card) !important;
+  border-radius: 6px !important;
+  padding: 10px 14px !important;
+  box-shadow: 0 6px 18px rgba(18, 22, 25, 0.12) !important;
+  z-index: 1000 !important;
+}
+
+#vg-tooltip-element table tr td.key {
+  color: var(--color-muted) !important;
+  font-weight: 500 !important;
+  padding-right: 12px !important;
+  text-align: left !important;
+}
+
+#vg-tooltip-element table tr td.value {
+  color: var(--color-pine) !important;
+  font-weight: 700 !important;
+  text-align: right !important;
+}
+
+/* ==========================================================================
+   GENERALIZED VEGA INTERACTIVE CONTROLS (Dropdowns, Sliders)
+   ========================================================================== */
+.vega-bind {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: 14px !important;
+  padding: 8px 14px !important;
+  background: #f1ede4 !important;
+  border: 1px solid var(--border-card) !important;
+  border-radius: 6px !important;
+  width: fit-content !important;
+}
+
+.vega-bind-name {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: var(--color-pine) !important;
+}
+
+.vega-bind select {
+  font-family: var(--font-sans) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--color-onyx) !important;
+  background: #ffffff !important;
+  border: 1.5px solid var(--color-pine) !important;
+  border-radius: 4px !important;
+  padding: 5px 12px !important;
+  cursor: pointer !important;
+  outline: none !important;
+}
+
+/* ==========================================================================
+   SUBTLE FOOTNOTE FOOTER
    ========================================================================== */
 .dashboard-footer {
-  border-top: 2px solid var(--border-card);
-  padding: 24px 8px 12px 8px;
+  border-top: 1px solid var(--border-card);
+  padding: 18px 4px 10px 4px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  font-size: 12.5px;
+  gap: 6px;
+  font-size: 11.5px;
   color: var(--color-muted);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-.footer-row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
+.footnote-line {
+  margin: 0;
+  display: block;
 }
 
-.footer-citations {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.footer-citations ul {
-  margin-left: 20px;
-  margin-top: 4px;
-}
-
-.footer-citations strong {
+.footnote-line strong {
   color: var(--color-onyx);
+  font-weight: 600;
 }
 
-.footer-citations a {
-  color: var(--color-pine);
+.footnote-line a {
+  color: inherit;
   text-decoration: underline;
+}
+
+.footnote-line a:hover {
+  color: var(--color-pine);
+}
+
+.footnote-meta {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--color-muted);
+  opacity: 0.8;
 }
 
 /* ==========================================================================
@@ -495,11 +461,14 @@ body {
     padding: 24px 20px;
   }
   .charts-row,
+  .charts-grid-2,
+  .charts-grid-3,
   .section2-top-row,
   .intro-card,
   .story-with-illu {
-    flex-direction: column;
     grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
   .header-metadata {
     text-align: left;

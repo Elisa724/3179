@@ -1,18 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Inflation Rank Volatility (2021–2026)",
-    "subtitle": "Relative rank shifts (#1 fastest price growth to #11 lowest) across the 11 major CPI expenditure groups.",
-    "fontSize": 15,
-    "fontWeight": "bold",
-    "subtitleFontSize": 12,
-    "subtitleColor": "#5e6b64",
-    "anchor": "middle",
-    "color": "#1b382b",
-    "offset": 12
-  },
   "width": "container",
-  "height": 430,
+  "height": 450,
   "autosize": {
     "type": "fit",
     "contains": "padding"
@@ -40,7 +29,7 @@
       "field": "Rank",
       "type": "quantitative",
       "scale": {
-        "domain": [1, 11],
+        "domain": [0.3, 11.7],
         "reverse": true
       },
       "axis": {
@@ -165,27 +154,137 @@
           "value": 0.82
         },
         "tooltip": [
+          {"field": "Display Name", "type": "nominal", "title": "Category"},
+          {"field": "Year", "type": "ordinal", "title": "Period"},
+          {"field": "Rank", "type": "ordinal", "title": "Rank"},
+          {"field": "Inflation_Rate", "type": "quantitative", "title": "Rate (%)"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
           {
-            "field": "Display Name",
-            "type": "nominal",
-            "title": "Category"
-          },
-          {
-            "field": "Year",
-            "type": "ordinal",
-            "title": "Period"
-          },
-          {
-            "field": "Rank",
-            "type": "ordinal",
-            "title": "Rank"
-          },
-          {
-            "field": "Inflation_Rate",
-            "type": "quantitative",
-            "title": "Rate (%)"
+            "Year": "2026",
+            "Rank": 1,
+            "label": [
+              "Health climbs to #1 (2.2%) →",
+              "Sticky domestic clinical fees"
+            ]
           }
         ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -20,
+        "dy": -10,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "lineHeight": 14,
+        "stroke": "#ffffff",
+        "strokeWidth": 4,
+        "strokeJoin": "round",
+        "fill": "#ffffff"
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Rank", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": "2026",
+            "Rank": 1,
+            "label": [
+              "Health climbs to #1 (2.2%) →",
+              "Sticky domestic clinical fees"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -20,
+        "dy": -10,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "lineHeight": 14,
+        "fill": "#0369a1"
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Rank", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": "2026",
+            "Rank": 11,
+            "label": [
+              "Transport drops to #11 (-0.7%) →",
+              "Fuel & shipping deflation"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -20,
+        "dy": -10,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "lineHeight": 14,
+        "stroke": "#ffffff",
+        "strokeWidth": 4,
+        "strokeJoin": "round",
+        "fill": "#ffffff"
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Rank", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": "2026",
+            "Rank": 11,
+            "label": [
+              "Transport drops to #11 (-0.7%) →",
+              "Fuel & shipping deflation"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -20,
+        "dy": -10,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "lineHeight": 14,
+        "fill": "#334155"
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Rank", "type": "quantitative"},
+        "text": {"field": "label"}
       }
     }
   ]
