@@ -18,4 +18,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Section 3 Visualisation
   vegaEmbed('#vis-map2', 'json/map2_state_real_wages.json', {actions: false, renderer: 'svg'}).catch(console.error);
+  vegaEmbed('#vis-heatmap', 'json/heatmap_industry_wpi.json', {actions: false,renderer: 'svg'}).catch(console.error);
 });

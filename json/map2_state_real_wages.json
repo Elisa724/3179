@@ -1,20 +1,20 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "State-by-State Real Wage Gap Across Key Economic Milestones",
-    "subtitle": "Real Wage Gap (%) = Annual WPI Growth - Annual CPI Inflation (June Quarter). Negative values indicate real wage erosion.",
+    "text": "State Real Wage Gap Across Key Milestones",
+    "subtitle": "Real Wage Gap (%) = Annual WPI Growth - Annual CPI Inflation (June Quarter)",
     "font": "Newsreader, Georgia, serif",
-    "fontSize": 18,
+    "fontSize": 17,
     "fontWeight": 700,
     "color": "#1b382b",
     "anchor": "start",
     "subtitleFont": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-    "subtitleFontSize": 13,
+    "subtitleFontSize": 12,
     "subtitleColor": "#5e6b64",
-    "subtitlePadding": 6
+    "subtitlePadding": 4
   },
   "width": "container",
-  "height": 430,
+  "height": 410,
   "autosize": {
     "type": "fit-x",
     "contains": "padding"
@@ -25,27 +25,16 @@
       "value": 2023,
       "bind": {
         "input": "select",
-        "options": [
-          2021,
-          2023,
-          2026
-        ],
-        "labels": [
-          "2021 (Onset / Pre-Spike)",
-          "2023 (Peak Squeeze)",
-          "2026 (Stabilisation)"
-        ],
-        "name": "Select Milestone Year: "
+        "options": [2021, 2023, 2026],
+        "labels": ["2021 (Onset / Pre-Spike)", "2023 (Peak Squeeze)", "2026 (Stabilisation)"],
+        "name": "Select Milestone: "
       }
     }
   ],
   "projection": {
     "type": "equirectangular",
-    "center": [
-      133.5,
-      -28.0
-    ],
-    "scale": 510
+    "center": [133.5, -28.0],
+    "scale": 470
   },
   "layer": [
     {
@@ -85,238 +74,37 @@
           "from": {
             "data": {
               "values": [
-                {
-                  "State": "NSW",
-                  "State_Name": "New South Wales",
-                  "Year": 2021,
-                  "WPI": 1.5,
-                  "CPI": 4.1,
-                  "Real_Wage_Gap": -2.6,
-                  "Key": "new south wales|2021"
-                },
-                {
-                  "State": "NSW",
-                  "State_Name": "New South Wales",
-                  "Year": 2023,
-                  "WPI": 3.3,
-                  "CPI": 6.6,
-                  "Real_Wage_Gap": -3.3,
-                  "Key": "new south wales|2023"
-                },
-                {
-                  "State": "NSW",
-                  "State_Name": "New South Wales",
-                  "Year": 2026,
-                  "WPI": 3.3,
-                  "CPI": 4.1,
-                  "Real_Wage_Gap": -0.8,
-                  "Key": "new south wales|2026"
-                },
-                {
-                  "State": "VIC",
-                  "State_Name": "Victoria",
-                  "Year": 2021,
-                  "WPI": 1.5,
-                  "CPI": 3.0,
-                  "Real_Wage_Gap": -1.5,
-                  "Key": "victoria|2021"
-                },
-                {
-                  "State": "VIC",
-                  "State_Name": "Victoria",
-                  "Year": 2023,
-                  "WPI": 3.4,
-                  "CPI": 5.7,
-                  "Real_Wage_Gap": -2.3,
-                  "Key": "victoria|2023"
-                },
-                {
-                  "State": "VIC",
-                  "State_Name": "Victoria",
-                  "Year": 2026,
-                  "WPI": 3.2,
-                  "CPI": 3.5,
-                  "Real_Wage_Gap": -0.3,
-                  "Key": "victoria|2026"
-                },
-                {
-                  "State": "QLD",
-                  "State_Name": "Queensland",
-                  "Year": 2021,
-                  "WPI": 1.6,
-                  "CPI": 5.0,
-                  "Real_Wage_Gap": -3.4,
-                  "Key": "queensland|2021"
-                },
-                {
-                  "State": "QLD",
-                  "State_Name": "Queensland",
-                  "Year": 2023,
-                  "WPI": 3.6,
-                  "CPI": 6.3,
-                  "Real_Wage_Gap": -2.7,
-                  "Key": "queensland|2023"
-                },
-                {
-                  "State": "QLD",
-                  "State_Name": "Queensland",
-                  "Year": 2026,
-                  "WPI": 3.3,
-                  "CPI": 4.1,
-                  "Real_Wage_Gap": -0.8,
-                  "Key": "queensland|2026"
-                },
-                {
-                  "State": "SA",
-                  "State_Name": "South Australia",
-                  "Year": 2021,
-                  "WPI": 1.6,
-                  "CPI": 2.8,
-                  "Real_Wage_Gap": -1.2,
-                  "Key": "south australia|2021"
-                },
-                {
-                  "State": "SA",
-                  "State_Name": "South Australia",
-                  "Year": 2023,
-                  "WPI": 3.5,
-                  "CPI": 6.9,
-                  "Real_Wage_Gap": -3.4,
-                  "Key": "south australia|2023"
-                },
-                {
-                  "State": "SA",
-                  "State_Name": "South Australia",
-                  "Year": 2026,
-                  "WPI": 3.4,
-                  "CPI": 4.4,
-                  "Real_Wage_Gap": -1.0,
-                  "Key": "south australia|2026"
-                },
-                {
-                  "State": "WA",
-                  "State_Name": "Western Australia",
-                  "Year": 2021,
-                  "WPI": 1.4,
-                  "CPI": 4.2,
-                  "Real_Wage_Gap": -2.8,
-                  "Key": "western australia|2021"
-                },
-                {
-                  "State": "WA",
-                  "State_Name": "Western Australia",
-                  "Year": 2023,
-                  "WPI": 3.8,
-                  "CPI": 4.9,
-                  "Real_Wage_Gap": -1.1,
-                  "Key": "western australia|2023"
-                },
-                {
-                  "State": "WA",
-                  "State_Name": "Western Australia",
-                  "Year": 2026,
-                  "WPI": 3.8,
-                  "CPI": 4.0,
-                  "Real_Wage_Gap": -0.2,
-                  "Key": "western australia|2026"
-                },
-                {
-                  "State": "TAS",
-                  "State_Name": "Tasmania",
-                  "Year": 2021,
-                  "WPI": 1.9,
-                  "CPI": 3.7,
-                  "Real_Wage_Gap": -1.8,
-                  "Key": "tasmania|2021"
-                },
-                {
-                  "State": "TAS",
-                  "State_Name": "Tasmania",
-                  "Year": 2023,
-                  "WPI": 3.8,
-                  "CPI": 5.5,
-                  "Real_Wage_Gap": -1.7,
-                  "Key": "tasmania|2023"
-                },
-                {
-                  "State": "TAS",
-                  "State_Name": "Tasmania",
-                  "Year": 2026,
-                  "WPI": 3.1,
-                  "CPI": 4.7,
-                  "Real_Wage_Gap": -1.6,
-                  "Key": "tasmania|2026"
-                },
-                {
-                  "State": "NT",
-                  "State_Name": "Northern Territory",
-                  "Year": 2021,
-                  "WPI": 1.8,
-                  "CPI": 6.1,
-                  "Real_Wage_Gap": -4.3,
-                  "Key": "northern territory|2021"
-                },
-                {
-                  "State": "NT",
-                  "State_Name": "Northern Territory",
-                  "Year": 2023,
-                  "WPI": 2.9,
-                  "CPI": 5.3,
-                  "Real_Wage_Gap": -2.4,
-                  "Key": "northern territory|2023"
-                },
-                {
-                  "State": "NT",
-                  "State_Name": "Northern Territory",
-                  "Year": 2026,
-                  "WPI": 2.6,
-                  "CPI": 3.8,
-                  "Real_Wage_Gap": -1.2,
-                  "Key": "northern territory|2026"
-                },
-                {
-                  "State": "ACT",
-                  "State_Name": "Australian Capital Territory",
-                  "Year": 2021,
-                  "WPI": 1.4,
-                  "CPI": 4.8,
-                  "Real_Wage_Gap": -3.4,
-                  "Key": "australian capital territory|2021"
-                },
-                {
-                  "State": "ACT",
-                  "State_Name": "Australian Capital Territory",
-                  "Year": 2023,
-                  "WPI": 3.3,
-                  "CPI": 5.6,
-                  "Real_Wage_Gap": -2.3,
-                  "Key": "australian capital territory|2023"
-                },
-                {
-                  "State": "ACT",
-                  "State_Name": "Australian Capital Territory",
-                  "Year": 2026,
-                  "WPI": 3.6,
-                  "CPI": 4.0,
-                  "Real_Wage_Gap": -0.4,
-                  "Key": "australian capital territory|2026"
-                }
+                {"State": "NSW", "State_Name": "New South Wales", "Year": 2021, "WPI": 1.5, "CPI": 4.1, "Real_Wage_Gap": -2.6, "Key": "new south wales|2021"},
+                {"State": "NSW", "State_Name": "New South Wales", "Year": 2023, "WPI": 3.3, "CPI": 6.6, "Real_Wage_Gap": -3.3, "Key": "new south wales|2023"},
+                {"State": "NSW", "State_Name": "New South Wales", "Year": 2026, "WPI": 3.3, "CPI": 4.1, "Real_Wage_Gap": -0.8, "Key": "new south wales|2026"},
+                {"State": "VIC", "State_Name": "Victoria", "Year": 2021, "WPI": 1.5, "CPI": 3.0, "Real_Wage_Gap": -1.5, "Key": "victoria|2021"},
+                {"State": "VIC", "State_Name": "Victoria", "Year": 2023, "WPI": 3.4, "CPI": 5.7, "Real_Wage_Gap": -2.3, "Key": "victoria|2023"},
+                {"State": "VIC", "State_Name": "Victoria", "Year": 2026, "WPI": 3.2, "CPI": 3.5, "Real_Wage_Gap": -0.3, "Key": "victoria|2026"},
+                {"State": "QLD", "State_Name": "Queensland", "Year": 2021, "WPI": 1.6, "CPI": 5.0, "Real_Wage_Gap": -3.4, "Key": "queensland|2021"},
+                {"State": "QLD", "State_Name": "Queensland", "Year": 2023, "WPI": 3.6, "CPI": 6.3, "Real_Wage_Gap": -2.7, "Key": "queensland|2023"},
+                {"State": "QLD", "State_Name": "Queensland", "Year": 2026, "WPI": 3.3, "CPI": 4.1, "Real_Wage_Gap": -0.8, "Key": "queensland|2026"},
+                {"State": "SA", "State_Name": "South Australia", "Year": 2021, "WPI": 1.6, "CPI": 2.8, "Real_Wage_Gap": -1.2, "Key": "south australia|2021"},
+                {"State": "SA", "State_Name": "South Australia", "Year": 2023, "WPI": 3.5, "CPI": 6.9, "Real_Wage_Gap": -3.4, "Key": "south australia|2023"},
+                {"State": "SA", "State_Name": "South Australia", "Year": 2026, "WPI": 3.4, "CPI": 4.4, "Real_Wage_Gap": -1.0, "Key": "south australia|2026"},
+                {"State": "WA", "State_Name": "Western Australia", "Year": 2021, "WPI": 1.4, "CPI": 4.2, "Real_Wage_Gap": -2.8, "Key": "western australia|2021"},
+                {"State": "WA", "State_Name": "Western Australia", "Year": 2023, "WPI": 3.8, "CPI": 4.9, "Real_Wage_Gap": -1.1, "Key": "western australia|2023"},
+                {"State": "WA", "State_Name": "Western Australia", "Year": 2026, "WPI": 3.8, "CPI": 4.0, "Real_Wage_Gap": -0.2, "Key": "western australia|2026"},
+                {"State": "TAS", "State_Name": "Tasmania", "Year": 2021, "WPI": 1.9, "CPI": 3.7, "Real_Wage_Gap": -1.8, "Key": "tasmania|2021"},
+                {"State": "TAS", "State_Name": "Tasmania", "Year": 2023, "WPI": 3.8, "CPI": 5.5, "Real_Wage_Gap": -1.7, "Key": "tasmania|2023"},
+                {"State": "TAS", "State_Name": "Tasmania", "Year": 2026, "WPI": 3.1, "CPI": 4.7, "Real_Wage_Gap": -1.6, "Key": "tasmania|2026"},
+                {"State": "NT", "State_Name": "Northern Territory", "Year": 2021, "WPI": 1.8, "CPI": 6.1, "Real_Wage_Gap": -4.3, "Key": "northern territory|2021"},
+                {"State": "NT", "State_Name": "Northern Territory", "Year": 2023, "WPI": 2.9, "CPI": 5.3, "Real_Wage_Gap": -2.4, "Key": "northern territory|2023"},
+                {"State": "NT", "State_Name": "Northern Territory", "Year": 2026, "WPI": 2.6, "CPI": 3.8, "Real_Wage_Gap": -1.2, "Key": "northern territory|2026"},
+                {"State": "ACT", "State_Name": "Australian Capital Territory", "Year": 2021, "WPI": 1.4, "CPI": 4.8, "Real_Wage_Gap": -3.4, "Key": "australian capital territory|2021"},
+                {"State": "ACT", "State_Name": "Australian Capital Territory", "Year": 2023, "WPI": 3.3, "CPI": 5.6, "Real_Wage_Gap": -2.3, "Key": "australian capital territory|2023"},
+                {"State": "ACT", "State_Name": "Australian Capital Territory", "Year": 2026, "WPI": 3.6, "CPI": 4.0, "Real_Wage_Gap": -0.4, "Key": "australian capital territory|2026"}
               ]
             },
             "key": "Key",
-            "fields": [
-              "State",
-              "State_Name",
-              "Year",
-              "WPI",
-              "CPI",
-              "Real_Wage_Gap"
-            ]
+            "fields": ["State", "State_Name", "Year", "WPI", "CPI", "Real_Wage_Gap"]
           }
         },
-        {
-          "filter": "isValid(datum.Real_Wage_Gap)"
-        }
+        {"filter": "isValid(datum.Real_Wage_Gap)"}
       ],
       "mark": {
         "type": "geoshape",
@@ -330,21 +118,13 @@
           "title": "Real Wage Gap (%)",
           "scale": {
             "type": "linear",
-            "domain": [
-              -4.5,
-              -2.5,
-              0
-            ],
-            "range": [
-              "#67000d",
-              "#ef3b2c",
-              "#fee0d2"
-            ]
+            "domain": [-4.5, -2.5, 0],
+            "range": ["#7f2704", "#d94801", "#fee6ce"]
           },
           "legend": {
             "direction": "horizontal",
             "orient": "bottom",
-            "gradientLength": 260,
+            "gradientLength": 220,
             "titleFont": "Inter, sans-serif",
             "titleFontSize": 11,
             "titleFontWeight": 600,
@@ -353,93 +133,40 @@
           }
         },
         "tooltip": [
-          {
-            "field": "State_Name",
-            "type": "nominal",
-            "title": "State / Territory"
-          },
-          {
-            "field": "Year",
-            "type": "ordinal",
-            "title": "Year (June Quarter)"
-          },
-          {
-            "field": "WPI",
-            "type": "quantitative",
-            "title": "Wage Growth (WPI %)",
-            "format": ".1f"
-          },
-          {
-            "field": "CPI",
-            "type": "quantitative",
-            "title": "Inflation (CPI %)",
-            "format": ".1f"
-          },
-          {
-            "field": "Real_Wage_Gap",
-            "type": "quantitative",
-            "title": "Real Wage Gap (%)",
-            "format": ".1f"
-          }
+          {"field": "State_Name", "type": "nominal", "title": "State / Territory"},
+          {"field": "Year", "type": "ordinal", "title": "Year (June Quarter)"},
+          {"field": "WPI", "type": "quantitative", "title": "Wage Growth (WPI %)", "format": ".1f"},
+          {"field": "CPI", "type": "quantitative", "title": "Inflation (CPI %)", "format": ".1f"},
+          {"field": "Real_Wage_Gap", "type": "quantitative", "title": "Real Wage Gap (%)", "format": ".1f"}
         ]
       }
     },
     {
       "data": {
         "values": [
-          {
-            "Year": 2021,
-            "longitude": 133.5,
-            "latitude": -46.5,
-            "text": "Onset (2021): Early inflation outpaced baseline wages nationwide."
-          },
-          {
-            "Year": 2023,
-            "longitude": 133.5,
-            "latitude": -46.5,
-            "text": "Peak Squeeze (2023): Severe real wage erosion across all states."
-          },
-          {
-            "Year": 2026,
-            "longitude": 133.5,
-            "latitude": -46.5,
-            "text": "Stabilisation (2026): Erosion slowed; VIC (-0.3%) and WA (-0.2%) near parity."
-          }
+          {"Year": 2021, "longitude": 133.5, "latitude": -45.5, "text": "Onset (2021): Early inflation outpaced baseline wages nationwide."},
+          {"Year": 2023, "longitude": 133.5, "latitude": -45.5, "text": "Peak Squeeze (2023): Severe real wage erosion across all states."},
+          {"Year": 2026, "longitude": 133.5, "latitude": -45.5, "text": "Stabilisation (2026): Erosion slowed; VIC (-0.3%) & WA (-0.2%) near parity."}
         ]
       },
-      "transform": [
-        {
-          "filter": "datum.Year == Select_Year"
-        }
-      ],
+      "transform": [{"filter": "datum.Year == Select_Year"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 12,
+        "fontSize": 11.5,
         "fontWeight": 600,
         "fill": "#1b382b",
         "align": "center"
       },
       "encoding": {
-        "longitude": {
-          "field": "longitude",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "latitude",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "text",
-          "type": "nominal"
-        }
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
       }
     }
   ],
   "config": {
-    "view": {
-      "stroke": "transparent"
-    },
+    "view": {"stroke": "transparent"},
     "font": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
   }
 }

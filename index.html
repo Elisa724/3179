@@ -126,19 +126,38 @@
       </div>
     </section>
 
-    <!-- SECTION 3: STATE REAL WAGE EROSION -->
+    <!-- SECTION 3: Did Pay Packets Keep Pace? -->
     <section class="dashboard-section" id="section-3">
       <div class="section-banner">
-        <h2>3. Regional Disparities: State Real Wage Gap</h2>
-        <p>Evaluating purchasing power loss across states by measuring June-quarter Wage Price Index growth against Consumer Price Index inflation (2021&ndash;2026).</p>
+        <h2>3. Did Pay Packets Keep Pace?</h2>
+        <p>Evaluating purchasing power loss across states alongside nominal annual wage growth trajectories across Australia's 18 major employment industries (2021&ndash;2026).</p>
       </div>
 
-      <!-- Single Chart Card filling the section container -->
-      <div class="chart-card">
-        <div id="vis-map2"></div>
-        <p class="viz-sub" style="margin-top: 14px; margin-bottom: 0; text-align: left; font-size: 11.5px; border-top: 1px solid var(--border-card); padding-top: 8px;">
-          <strong>Data Note:</strong> State wage growth is sourced from ABS Cat 6345.0 (Table 2a, Total hourly rates of pay, all sectors). Real wage gap is calculated as June-quarter annual WPI percentage growth minus annual CPI percentage inflation. State inflation is proxied using each state's corresponding capital city All Groups CPI series from ABS Cat 6401.0 (Table 17).
-        </p>
+      <!-- Balanced 2-Column Row (Sight lines match Sections 1 & 2) -->
+      <div class="charts-row">
+        <!-- Visual 5: State Choropleth Map -->
+        <div class="viz-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <h3>Regional Real Wage Erosion</h3>
+            <p class="viz-sub">Net gap (% points) between annual state WPI wage growth and capital city headline CPI inflation.</p>
+            <div id="vis-map2" style="width: 100%; min-height: 480px;"></div>
+          </div>
+          <p class="viz-sub" style="margin-top: 14px; margin-bottom: 0; text-align: left; font-size: 11.5px; border-top: 1px solid var(--border-card); padding-top: 8px;">
+            <strong>Data Note:</strong> Wage growth sourced from ABS Cat 6345.0 (Table 2a). State inflation proxied using capital city All Groups CPI from ABS Cat 6401.0 (Table 17).
+          </p>
+        </div>
+
+        <!-- Visual 6: Industry WPI Heatmap -->
+        <div class="viz-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <h3>Industry Wage Growth Trajectory</h3>
+            <p class="viz-sub">Annual percentage change in Wage Price Index (June quarters) across all 18 ANZSIC sectors.</p>
+            <div id="vis-heatmap" style="width: 100%; min-height: 480px;"></div>
+          </div>
+          <p class="viz-sub" style="margin-top: 14px; margin-bottom: 0; text-align: left; font-size: 11.5px; border-top: 1px solid var(--border-card); padding-top: 8px;">
+            <strong>Data Note:</strong> Sourced from ABS Cat 6345.0 Table 5b (Total hourly rates of pay excluding bonuses, all sectors, original annual % change from corresponding quarter).
+          </p>
+        </div>
       </div>
     </section>
     
