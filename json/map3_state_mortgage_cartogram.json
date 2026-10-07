@@ -6,7 +6,7 @@
   "params": [
     {
       "name": "Select_Year",
-      "value": 2023,
+      "value": 2021,
       "bind": {
         "input": "select",
         "options": [2021, 2023, 2026],
@@ -32,8 +32,8 @@
       "mark": {
         "type": "geoshape",
         "fill": "#ece8de",
-        "stroke": "#ffffff",
-        "strokeWidth": 1.2
+        "stroke": "#bcb382",
+        "strokeWidth": 0.8
       }
     },
     {
@@ -102,22 +102,31 @@
           "title": "New Commitments ($M)",
           "scale": {
             "type": "threshold",
-            "domain": [250, 500, 1000, 2000, 3500, 5000],
-            "range": ["#f7f4ec", "#f3dfb3", "#ebbf7a", "#df9a45", "#cf7430", "#b84f22", "#8c3014"]
+            "domain": [250, 500, 1000, 2000, 3000, 4500, 5800],
+            "range": [
+              "#fed9a6",
+              "#fbb36b",
+              "#f28e2b",
+              "#e36d1b",
+              "#be4414",
+              "#962808",
+              "#6e1603",
+              "#440a01"
+            ]
           },
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-            "columns": 7,
+            "columns": 8,
             "symbolType": "square",
-            "symbolSize": 140,
+            "symbolSize": 130,
             "format": "$,.0f",
             "titleFont": "Inter, sans-serif",
             "titleFontSize": 10.5,
             "titleFontWeight": 600,
             "titleColor": "#1b382b",
             "labelFont": "Inter, sans-serif",
-            "labelFontSize": 9.5,
+            "labelFontSize": 9.0,
             "labelColor": "#5e6b64"
           }
         },
@@ -181,13 +190,20 @@
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 12,
+        "fontSize": 11.5,
         "fontWeight": 700
       },
       "encoding": {
         "longitude": {"field": "properties.longitude", "type": "quantitative"},
         "latitude": {"field": "properties.latitude", "type": "quantitative"},
         "text": {"field": "Lending", "type": "quantitative", "format": "$,.0f"},
+        "dy": {
+          "condition": [
+            {"test": "datum.properties.name == 'Tasmania'", "value": 14},
+            {"test": "datum.properties.name == 'Victoria'", "value": 6}
+          ],
+          "value": 0
+        },
         "color": {
           "condition": {"test": "datum.Lending >= 3000", "value": "#ffffff"},
           "value": "#181d20"

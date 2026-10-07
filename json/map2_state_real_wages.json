@@ -11,11 +11,19 @@
   "vconcat": [
     {
       "title": {
-        "text": "1. Onset (June 2021) · Severe Initial Wage Lag",
-        "fontSize": 13.5,
+        "text": "1. Onset (June 2021) \u00b7 Severe Initial Wage Lag",
+        "fontSize": 13,
         "font": "Georgia, serif",
         "color": "#1b382b",
-        "anchor": "start"
+        "anchor": "middle",
+        "subtitle": [
+          "NT (-4.3%) and QLD (-3.4%) experience early",
+          "severe purchasing power erosion."
+        ],
+        "subtitleColor": "#8c3014",
+        "subtitleFontSize": 11,
+        "subtitleFont": "Inter, sans-serif",
+        "subtitlePadding": 4
       },
       "width": 460,
       "height": 275,
@@ -42,22 +50,80 @@
               "from": {
                 "data": {
                   "values": [
-                    {"Key": "new south wales", "State_Name": "New South Wales", "Gap": -2.6, "WPI": 1.5, "CPI": 4.1},
-                    {"Key": "victoria", "State_Name": "Victoria", "Gap": -1.5, "WPI": 1.5, "CPI": 3.0},
-                    {"Key": "queensland", "State_Name": "Queensland", "Gap": -3.4, "WPI": 1.6, "CPI": 5.0},
-                    {"Key": "south australia", "State_Name": "South Australia", "Gap": -1.2, "WPI": 1.6, "CPI": 2.8},
-                    {"Key": "western australia", "State_Name": "Western Australia", "Gap": -2.8, "WPI": 1.4, "CPI": 4.2},
-                    {"Key": "tasmania", "State_Name": "Tasmania", "Gap": -1.8, "WPI": 1.9, "CPI": 3.7},
-                    {"Key": "northern territory", "State_Name": "Northern Territory", "Gap": -4.3, "WPI": 1.8, "CPI": 6.1},
-                    {"Key": "australian capital territory", "State_Name": "Australian Capital Territory", "Gap": -3.4, "WPI": 1.4, "CPI": 4.8}
+                    {
+                      "Key": "new south wales",
+                      "State_Name": "New South Wales",
+                      "Gap": -2.6,
+                      "WPI": 1.5,
+                      "CPI": 4.1
+                    },
+                    {
+                      "Key": "victoria",
+                      "State_Name": "Victoria",
+                      "Gap": -1.5,
+                      "WPI": 1.5,
+                      "CPI": 3.0
+                    },
+                    {
+                      "Key": "queensland",
+                      "State_Name": "Queensland",
+                      "Gap": -3.4,
+                      "WPI": 1.6,
+                      "CPI": 5.0
+                    },
+                    {
+                      "Key": "south australia",
+                      "State_Name": "South Australia",
+                      "Gap": -1.2,
+                      "WPI": 1.6,
+                      "CPI": 2.8
+                    },
+                    {
+                      "Key": "western australia",
+                      "State_Name": "Western Australia",
+                      "Gap": -2.8,
+                      "WPI": 1.4,
+                      "CPI": 4.2
+                    },
+                    {
+                      "Key": "tasmania",
+                      "State_Name": "Tasmania",
+                      "Gap": -1.8,
+                      "WPI": 1.9,
+                      "CPI": 3.7
+                    },
+                    {
+                      "Key": "northern territory",
+                      "State_Name": "Northern Territory",
+                      "Gap": -4.3,
+                      "WPI": 1.8,
+                      "CPI": 6.1
+                    },
+                    {
+                      "Key": "australian capital territory",
+                      "State_Name": "Australian Capital Territory",
+                      "Gap": -3.4,
+                      "WPI": 1.4,
+                      "CPI": 4.8
+                    }
                   ]
                 },
                 "key": "Key",
-                "fields": ["State_Name", "Gap", "WPI", "CPI"]
+                "fields": [
+                  "State_Name",
+                  "Gap",
+                  "WPI",
+                  "CPI"
+                ]
               }
             },
-            {"filter": "isValid(datum.Gap)"},
-            {"calculate": "'June 2021'", "as": "Year"}
+            {
+              "filter": "isValid(datum.Gap)"
+            },
+            {
+              "calculate": "'June 2021'",
+              "as": "Year"
+            }
           ],
           "mark": {
             "type": "geoshape",
@@ -71,14 +137,22 @@
               "title": "Real Wage Gap (%)",
               "scale": {
                 "type": "linear",
-                "domain": [-4.5, -2.5, 0],
-                "range": ["#7f2704", "#d94801", "#fee6ce"],
+                "domain": [
+                  -4.5,
+                  -2.5,
+                  0
+                ],
+                "range": [
+                  "#7f2704",
+                  "#d94801",
+                  "#fee6ce"
+                ],
                 "clamp": true
               },
               "legend": {
                 "orient": "right",
                 "direction": "vertical",
-                "gradientLength": 160,
+                "gradientLength": 190,
                 "gradientThickness": 12,
                 "titleFont": "Inter, sans-serif",
                 "titleFontSize": 10.5,
@@ -87,17 +161,47 @@
                 "labelFont": "Inter, sans-serif",
                 "labelFontSize": 9.5,
                 "labelColor": "#5e6b64",
-                "values": [-4, -3, -2, -1, 0],
+                "type": "gradient",
+                "values": [
+                  -4,
+                  -3,
+                  -2,
+                  -1,
+                  0
+                ],
                 "labelExpr": "datum.label + '%'",
                 "offset": 12
               }
             },
             "tooltip": [
-              {"field": "State_Name", "type": "nominal", "title": "State / Territory"},
-              {"field": "Year", "type": "nominal", "title": "Period"},
-              {"field": "WPI", "type": "quantitative", "title": "Wage Growth, WPI (%)", "format": ".1f"},
-              {"field": "CPI", "type": "quantitative", "title": "Headline CPI (%)", "format": ".1f"},
-              {"field": "Gap", "type": "quantitative", "title": "Real Wage Gap (%)", "format": ".1f"}
+              {
+                "field": "State_Name",
+                "type": "nominal",
+                "title": "State / Territory"
+              },
+              {
+                "field": "Year",
+                "type": "nominal",
+                "title": "Period"
+              },
+              {
+                "field": "WPI",
+                "type": "quantitative",
+                "title": "Wage Growth, WPI (%)",
+                "format": ".1f"
+              },
+              {
+                "field": "CPI",
+                "type": "quantitative",
+                "title": "Headline CPI (%)",
+                "format": ".1f"
+              },
+              {
+                "field": "Gap",
+                "type": "quantitative",
+                "title": "Real Wage Gap (%)",
+                "format": ".1f"
+              }
             ]
           }
         }
@@ -105,11 +209,19 @@
     },
     {
       "title": {
-        "text": "2. Peak Squeeze (June 2023) · Widespread Purchasing Power Loss",
-        "fontSize": 13.5,
+        "text": "2. Peak Squeeze (June 2023) \u00b7 Widespread Purchasing Power Loss",
+        "fontSize": 13,
         "font": "Georgia, serif",
         "color": "#1b382b",
-        "anchor": "start"
+        "anchor": "middle",
+        "subtitle": [
+          "SA (-3.4%) and NSW (-3.3%) reach peak contraction;",
+          "WA (-1.1%) buffers via mining."
+        ],
+        "subtitleColor": "#8c3014",
+        "subtitleFontSize": 11,
+        "subtitleFont": "Inter, sans-serif",
+        "subtitlePadding": 4
       },
       "width": 460,
       "height": 275,
@@ -136,22 +248,80 @@
               "from": {
                 "data": {
                   "values": [
-                    {"Key": "new south wales", "State_Name": "New South Wales", "Gap": -3.3, "WPI": 3.3, "CPI": 6.6},
-                    {"Key": "victoria", "State_Name": "Victoria", "Gap": -2.3, "WPI": 3.4, "CPI": 5.7},
-                    {"Key": "queensland", "State_Name": "Queensland", "Gap": -2.7, "WPI": 3.6, "CPI": 6.3},
-                    {"Key": "south australia", "State_Name": "South Australia", "Gap": -3.4, "WPI": 3.5, "CPI": 6.9},
-                    {"Key": "western australia", "State_Name": "Western Australia", "Gap": -1.1, "WPI": 3.8, "CPI": 4.9},
-                    {"Key": "tasmania", "State_Name": "Tasmania", "Gap": -1.7, "WPI": 3.8, "CPI": 5.5},
-                    {"Key": "northern territory", "State_Name": "Northern Territory", "Gap": -2.4, "WPI": 2.9, "CPI": 5.3},
-                    {"Key": "australian capital territory", "State_Name": "Australian Capital Territory", "Gap": -2.3, "WPI": 3.3, "CPI": 5.6}
+                    {
+                      "Key": "new south wales",
+                      "State_Name": "New South Wales",
+                      "Gap": -3.3,
+                      "WPI": 3.3,
+                      "CPI": 6.6
+                    },
+                    {
+                      "Key": "victoria",
+                      "State_Name": "Victoria",
+                      "Gap": -2.3,
+                      "WPI": 3.4,
+                      "CPI": 5.7
+                    },
+                    {
+                      "Key": "queensland",
+                      "State_Name": "Queensland",
+                      "Gap": -2.7,
+                      "WPI": 3.6,
+                      "CPI": 6.3
+                    },
+                    {
+                      "Key": "south australia",
+                      "State_Name": "South Australia",
+                      "Gap": -3.4,
+                      "WPI": 3.5,
+                      "CPI": 6.9
+                    },
+                    {
+                      "Key": "western australia",
+                      "State_Name": "Western Australia",
+                      "Gap": -1.1,
+                      "WPI": 3.8,
+                      "CPI": 4.9
+                    },
+                    {
+                      "Key": "tasmania",
+                      "State_Name": "Tasmania",
+                      "Gap": -1.7,
+                      "WPI": 3.8,
+                      "CPI": 5.5
+                    },
+                    {
+                      "Key": "northern territory",
+                      "State_Name": "Northern Territory",
+                      "Gap": -2.4,
+                      "WPI": 2.9,
+                      "CPI": 5.3
+                    },
+                    {
+                      "Key": "australian capital territory",
+                      "State_Name": "Australian Capital Territory",
+                      "Gap": -2.3,
+                      "WPI": 3.3,
+                      "CPI": 5.6
+                    }
                   ]
                 },
                 "key": "Key",
-                "fields": ["State_Name", "Gap", "WPI", "CPI"]
+                "fields": [
+                  "State_Name",
+                  "Gap",
+                  "WPI",
+                  "CPI"
+                ]
               }
             },
-            {"filter": "isValid(datum.Gap)"},
-            {"calculate": "'June 2023'", "as": "Year"}
+            {
+              "filter": "isValid(datum.Gap)"
+            },
+            {
+              "calculate": "'June 2023'",
+              "as": "Year"
+            }
           ],
           "mark": {
             "type": "geoshape",
@@ -165,14 +335,22 @@
               "title": "Real Wage Gap (%)",
               "scale": {
                 "type": "linear",
-                "domain": [-4.5, -2.5, 0],
-                "range": ["#7f2704", "#d94801", "#fee6ce"],
+                "domain": [
+                  -4.5,
+                  -2.5,
+                  0
+                ],
+                "range": [
+                  "#7f2704",
+                  "#d94801",
+                  "#fee6ce"
+                ],
                 "clamp": true
               },
               "legend": {
                 "orient": "right",
                 "direction": "vertical",
-                "gradientLength": 160,
+                "gradientLength": 190,
                 "gradientThickness": 12,
                 "titleFont": "Inter, sans-serif",
                 "titleFontSize": 10.5,
@@ -181,17 +359,47 @@
                 "labelFont": "Inter, sans-serif",
                 "labelFontSize": 9.5,
                 "labelColor": "#5e6b64",
-                "values": [-4, -3, -2, -1, 0],
+                "type": "gradient",
+                "values": [
+                  -4,
+                  -3,
+                  -2,
+                  -1,
+                  0
+                ],
                 "labelExpr": "datum.label + '%'",
                 "offset": 12
               }
             },
             "tooltip": [
-              {"field": "State_Name", "type": "nominal", "title": "State / Territory"},
-              {"field": "Year", "type": "nominal", "title": "Period"},
-              {"field": "WPI", "type": "quantitative", "title": "Wage Growth, WPI (%)", "format": ".1f"},
-              {"field": "CPI", "type": "quantitative", "title": "Headline CPI (%)", "format": ".1f"},
-              {"field": "Gap", "type": "quantitative", "title": "Real Wage Gap (%)", "format": ".1f"}
+              {
+                "field": "State_Name",
+                "type": "nominal",
+                "title": "State / Territory"
+              },
+              {
+                "field": "Year",
+                "type": "nominal",
+                "title": "Period"
+              },
+              {
+                "field": "WPI",
+                "type": "quantitative",
+                "title": "Wage Growth, WPI (%)",
+                "format": ".1f"
+              },
+              {
+                "field": "CPI",
+                "type": "quantitative",
+                "title": "Headline CPI (%)",
+                "format": ".1f"
+              },
+              {
+                "field": "Gap",
+                "type": "quantitative",
+                "title": "Real Wage Gap (%)",
+                "format": ".1f"
+              }
             ]
           }
         }
@@ -199,11 +407,19 @@
     },
     {
       "title": {
-        "text": "3. Stabilisation (June 2026) · Easing Toward Parity",
-        "fontSize": 13.5,
+        "text": "3. Stabilisation (June 2026) \u00b7 Easing Toward Parity",
+        "fontSize": 13,
         "font": "Georgia, serif",
         "color": "#1b382b",
-        "anchor": "start"
+        "anchor": "middle",
+        "subtitle": [
+          "Wage lag dissipates nationwide: VIC (-0.3%) and",
+          "WA (-0.2%) approach parity."
+        ],
+        "subtitleColor": "#09814a",
+        "subtitleFontSize": 11,
+        "subtitleFont": "Inter, sans-serif",
+        "subtitlePadding": 4
       },
       "width": 460,
       "height": 275,
@@ -230,22 +446,80 @@
               "from": {
                 "data": {
                   "values": [
-                    {"Key": "new south wales", "State_Name": "New South Wales", "Gap": -0.8, "WPI": 3.3, "CPI": 4.1},
-                    {"Key": "victoria", "State_Name": "Victoria", "Gap": -0.3, "WPI": 3.2, "CPI": 3.5},
-                    {"Key": "queensland", "State_Name": "Queensland", "Gap": -0.8, "WPI": 3.3, "CPI": 4.1},
-                    {"Key": "south australia", "State_Name": "South Australia", "Gap": -1.0, "WPI": 3.4, "CPI": 4.4},
-                    {"Key": "western australia", "State_Name": "Western Australia", "Gap": -0.2, "WPI": 3.8, "CPI": 4.0},
-                    {"Key": "tasmania", "State_Name": "Tasmania", "Gap": -1.6, "WPI": 3.1, "CPI": 4.7},
-                    {"Key": "northern territory", "State_Name": "Northern Territory", "Gap": -1.2, "WPI": 2.6, "CPI": 3.8},
-                    {"Key": "australian capital territory", "State_Name": "Australian Capital Territory", "Gap": -0.4, "WPI": 3.6, "CPI": 4.0}
+                    {
+                      "Key": "new south wales",
+                      "State_Name": "New South Wales",
+                      "Gap": -0.8,
+                      "WPI": 3.3,
+                      "CPI": 4.1
+                    },
+                    {
+                      "Key": "victoria",
+                      "State_Name": "Victoria",
+                      "Gap": -0.3,
+                      "WPI": 3.2,
+                      "CPI": 3.5
+                    },
+                    {
+                      "Key": "queensland",
+                      "State_Name": "Queensland",
+                      "Gap": -0.8,
+                      "WPI": 3.3,
+                      "CPI": 4.1
+                    },
+                    {
+                      "Key": "south australia",
+                      "State_Name": "South Australia",
+                      "Gap": -1.0,
+                      "WPI": 3.4,
+                      "CPI": 4.4
+                    },
+                    {
+                      "Key": "western australia",
+                      "State_Name": "Western Australia",
+                      "Gap": -0.2,
+                      "WPI": 3.8,
+                      "CPI": 4.0
+                    },
+                    {
+                      "Key": "tasmania",
+                      "State_Name": "Tasmania",
+                      "Gap": -1.6,
+                      "WPI": 3.1,
+                      "CPI": 4.7
+                    },
+                    {
+                      "Key": "northern territory",
+                      "State_Name": "Northern Territory",
+                      "Gap": -1.2,
+                      "WPI": 2.6,
+                      "CPI": 3.8
+                    },
+                    {
+                      "Key": "australian capital territory",
+                      "State_Name": "Australian Capital Territory",
+                      "Gap": -0.4,
+                      "WPI": 3.6,
+                      "CPI": 4.0
+                    }
                   ]
                 },
                 "key": "Key",
-                "fields": ["State_Name", "Gap", "WPI", "CPI"]
+                "fields": [
+                  "State_Name",
+                  "Gap",
+                  "WPI",
+                  "CPI"
+                ]
               }
             },
-            {"filter": "isValid(datum.Gap)"},
-            {"calculate": "'June 2026'", "as": "Year"}
+            {
+              "filter": "isValid(datum.Gap)"
+            },
+            {
+              "calculate": "'June 2026'",
+              "as": "Year"
+            }
           ],
           "mark": {
             "type": "geoshape",
@@ -259,14 +533,22 @@
               "title": "Real Wage Gap (%)",
               "scale": {
                 "type": "linear",
-                "domain": [-4.5, -2.5, 0],
-                "range": ["#7f2704", "#d94801", "#fee6ce"],
+                "domain": [
+                  -4.5,
+                  -2.5,
+                  0
+                ],
+                "range": [
+                  "#7f2704",
+                  "#d94801",
+                  "#fee6ce"
+                ],
                 "clamp": true
               },
               "legend": {
                 "orient": "right",
                 "direction": "vertical",
-                "gradientLength": 160,
+                "gradientLength": 190,
                 "gradientThickness": 12,
                 "titleFont": "Inter, sans-serif",
                 "titleFontSize": 10.5,
@@ -275,17 +557,47 @@
                 "labelFont": "Inter, sans-serif",
                 "labelFontSize": 9.5,
                 "labelColor": "#5e6b64",
-                "values": [-4, -3, -2, -1, 0],
+                "type": "gradient",
+                "values": [
+                  -4,
+                  -3,
+                  -2,
+                  -1,
+                  0
+                ],
                 "labelExpr": "datum.label + '%'",
                 "offset": 12
               }
             },
             "tooltip": [
-              {"field": "State_Name", "type": "nominal", "title": "State / Territory"},
-              {"field": "Year", "type": "nominal", "title": "Period"},
-              {"field": "WPI", "type": "quantitative", "title": "Wage Growth, WPI (%)", "format": ".1f"},
-              {"field": "CPI", "type": "quantitative", "title": "Headline CPI (%)", "format": ".1f"},
-              {"field": "Gap", "type": "quantitative", "title": "Real Wage Gap (%)", "format": ".1f"}
+              {
+                "field": "State_Name",
+                "type": "nominal",
+                "title": "State / Territory"
+              },
+              {
+                "field": "Year",
+                "type": "nominal",
+                "title": "Period"
+              },
+              {
+                "field": "WPI",
+                "type": "quantitative",
+                "title": "Wage Growth, WPI (%)",
+                "format": ".1f"
+              },
+              {
+                "field": "CPI",
+                "type": "quantitative",
+                "title": "Headline CPI (%)",
+                "format": ".1f"
+              },
+              {
+                "field": "Gap",
+                "type": "quantitative",
+                "title": "Real Wage Gap (%)",
+                "format": ".1f"
+              }
             ]
           }
         }
@@ -293,12 +605,28 @@
     }
   ],
   "resolve": {
-    "scale": {"color": "independent"},
-    "legend": {"color": "independent"}
+    "scale": {
+      "color": "independent"
+    },
+    "legend": {
+      "color": "independent"
+    }
   },
   "config": {
-    "view": {"stroke": "transparent"},
+    "view": {
+      "stroke": "transparent"
+    },
     "font": "Inter, sans-serif"
   },
-  "spacing": 16
+  "spacing": 18,
+  "padding": {
+    "left": 0,
+    "right": 0,
+    "top": 4,
+    "bottom": 4
+  },
+  "autosize": {
+    "type": "pad",
+    "contains": "padding"
+  }
 }

@@ -17,6 +17,18 @@
     {
       "calculate": "datum.Short_Name != null ? datum.Short_Name : datum.Industry",
       "as": "Display_Industry"
+    },
+    {
+      "calculate": "lower(toString(datum.Industry) + ' ' + toString(datum.Display_Industry))",
+      "as": "Match_Key"
+    },
+    {
+      "calculate": "toString(datum.Year) == '2024' && indexof(datum.Match_Key, 'health') >= 0",
+      "as": "Is_Health_2024"
+    },
+    {
+      "calculate": "toString(datum.Year) == '2024' && indexof(datum.Match_Key, 'public admin') >= 0",
+      "as": "Is_Public_2024"
     }
   ],
   "layer": [
@@ -76,8 +88,16 @@
           "title": "Annual Wage Growth (%)",
           "scale": {
             "type": "linear",
-            "domain": [1.0, 3.5, 6.2],
-            "range": ["#edf6f1", "#09814a", "#1b382b"]
+            "domain": [
+              1.0,
+              3.5,
+              6.2
+            ],
+            "range": [
+              "#edf6f1",
+              "#09814a",
+              "#1b382b"
+            ]
           },
           "legend": {
             "direction": "horizontal",
@@ -93,10 +113,61 @@
           }
         },
         "tooltip": [
-          {"field": "Industry", "type": "nominal", "title": "Industry Division"},
-          {"field": "Year", "type": "ordinal", "title": "June Quarter"},
-          {"field": "Wage_Value", "type": "quantitative", "title": "Annual Wage Growth (%)", "format": ".1f"}
+          {
+            "field": "Industry",
+            "type": "nominal",
+            "title": "Industry Division"
+          },
+          {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "June Quarter"
+          },
+          {
+            "field": "Wage_Value",
+            "type": "quantitative",
+            "title": "Annual Wage Growth (%)",
+            "format": ".1f"
+          }
         ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rect",
+        "fill": null,
+        "stroke": "#b84319",
+        "strokeWidth": 2.5,
+        "cornerRadius": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Display_Industry",
+          "type": "nominal",
+          "sort": {
+            "field": "Wage_Value",
+            "op": "mean",
+            "order": "descending"
+          }
+        },
+        "stroke": {
+          "condition": {
+            "test": "datum.Is_Health_2024 || datum.Is_Public_2024",
+            "value": "#b84319"
+          },
+          "value": null
+        },
+        "strokeWidth": {
+          "condition": {
+            "test": "datum.Is_Health_2024 || datum.Is_Public_2024",
+            "value": 2.5
+          },
+          "value": 0
+        }
       }
     },
     {
@@ -107,7 +178,10 @@
         "fontWeight": 600
       },
       "encoding": {
-        "x": {"field": "Year", "type": "ordinal"},
+        "x": {
+          "field": "Year",
+          "type": "ordinal"
+        },
         "y": {
           "field": "Display_Industry",
           "type": "nominal",
@@ -130,15 +204,51 @@
           "value": "#181d20"
         }
       }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "font": "Inter, sans-serif",
+        "fontSize": 11.5,
+        "fontWeight": 700,
+        "fill": "#b84319",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -2
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal"
+        },
+        "y": {
+          "value": -12
+        },
+        "text": {
+          "condition": {
+            "test": "datum.Is_Health_2024",
+            "value": "Peak Public Catch-Up (6.2%)"
+          },
+          "value": ""
+        }
+      }
     }
   ],
   "config": {
-    "view": {"stroke": "transparent"},
+    "view": {
+      "stroke": "transparent"
+    },
     "font": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
     "axis": {
       "domainColor": "#dcd7c9",
       "tickColor": "#dcd7c9",
       "grid": false
     }
+  },
+  "padding": {
+    "top": 30,
+    "left": 5,
+    "right": 12,
+    "bottom": 5
   }
 }
