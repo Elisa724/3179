@@ -75,11 +75,20 @@
 
       <!-- Charts Row: Vis 1 & Vis 2 -->
       <div class="charts-row">
+        <!-- Visual 1: Proportional Symbol Map -->
         <div class="chart-card">
           <div id="vis1_map"></div>
+          <p class="card-source-note">
+            <strong>Data Note:</strong> Sourced from ABS Cat 6401.0 <em>Consumer Price Index</em> (Table 1: All Groups CPI, Capital Cities).
+          </p>
         </div>
+
+        <!-- Visual 2: Essential vs Discretionary Bar Chart -->
         <div class="chart-card">
           <div id="vis2_bar"></div>
+          <p class="card-source-note">
+            <strong>Data Note:</strong> Sourced from ABS Cat 6401.0 <em>Consumer Price Index</em> (Table 6: Analytical Series, Essential vs Discretionary Inflation).
+          </p>
         </div>
       </div>
     </section>
@@ -94,16 +103,21 @@
       <!-- Tier 1: Vis 3 (Treemap) + Narrative -->
       <div class="section2-top-row">
         <div class="viz-card treemap-card">
-          <h3>Expenditure Weight Distribution</h3>
-          <p class="viz-sub">Proportion of total Australian household basket (%) classified by essential vs. discretionary status.</p>
-          <div id="vis3_treemap"></div>
+          <div>
+            <h3>Expenditure Weight Distribution</h3>
+            <p class="viz-sub">Proportion of total Australian household basket (%) classified by essential vs. discretionary status.</p>
+            <div id="vis3_treemap"></div>
+          </div>
+          <p class="card-source-note">
+            <strong>Data Note:</strong> Sourced from ABS Cat 6401.0 (Table 2: CPI Expenditure Class Weights, 2021&ndash;2026 Re-weighting Series).
+          </p>
         </div>
 
         <article class="narrative-col section2-narrative">
           <div class="narrative-text">
-           <h3>Shifting Costs: The Swapping Price Pressures</h3>
+            <h3>Shifting Costs: The Swapping Price Pressures</h3>
             <p>
-              Most of an average Australian family's weekly budget goes straight into three everyday needs: <strong>housing (21.4%)</strong>, <strong>food (17.4%)</strong>, and <strong>transport (11.5%)</strong> Because people have to pay for rent, groceries, and petrol no matter what, any jump in these prices leaves very little room to cut back.
+              Most of an average Australian family's weekly budget goes straight into three everyday needs: <strong>housing (21.4%)</strong>, <strong>food (17.4%)</strong>, and <strong>transport (11.5%)</strong>. Because people have to pay for rent, groceries, and petrol no matter what, any jump in these prices leaves very little room to cut back.
             </p>
             <p>
               Looking at the ranking chart below, the biggest change has been the swap between transport and medical bills. Back in 2021, big global supply issues pushed <strong>transport up to rank #1</strong>. By 2026, global oil prices settled down and government support helped keep fuel costs lower during the Middle East conflicts, dropping transport down into negative growth at <strong>-0.7% (rank #11)</strong>.
@@ -120,9 +134,14 @@
 
       <!-- Tier 2: Vis 4 (Bump Chart) -->
       <div class="viz-card bumpchart-expanded-card">
-        <h3>Inflation Rank Volatility (2021&ndash;2026)</h3>
-        <p class="viz-sub">Relative rank shifts (#1 fastest price growth to #11 lowest) across the 11 major CPI expenditure groups.</p>
-        <div id="vis4_bumpchart"></div>
+        <div>
+          <h3>Inflation Rank Volatility (2021&ndash;2026)</h3>
+          <p class="viz-sub">Relative rank shifts (#1 fastest price growth to #11 lowest) across the 11 major CPI expenditure groups.</p>
+          <div id="vis4_bumpchart"></div>
+        </div>
+        <p class="card-source-note">
+          <strong>Data Note:</strong> Sourced from ABS Cat 6401.0 (Table 18: Capital City All Groups CPI, Major Group Annual Percentage Movements).
+        </p>
       </div>
     </section>
 
@@ -198,8 +217,8 @@
         <div id="vis-trajectory" class="chart-container"></div>
         
         <div class="chart-footer">
-          <p class="data-source-note">
-            Sources: Australian Bureau of Statistics (Cat 6345.0 Table 2a, Cat 6401.0 Table 17) & Reserve Bank of Australia (Table A2 / a02hist).
+          <p class="card-source-note">
+            <strong>Data Note:</strong> Sourced from ABS Cat 6345.0 (Table 2a: Wage Price Index), ABS Cat 6401.0 (Table 17: Consumer Price Index) & Reserve Bank of Australia (Statistical Table A2: Cash Rate Target).
           </p>
         </div>
       </div>
@@ -222,9 +241,10 @@
             <div id="vis-map3"></div>
           </div>
           <p class="card-source-note">
-            <strong>Data Note:</strong> Sourced from ABS Cat 5601.0 Lending Indicators Table 24 (First home buyers, owner occupiers).
+            <strong>Data Note:</strong> Sourced from ABS Cat 5601.0 <em>Lending Indicators</em> (Table 24: First Home Buyers, Owner Occupiers commitments by state).
           </p>
         </div>
+      </div>
     </section>
     
     <!-- SUBTLE COMPACT FOOTER -->
