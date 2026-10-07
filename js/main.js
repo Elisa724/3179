@@ -24,4 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', function() {
     result.view.resize();
   });}).catch(console.error);
+
+  //Section 4 Visualisation
+  vegaEmbed('#vis-map3', 'json/map3_state_mortgage_cartogram.json', { actions: false }).catch(console.error);
 });
+
+
+  

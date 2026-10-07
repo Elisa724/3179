@@ -1,0 +1,202 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 430,
+  "autosize": {"type": "fit-x", "contains": "padding"},
+  "params": [
+    {
+      "name": "Select_Year",
+      "value": 2023,
+      "bind": {
+        "input": "select",
+        "options": [2021, 2023, 2026],
+        "labels": ["2021 (Stimulus Onset)", "2023 (Peak Tightening)", "2026 (Stabilisation)"],
+        "name": "Lending Milestone: "
+      }
+    }
+  ],
+  "projection": {
+    "type": "equirectangular",
+    "center": [133.5, -28.0],
+    "scale": 480
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.json",
+        "format": {
+          "type": "topojson",
+          "feature": "australia_states.topojson"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ece8de",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.2
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia_states.json",
+        "format": {
+          "type": "topojson",
+          "feature": "australia_states.topojson"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "{'nsw':'new south wales','vic':'victoria','qld':'queensland','sa':'south australia','wa':'western australia','tas':'tasmania','nt':'northern territory','act':'australian capital territory'}[lower(trim(toString(datum.properties.STATE_NAME || datum.properties.name || datum.properties.NAME || datum.properties.state)))] || lower(trim(toString(datum.properties.STATE_NAME || datum.properties.name || datum.properties.NAME || datum.properties.state)))",
+          "as": "State_Key"
+        },
+        {
+          "calculate": "datum.State_Key + '|' + Select_Year",
+          "as": "Join_Key"
+        },
+        {
+          "lookup": "Join_Key",
+          "from": {
+            "data": {
+              "values": [
+                {"Key": "new south wales|2021", "Lending": 5707.9},
+                {"Key": "new south wales|2023", "Lending": 4339.0},
+                {"Key": "new south wales|2026", "Lending": 4491.6},
+                {"Key": "victoria|2021", "Lending": 6440.5},
+                {"Key": "victoria|2023", "Lending": 4349.6},
+                {"Key": "victoria|2026", "Lending": 5499.5},
+                {"Key": "queensland|2021", "Lending": 3271.0},
+                {"Key": "queensland|2023", "Lending": 2443.0},
+                {"Key": "queensland|2026", "Lending": 3573.5},
+                {"Key": "south australia|2021", "Lending": 977.1},
+                {"Key": "south australia|2023", "Lending": 808.7},
+                {"Key": "south australia|2026", "Lending": 1296.8},
+                {"Key": "western australia|2021", "Lending": 2291.1},
+                {"Key": "western australia|2023", "Lending": 1638.0},
+                {"Key": "western australia|2026", "Lending": 2194.5},
+                {"Key": "tasmania|2021", "Lending": 246.9},
+                {"Key": "tasmania|2023", "Lending": 199.0},
+                {"Key": "tasmania|2026", "Lending": 316.0},
+                {"Key": "northern territory|2021", "Lending": 128.2},
+                {"Key": "northern territory|2023", "Lending": 72.1},
+                {"Key": "northern territory|2026", "Lending": 123.2},
+                {"Key": "australian capital territory|2021", "Lending": 419.6},
+                {"Key": "australian capital territory|2023", "Lending": 420.7},
+                {"Key": "australian capital territory|2026", "Lending": 514.2}
+              ]
+            },
+            "key": "Key",
+            "fields": ["Lending"]
+          }
+        },
+        {"filter": "isValid(datum.Lending)"}
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "color": {
+          "field": "Lending",
+          "type": "quantitative",
+          "title": "New Commitments ($M)",
+          "scale": {
+            "type": "threshold",
+            "domain": [250, 500, 1000, 2000, 3500, 5000],
+            "range": ["#f7f4ec", "#f3dfb3", "#ebbf7a", "#df9a45", "#cf7430", "#b84f22", "#8c3014"]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 7,
+            "symbolType": "square",
+            "symbolSize": 140,
+            "format": "$,.0f",
+            "titleFont": "Inter, sans-serif",
+            "titleFontSize": 10.5,
+            "titleFontWeight": 600,
+            "titleColor": "#1b382b",
+            "labelFont": "Inter, sans-serif",
+            "labelFontSize": 9.5,
+            "labelColor": "#5e6b64"
+          }
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "State / Territory"},
+          {"field": "Lending", "type": "quantitative", "title": "New Lending ($M)", "format": "$,.1f"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia_states.json",
+        "format": {
+          "type": "topojson",
+          "feature": "australia_states.topojson"
+        }
+      },
+      "transform": [
+        {"filter": "datum.properties.name != 'Australian Capital Territory' && datum.properties.name != 'Jervis Bay Territory'"},
+        {
+          "calculate": "{'nsw':'new south wales','vic':'victoria','qld':'queensland','sa':'south australia','wa':'western australia','tas':'tasmania','nt':'northern territory','act':'australian capital territory'}[lower(trim(toString(datum.properties.STATE_NAME || datum.properties.name || datum.properties.NAME || datum.properties.state)))] || lower(trim(toString(datum.properties.STATE_NAME || datum.properties.name || datum.properties.NAME || datum.properties.state)))",
+          "as": "State_Key"
+        },
+        {
+          "calculate": "datum.State_Key + '|' + Select_Year",
+          "as": "Join_Key"
+        },
+        {
+          "lookup": "Join_Key",
+          "from": {
+            "data": {
+              "values": [
+                {"Key": "new south wales|2021", "Lending": 5707.9},
+                {"Key": "new south wales|2023", "Lending": 4339.0},
+                {"Key": "new south wales|2026", "Lending": 4491.6},
+                {"Key": "victoria|2021", "Lending": 6440.5},
+                {"Key": "victoria|2023", "Lending": 4349.6},
+                {"Key": "victoria|2026", "Lending": 5499.5},
+                {"Key": "queensland|2021", "Lending": 3271.0},
+                {"Key": "queensland|2023", "Lending": 2443.0},
+                {"Key": "queensland|2026", "Lending": 3573.5},
+                {"Key": "south australia|2021", "Lending": 977.1},
+                {"Key": "south australia|2023", "Lending": 808.7},
+                {"Key": "south australia|2026", "Lending": 1296.8},
+                {"Key": "western australia|2021", "Lending": 2291.1},
+                {"Key": "western australia|2023", "Lending": 1638.0},
+                {"Key": "western australia|2026", "Lending": 2194.5},
+                {"Key": "tasmania|2021", "Lending": 246.9},
+                {"Key": "tasmania|2023", "Lending": 199.0},
+                {"Key": "tasmania|2026", "Lending": 316.0},
+                {"Key": "northern territory|2021", "Lending": 128.2},
+                {"Key": "northern territory|2023", "Lending": 72.1},
+                {"Key": "northern territory|2026", "Lending": 123.2}
+              ]
+            },
+            "key": "Key",
+            "fields": ["Lending"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Inter, sans-serif",
+        "fontSize": 12,
+        "fontWeight": 700
+      },
+      "encoding": {
+        "longitude": {"field": "properties.longitude", "type": "quantitative"},
+        "latitude": {"field": "properties.latitude", "type": "quantitative"},
+        "text": {"field": "Lending", "type": "quantitative", "format": "$,.0f"},
+        "color": {
+          "condition": {"test": "datum.Lending >= 3000", "value": "#ffffff"},
+          "value": "#181d20"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"},
+    "font": "Inter, sans-serif"
+  }
+}

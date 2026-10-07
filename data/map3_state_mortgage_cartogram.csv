@@ -1,0 +1,25 @@
+﻿State,State_Name,Year,Lending_Value_M
+NSW,New South Wales,2021,5707.9
+NSW,New South Wales,2023,4339
+NSW,New South Wales,2026,4491.6
+VIC,Victoria,2021,6440.5
+VIC,Victoria,2023,4349.6
+VIC,Victoria,2026,5499.5
+QLD,Queensland,2021,3271
+QLD,Queensland,2023,2443
+QLD,Queensland,2026,3573.5
+SA,South Australia,2021,977.1
+SA,South Australia,2023,808.7
+SA,South Australia,2026,1296.8
+WA,Western Australia,2021,2291.1
+WA,Western Australia,2023,1638
+WA,Western Australia,2026,2194.5
+TAS,Tasmania,2021,246.9
+TAS,Tasmania,2023,199
+TAS,Tasmania,2026,316
+NT,Northern Territory,2021,128.2
+NT,Northern Territory,2023,72.1
+NT,Northern Territory,2026,123.2
+ACT,Australian Capital Territory,2021,419.6
+ACT,Australian Capital Territory,2023,420.7
+ACT,Australian Capital Territory,2026,514.2

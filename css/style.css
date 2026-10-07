@@ -51,9 +51,7 @@ body {
   gap: 34px;
 }
 
-/* ==========================================================================
-   HERO HEADER
-   ========================================================================== */
+/* HERO HEADER*/
 .dashboard-header {
   background: linear-gradient(135deg, var(--color-pine) 0%, var(--color-pine-light) 100%);
   border-radius: 8px;
@@ -101,9 +99,7 @@ body {
   color: #ffffff;
 }
 
-/* ==========================================================================
-   DASHBOARD SECTIONS & BANNERS
-   ========================================================================== */
+/* DASHBOARD SECTIONS & BANNERS*/
 .dashboard-section {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
@@ -134,9 +130,7 @@ body {
   margin-top: 4px;
 }
 
-/* ==========================================================================
-   UNIFIED EDITORIAL NARRATIVE CARDS
-   ========================================================================== */
+/* UNIFIED EDITORIAL NARRATIVE CARDS */
 .story-card,
 .narrative-col,
 .intro-card {
@@ -181,9 +175,7 @@ body {
   font-weight: 600;
 }
 
-/* ==========================================================================
-   ILLUSTRATION CONTAINERS & BALANCED SIZING
-   ========================================================================== */
+/* ILLUSTRATION CONTAINERS & BALANCED SIZING */
 .intro-card {
   display: flex;
   flex-direction: row;
@@ -258,10 +250,7 @@ body {
   filter: drop-shadow(0 4px 8px rgba(18, 22, 25, 0.08));
 }
 
-/* ==========================================================================
-   STANDARDIZED GRID SYSTEMS (Ensures uniform sight lines)
-   ========================================================================== */
-/* 2-Column Layout (Section 1 & 2) */
+/* STANDARDIZED GRID SYSTEMS */
 .charts-row,
 .charts-grid-2 {
   display: grid;
@@ -271,16 +260,6 @@ body {
   align-items: stretch;
 }
 
-/* 3-Column Layout (Section 3: Map 2 + Heatmap + Slope) */
-.charts-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  width: 100%;
-  align-items: stretch;
-}
-
-/* Section 2: 2-Tier Layout */
 .section2-top-row {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
@@ -298,10 +277,13 @@ body {
   padding: 24px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   min-width: 0;
 }
 
-.viz-card h3 {
+.viz-card h3,
+.chart-card h3,
+.chart-title {
   font-family: var(--font-serif);
   font-size: 18.5px;
   font-weight: 700;
@@ -310,12 +292,64 @@ body {
   margin-bottom: 4px;
 }
 
-.viz-sub {
+.viz-sub,
+.chart-subtitle {
   font-size: 13.5px;
   color: var(--color-muted);
   text-align: center;
   line-height: 1.5;
   margin-bottom: 16px;
+}
+
+.card-source-note,
+.data-source-note {
+  margin-top: 14px;
+  margin-bottom: 0;
+  text-align: left;
+  font-size: 11.5px;
+  border-top: 1px solid var(--border-card);
+  padding-top: 8px;
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   EQUAL-HEIGHT CARD & INNER SCROLL WRAPPER
+   ========================================================================== */
+/* Keep both visual cards perfectly matched in height and layout */
+.charts-row .viz-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Inner scroll container specifically for the stacked map */
+.map-scroll-viewport {
+  width: 100%;
+  height: 520px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+  margin: 4px 0 10px 0;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.map-scroll-viewport::-webkit-scrollbar {
+  width: 6px;
+}
+
+.map-scroll-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.map-scroll-viewport::-webkit-scrollbar-thumb {
+  background: var(--color-sage, #bcb382);
+  border-radius: 4px;
+}
+
+.map-scroll-viewport::-webkit-scrollbar-thumb:hover {
+  background: var(--color-pine, #1b382b);
 }
 
 .bumpchart-expanded-card {
@@ -329,12 +363,7 @@ body {
   flex-direction: column;
 }
 
-.bumpchart-expanded-card #vis4_bumpchart {
-  width: 100%;
-  min-height: 440px;
-}
-
-/* Ensures Vega responsive sizing works inside container */
+/* Responsive Vega mounts */
 div[id^="vis"] {
   width: 100%;
   min-width: 0;
@@ -346,9 +375,7 @@ div[id^="vis"] .vega-embed {
   display: block;
 }
 
-/* ==========================================================================
-   STANDARDIZED GLOBAL VEGA TOOLTIP (Solves Assignment 1 Inconsistency)
-   ========================================================================== */
+/* GLOBAL VEGA TOOLTIP & CONTROLS */
 #vg-tooltip-element {
   font-family: var(--font-sans) !important;
   font-size: 12px !important;
@@ -375,9 +402,6 @@ div[id^="vis"] .vega-embed {
   text-align: right !important;
 }
 
-/* ==========================================================================
-   GENERALIZED VEGA INTERACTIVE CONTROLS (Dropdowns, Sliders)
-   ========================================================================== */
 .vega-bind {
   display: flex !important;
   align-items: center !important;
@@ -409,9 +433,7 @@ div[id^="vis"] .vega-embed {
   outline: none !important;
 }
 
-/* ==========================================================================
-   SUBTLE FOOTNOTE FOOTER
-   ========================================================================== */
+/* SUBTLE FOOTNOTE FOOTER */
 .dashboard-footer {
   border-top: 1px solid var(--border-card);
   padding: 18px 4px 10px 4px;
@@ -449,9 +471,7 @@ div[id^="vis"] .vega-embed {
   opacity: 0.8;
 }
 
-/* ==========================================================================
-   RESPONSIVENESS
-   ========================================================================== */
+/* RESPONSIVENESS */
 @media (max-width: 1100px) {
   body {
     padding: 20px 16px;
@@ -461,8 +481,6 @@ div[id^="vis"] .vega-embed {
     padding: 24px 20px;
   }
   .charts-row,
-  .charts-grid-2,
-  .charts-grid-3,
   .section2-top-row,
   .intro-card,
   .story-with-illu {

@@ -126,35 +126,42 @@
       </div>
     </section>
 
-    <!-- SECTION 3: Did Pay Packets Keep Pace? -->
+    <!-- SECTION 3: DID PAY PACKETS KEEP PACE? -->
     <section class="dashboard-section" id="section-3">
       <div class="section-banner">
         <h2>3. Did Pay Packets Keep Pace?</h2>
         <p>Evaluating purchasing power loss across states alongside nominal annual wage growth trajectories across Australia's 18 major employment industries (2021&ndash;2026).</p>
       </div>
 
-      <!-- Balanced 2-Column Row (Sight lines match Sections 1 & 2) -->
+      <!-- Balanced 2-Column Row -->
       <div class="charts-row">
-        <!-- Visual 5: State Choropleth Map -->
-        <div class="viz-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <h3>Regional Real Wage Erosion</h3>
-            <p class="viz-sub">Net gap (% points) between annual state WPI wage growth and capital city headline CPI inflation.</p>
-            <div id="vis-map2" style="width: 100%; min-height: 480px;"></div>
+        <!-- Visual 5 / Map 2: Vertically Stacked Milestone Multiples -->
+        <div class="viz-card">
+          <div class="card-header-block">
+            <h3>Regional Real Wage Erosion Across Milestones</h3>
+            <p class="viz-sub">Scroll inside to track wage contraction across 2021, 2023, and 2026 (% points).</p>
           </div>
-          <p class="viz-sub" style="margin-top: 14px; margin-bottom: 0; text-align: left; font-size: 11.5px; border-top: 1px solid var(--border-card); padding-top: 8px;">
+
+          <!-- Internal scrollable viewport: keeps headers and footers pinned -->
+          <div class="map-scroll-viewport">
+            <div id="vis-map2"></div>
+          </div>
+
+          <p class="card-source-note">
             <strong>Data Note:</strong> Wage growth sourced from ABS Cat 6345.0 (Table 2a). State inflation proxied using capital city All Groups CPI from ABS Cat 6401.0 (Table 17).
           </p>
         </div>
 
         <!-- Visual 6: Industry WPI Heatmap -->
-        <div class="viz-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
+        <div class="viz-card">
+          <div class="card-header-block">
             <h3>Industry Wage Growth Trajectory</h3>
             <p class="viz-sub">Annual percentage change in Wage Price Index (June quarters) across all 18 ANZSIC sectors.</p>
-            <div id="vis-heatmap" style="width: 100%; min-height: 480px;"></div>
           </div>
-          <p class="viz-sub" style="margin-top: 14px; margin-bottom: 0; text-align: left; font-size: 11.5px; border-top: 1px solid var(--border-card); padding-top: 8px;">
+
+          <div id="vis-heatmap"></div>
+
+          <p class="card-source-note">
             <strong>Data Note:</strong> Sourced from ABS Cat 6345.0 Table 5b (Total hourly rates of pay excluding bonuses, all sectors, original annual % change from corresponding quarter).
           </p>
         </div>
@@ -163,23 +170,19 @@
       <div class="story-card story-with-illu">
         <div class="story-text">
           <h3>The Wage-Price Trap: Why Paychecks Couldn't Catch Up</h3>
-            <p>
-              In <strong>2021</strong>, as lockdowns eased and zero-rate stimulus flowed, the trajectory chart shows the economy sitting in deep negative territory. The heatmap shows annual pay growth barely nudging <strong>1%</strong> to <strong>2%</strong> across retail and services, leaving real wages trailing behind <strong>3.8%</strong> inflation in every state capital.
-            </p>
-            <p>
-              By <strong>2023</strong>, the squeeze reached its peak across the continent. The map turns deep rust as living standards dropped <strong>3%</strong> to <strong>4%</strong> nationwide, while the RBA rapidly hiked rates up toward <strong>4.35%</strong> to squash the surge. Although frontline sectors on the heatmap like Healthcare (<strong>6.2%</strong>) and Public Admin (<strong>5.0%</strong>) eventually secured big catch-up deals, everyday grocery and mortgage costs had already sprinted far ahead.
-            </p>
-            <p>
-              By <strong>2026</strong>, sustained high borrowing rates finally cooled consumer demand. As inflation came down toward <strong>3.9%</strong>, the map shows state wage gaps easing toward balance, with Victoria (<strong>-0.3%</strong>) and Western Australia (<strong>-0.2%</strong>) nearly breaking even. The sharp erosion has stopped, but the cumulative lag left household budgets permanently adjusted to a much higher cost baseline.
-            </p>
+          <p>
+            In <strong>2021</strong>, as lockdowns eased and zero-rate stimulus flowed, the trajectory chart shows the economy sitting in deep negative territory. The heatmap shows annual pay growth barely nudging <strong>1%</strong> to <strong>2%</strong> across retail and services, leaving real wages trailing behind <strong>3.8%</strong> inflation in every state capital.
+          </p>
+          <p>
+            By <strong>2023</strong>, the squeeze reached its peak across the continent. The map turns deep rust as living standards dropped <strong>3%</strong> to <strong>4%</strong> nationwide, while the RBA rapidly hiked rates up toward <strong>4.35%</strong> to squash the surge. Although frontline sectors on the heatmap like Healthcare (<strong>6.2%</strong>) and Public Admin (<strong>5.0%</strong>) eventually secured big catch-up deals, everyday grocery and mortgage costs had already sprinted far ahead.
+          </p>
+          <p>
+            By <strong>2026</strong>, sustained high borrowing rates finally cooled consumer demand. As inflation came down toward <strong>3.9%</strong>, the map shows state wage gaps easing toward balance, with Victoria (<strong>-0.3%</strong>) and Western Australia (<strong>-0.2%</strong>) nearly breaking even. The sharp erosion has stopped, but the cumulative lag left household budgets permanently adjusted to a much higher cost baseline.
+          </p>
         </div>
 
         <div class="story-illu-container">
-          <img 
-            src="image/editorial-character.png" 
-            alt="Australian worker looking into empty wallet" 
-            class="editorial-character-img"
-          />
+          <img src="image/editorial-character.png" alt="Australian worker looking into empty wallet" class="editorial-character-img">
         </div>
       </div>
 
@@ -201,14 +204,58 @@
         </div>
       </div>
     </section>
+
+    <!-- SECTION 4: THE BORROWING SQUEEZE -->
+    <section class="dashboard-section" id="section-4">
+      <div class="section-banner">
+        <h2>4. The Borrowing Squeeze: Unequal Lending Shocks Across States</h2>
+        <p>Evaluating the collapse in new mortgage commitments across Australian states and territories (2021&ndash;2026).</p>
+      </div>
+
+      <!-- Standard 2-Column Grid -->
+      <div class="charts-row">
+        <!-- Visual 8 / Map 3: Interactive State Lending Choropleth -->
+        <div class="viz-card">
+          <div>
+            <h3>First Home Buyer Lending Commitments by State</h3>
+            <p class="viz-sub">Interactive choropleth tracking quarterly loan commitments ($ Millions) across key monetary milestones.</p>
+            <div id="vis-map3"></div>
+          </div>
+          <p class="card-source-note">
+            <strong>Data Note:</strong> Sourced from ABS Cat 5601.0 Lending Indicators Table 24 (First home buyers, owner occupiers).
+          </p>
+        </div>
+
+        <!-- Slot for Vis 9: Dumbbell / Interval Range Chart -->
+        <div class="viz-card">
+          <div>
+            <h3>Monthly Mortgage Repayment Jump (2021 vs 2026)</h3>
+            <p class="viz-sub">Estimated dollar surge in monthly repayments across average state loan sizes.</p>
+            <div id="vis-repay-dumbbell"></div>
+          </div>
+          <p class="card-source-note">
+            <strong>Data Note:</strong> Modelled on average loan commitments (Cat 5601.0) and standard variable mortgage rates.
+          </p>
+        </div>
+      </div>
+    </section>
     
     <!-- SUBTLE COMPACT FOOTER -->
     <footer class="dashboard-footer">
       <p class="footnote-line">
-        <strong>Data Sources:</strong> Australian Bureau of Statistics (ABS Cat 6401.0, 2021–2026): Map 1 (Table 1), Bar Chart (Table 6), Treemap (Table 2), Bump Chart (Table 18).
+        <strong>Data Sources:</strong>
+        Australian Bureau of Statistics (ABS): 
+        <em>Consumer Price Index</em> (Cat 6401.0, 2021–2026: Table 1 Capital City CPI, Table 2 Expenditure Weights, Table 6 Essential vs Discretionary, Table 17 Capital City All Groups, Table 18 Category Shifts); 
+        <em>Wage Price Index</em> (Cat 6345.0: Table 2a State WPI Growth, Table 5b Industry Hourly Pay Rates); 
+        <em>Lending Indicators</em> (Cat 5601.0: Table 24 First Home Buyer Loan Commitments, Series A130268072A etc.); 
+        Reserve Bank of Australia (RBA): <em>Cash Rate Target Historical Data</em> (Table A2 / a02hist).
       </p>
       <p class="footnote-line">
-        <strong>Visual Credits:</strong> Intro vector illustration sourced via <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer">Google Shared Asset</a>. Spot cartoon characters generated using DALL-E 3 for editorial illustration.
+        <strong>Spatial Boundaries & Processing:</strong>
+        Geographic boundaries for Australia state and territory layers sourced from 
+        <a href="https://www.naturalearthdata.com" target="_blank" rel="noopener noreferrer">Natural Earth</a> 
+        and the <a href="https://www.abs.gov.au/ausstats/abs@.nsf/mf/1270.0.55.001" target="_blank" rel="noopener noreferrer">Australian Bureau of Statistics (Cat 1270.0.55.001)</a>, 
+        projected and converted to TopoJSON format using <a href="https://mapshaper.org" target="_blank" rel="noopener noreferrer">Mapshaper</a>.
       </p>
       <p class="footnote-meta">
         Monash University &bull; FIT3179 Data Visualisation 2
@@ -217,7 +264,7 @@
 
   </div><!-- /.page-container -->
 
-<!-- External JS File (Handles all Vega embeds) -->
+  <!-- External JS File -->
   <script src="js/main.js"></script>
 </body>
 </html>
