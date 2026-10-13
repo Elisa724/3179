@@ -219,31 +219,30 @@
         "text": {"field": "Category", "type": "nominal"}
       }
     },
-    {
+{
       "data": {
         "values": [
           {
             "Year": "2026",
             "Rank": 1,
             "label": [
-              "Health climbs to #1 (2.2%) →",
+              "Health climbs to #1 (2.2%) ↘",
               "Sticky clinical & medical fees"
             ]
           }
         ]
       },
-      "transform": [],
       "mark": {
         "type": "text",
         "align": "right",
         "baseline": "bottom",
-        "dx": -22,
-        "dy": -26,
-        "fontSize": 13.5,
+        "dx": -10,
+        "dy": -15,
+        "fontSize": 12.5,
         "fontWeight": "bold",
-        "lineHeight": 17,
+        "lineHeight": 16,
         "stroke": "#ffffff",
-        "strokeWidth": 4.5,
+        "strokeWidth": 5.5,
         "strokeJoin": "round",
         "fill": "#ffffff"
       },
@@ -260,7 +259,7 @@
             "Year": "2026",
             "Rank": 1,
             "label": [
-              "Health climbs to #1 (2.2%) →",
+              "Health climbs to #1 (2.2%) ↘",
               "Sticky clinical & medical fees"
             ]
           }
@@ -270,11 +269,11 @@
         "type": "text",
         "align": "right",
         "baseline": "bottom",
-        "dx": -22,
-        "dy": -26,
-        "fontSize": 13.5,
+        "dx": -10,
+        "dy": -15,
+        "fontSize": 12.5,
         "fontWeight": "bold",
-        "lineHeight": 17,
+        "lineHeight": 16,
         "fill": "#D55E00"
       },
       "encoding": {
@@ -290,7 +289,7 @@
             "Year": "2026",
             "Rank": 11,
             "label": [
-              "Transport drops to #11 (-0.7%) →",
+              "Transport drops to #11 (-0.7%) ↗",
               "Fuel & shipping deflation"
             ]
           }
@@ -300,15 +299,15 @@
         "type": "text",
         "align": "right",
         "baseline": "top",
-        "dx": -22,
-        "dy": 14,
-        "fontSize": 13.5,
+        "dx": -10,
+        "dy": 13,
+        "fontSize": 12.5,
         "fontWeight": "bold",
-        "lineHeight": 17,
-        "fill": "#ffffff",
+        "lineHeight": 16,
         "stroke": "#ffffff",
-        "strokeWidth": 4.5,
-        "strokeJoin": "round"
+        "strokeWidth": 5.5,
+        "strokeJoin": "round",
+        "fill": "#ffffff"
       },
       "encoding": {
         "x": {"field": "Year", "type": "ordinal"},
@@ -323,7 +322,7 @@
             "Year": "2026",
             "Rank": 11,
             "label": [
-              "Transport drops to #11 (-0.7%) →",
+              "Transport drops to #11 (-0.7%) ↗",
               "Fuel & shipping deflation"
             ]
           }
@@ -333,11 +332,11 @@
         "type": "text",
         "align": "right",
         "baseline": "top",
-        "dx": -22,
-        "dy": 14,
-        "fontSize": 13.5,
+        "dx": -10,
+        "dy": 13,
+        "fontSize": 12.5,
         "fontWeight": "bold",
-        "lineHeight": 17,
+        "lineHeight": 16,
         "fill": "#0072B2"
       },
       "encoding": {
