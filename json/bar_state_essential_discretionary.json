@@ -11,7 +11,7 @@
     "color": "#1b382b"
   },
   "width": "container",
-  "height": 410,
+  "height": 520,
   "autosize": {"type": "fit-x", "contains": "padding"},
   "data": {
     "url": "data/cpi_state_essential_discretionary.csv"
@@ -28,7 +28,7 @@
           "type": "nominal",
           "title": null,
           "axis": {
-            "labelFontSize": 11,
+            "labelFontSize": 12,
             "labelFontWeight": "bold",
             "labelColor": "#121619"
           }
@@ -47,9 +47,10 @@
           "axis": {
             "grid": true,
             "gridColor": "#e5e7eb",
-            "titleFontSize": 12,
+            "titleFontSize": 12.5,
             "titleFontWeight": "bold",
-            "labelFontSize": 11
+            "titleColor": "#1b382b",
+            "labelFontSize": 11.5
           }
         },
         "color": {
@@ -58,16 +59,21 @@
           "title": "Expenditure Basket",
           "scale": {
             "domain": ["Essential", "Discretionary"],
-            "range": ["#2D4739", "#E5C687"]
+            "range": ["#254b38", "#dfba73"]
           },
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-            "titleFontSize": 12,
+            "titleFontSize": 13,
             "titleFontWeight": "bold",
-            "labelFontSize": 11.5,
-            "labelFontWeight": "500",
-            "columnPadding": 28
+            "titleColor": "#1b382b",
+            "labelFontSize": 12.5,
+            "labelFontWeight": "600",
+            "labelColor": "#181d20",
+            "symbolType": "square",
+            "symbolSize": 180,
+            "columnPadding": 32,
+            "offset": 12
           }
         },
         "tooltip": [
@@ -94,10 +100,10 @@
         "type": "text",
         "align": "left",
         "baseline": "middle",
-        "lineHeight": 14,
-        "dx": 8,
-        "dy": 6,
-        "fontSize": 10.5,
+        "lineHeight": 15,
+        "dx": 10,
+        "dy": 7,
+        "fontSize": 12,
         "fontWeight": "bold",
         "fill": "#1b382b"
       },

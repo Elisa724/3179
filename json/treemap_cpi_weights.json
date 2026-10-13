@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "width": 520,
-  "height": 560,
+  "height": 500,
   "autosize": {
     "type": "fit",
     "contains": "padding"
@@ -32,76 +32,105 @@
       "transform": [
         {
           "type": "formula",
-          "expr": "datum.Categories === 'Food and non-alcoholic beverages' ? 'Food & Non-Alc.' : datum.Categories === 'Recreation and culture' ? 'Recreation' : datum.Categories === 'Furnishings, household equipment and services' ? 'Furnishings' : datum.Categories === 'Insurance and financial services' ? 'Insurance' : datum.Categories === 'Alcohol and tobacco' ? 'Alcohol & Tob.' : datum.Categories === 'Clothing and footwear' ? 'Clothing' : datum.Categories === 'Communication' ? 'Comm.' : datum.Categories",
+          "expr": "datum.Categories === 'Food and non-alcoholic beverages' ? 'Food & Non-Alc.' : datum.Categories === 'Recreation and culture' ? 'Recreation' : datum.Categories === 'Furnishings household equipment and services' || datum.Categories === 'Furnishings, household equipment and services' ? 'Furnishings' : datum.Categories === 'Insurance and financial services' ? 'Insurance & Finance' : datum.Categories === 'Alcohol and tobacco' ? 'Alcohol & Tobacco' : datum.Categories === 'Clothing and footwear' ? 'Clothing & Footwear' : datum.Categories === 'Communication' ? 'Communication' : datum.Categories",
           "as": "Clean_Name"
         }
       ]
     },
     {
       "name": "root_node",
-      "source": "raw",
-      "transform": [
+      "values": [
         {
-          "type": "aggregate",
-          "ops": ["sum"],
-          "fields": ["Weight_Pct"],
-          "as": ["Weight_Pct"]
-        },
-        {
-          "type": "formula",
-          "expr": "'Total Basket'",
-          "as": "Categories"
-        },
-        {
-          "type": "formula",
-          "expr": "null",
-          "as": "parent"
-        },
-        {
-          "type": "formula",
-          "expr": "0",
-          "as": "Weight_Pct"
+          "id": "Total_Basket",
+          "parent": null,
+          "name": "Total Consumer Basket"
         }
       ]
     },
     {
-      "name": "child_nodes",
+      "name": "group_nodes",
+      "values": [
+        {
+          "id": "Essential",
+          "parent": "Total_Basket",
+          "name": "Essential Needs (Non-Negotiable)",
+          "Classification": "Essential"
+        },
+        {
+          "id": "Discretionary",
+          "parent": "Total_Basket",
+          "name": "Discretionary (Optional Spending)",
+          "Classification": "Discretionary"
+        }
+      ]
+    },
+    {
+      "name": "leaf_nodes",
       "source": "raw",
       "transform": [
         {
           "type": "formula",
-          "expr": "'Total Basket'",
+          "expr": "datum.Categories",
+          "as": "id"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.Classification",
           "as": "parent"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.Weight_Pct",
+          "as": "value"
         }
       ]
     },
     {
       "name": "tree",
-      "source": ["root_node", "child_nodes"],
+      "source": ["root_node", "group_nodes", "leaf_nodes"],
       "transform": [
         {
           "type": "stratify",
-          "key": "Categories",
+          "key": "id",
           "parentKey": "parent"
         },
         {
           "type": "treemap",
-          "field": "Weight_Pct",
+          "field": "value",
           "sort": {
             "field": "value",
             "order": "descending"
           },
           "round": true,
           "method": "squarify",
-          "ratio": 1.45,
+          "ratio": 1.35,
+          "paddingInner": 3,
+          "paddingOuter": 5,
+          "paddingTop": 25,
           "size": [
             {"signal": "width"},
-            {"signal": "height - 65"}
+            {"signal": "height - 42"}
           ]
-        },
+        }
+      ]
+    },
+    {
+      "name": "containers",
+      "source": "tree",
+      "transform": [
         {
           "type": "filter",
-          "expr": "datum.depth > 0"
+          "expr": "datum.depth === 1"
+        }
+      ]
+    },
+    {
+      "name": "leaves",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth === 2"
         }
       ]
     }
@@ -111,7 +140,7 @@
       "name": "colorScale",
       "type": "ordinal",
       "domain": ["Essential", "Discretionary"],
-      "range": ["#2D4739", "#E5C687"]
+      "range": ["#274736", "#dfba73"]
     }
   ],
   "legends": [
@@ -122,20 +151,83 @@
       "direction": "horizontal",
       "titleFontSize": 12,
       "titleFontWeight": "bold",
+      "titleColor": "#1b382b",
       "labelFontSize": 11.5,
-      "labelFontWeight": "500",
+      "labelColor": "#5e6b64",
       "symbolType": "square",
-      "symbolSize": 100
+      "symbolSize": 140,
+      "offset": 6
     }
   ],
   "marks": [
     {
       "type": "rect",
-      "from": {"data": "tree"},
+      "from": {"data": "containers"},
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "fill": {"value": "#faf8f2"},
+          "stroke": {"value": "#bcb382"},
+          "strokeWidth": {"value": 1.5},
+          "cornerRadius": {"value": 4}
+        },
+        "update": {
+          "x": {"field": "x0"},
+          "y": {"field": "y0"},
+          "x2": {"field": "x1"},
+          "y2": {"field": "y1"}
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {"data": "containers"},
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "cornerRadiusTopLeft": {"value": 4},
+          "cornerRadiusTopRight": {"value": 4}
+        },
+        "update": {
+          "x": {"field": "x0"},
+          "y": {"field": "y0"},
+          "x2": {"field": "x1"},
+          "y2": {"signal": "datum.y0 + 23"},
+          "fill": {
+            "signal": "datum.id === 'Essential' ? '#1b382b' : '#9a6f1a'"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "containers"},
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "font": {"value": "Inter, sans-serif"},
+          "fontSize": {"value": 11},
+          "fontWeight": {"value": "bold"},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fill": {"value": "#ffffff"}
+        },
+        "update": {
+          "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
+          "y": {"signal": "datum.y0 + 11.5"},
+          "text": {"field": "name"}
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {"data": "leaves"},
       "encode": {
         "enter": {
           "stroke": {"value": "#ffffff"},
-          "strokeWidth": {"value": 2}
+          "strokeWidth": {"value": 2},
+          "cornerRadius": {"value": 2},
+          "cursor": {"value": "pointer"}
         },
         "update": {
           "x": {"field": "x0"},
@@ -146,63 +238,74 @@
             "scale": "colorScale",
             "field": "Classification"
           },
+          "fillOpacity": {"value": 0.95},
           "tooltip": {
-            "signal": "{\"Category\": datum.Categories, \"Classification\": datum.Classification, \"Basket Weight\": datum.Weight_Pct + '%', \"Annual Inflation (Jun 2026)\": datum.Inflation_Rate_Pct + '%'}"
+            "signal": "{\"Spending Category\": datum.Categories, \"Classification\": datum.Classification === 'Essential' ? 'Essential (Non-Negotiable)' : 'Discretionary (Optional)', \"Household Basket Weight\": format(datum.Weight_Pct, '.1f') + '%', \"Annual Inflation (Jun 2026)\": format(datum.Inflation_Rate_Pct, '.1f') + '%'}"
           }
         },
         "hover": {
-          "fill": {"value": "#b87c28"}
+          "fill": {"value": "#e0882e"},
+          "fillOpacity": {"value": 1}
         }
       }
     },
     {
       "type": "text",
-      "from": {"data": "tree"},
+      "from": {"data": "leaves"},
       "interactive": false,
       "encode": {
         "enter": {
+          "font": {"value": "Inter, sans-serif"},
           "align": {"value": "center"},
           "baseline": {"value": "middle"},
           "fontWeight": {"value": "bold"}
         },
         "update": {
           "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
-          "y": {"signal": "0.5 * (datum.y0 + datum.y1) - 10"},
-          "text": {"signal": "datum.Clean_Name"},
+          "y": {
+            "signal": "(datum.y1 - datum.y0 < 42) ? 0.5 * (datum.y0 + datum.y1) : 0.5 * (datum.y0 + datum.y1) - 8"
+          },
+          "text": {"field": "Clean_Name"},
           "fontSize": {
-            "signal": "(datum.x1 - datum.x0 < 60 || datum.y1 - datum.y0 < 35) ? 8 : 11"
+            "signal": "(datum.x1 - datum.x0 < 65 || datum.y1 - datum.y0 < 36) ? 8.5 : 11"
           },
-          "limit": {"signal": "max(8, datum.x1 - datum.x0 - 2)"},
+          "limit": {"signal": "max(8, datum.x1 - datum.x0 - 6)"},
           "fill": {
-            "signal": "datum.Classification === 'Essential' ? '#ffffff' : '#121619'"
+            "signal": "datum.Classification === 'Essential' ? '#ffffff' : '#181d20'"
           },
-          "opacity": {"value": 1}
+          "opacity": {
+            "signal": "(datum.x1 - datum.x0 < 35 || datum.y1 - datum.y0 < 20) ? 0 : 1"
+          }
         }
       }
     },
     {
       "type": "text",
-      "from": {"data": "tree"},
+      "from": {"data": "leaves"},
       "interactive": false,
       "encode": {
         "enter": {
+          "font": {"value": "Inter, sans-serif"},
           "align": {"value": "center"},
-          "baseline": {"value": "middle"}
+          "baseline": {"value": "middle"},
+          "fontWeight": {"value": "600"}
         },
         "update": {
           "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
-          "y": {"signal": "0.5 * (datum.y0 + datum.y1) + 6"},
+          "y": {"signal": "0.5 * (datum.y0 + datum.y1) + 8"},
           "text": {
-            "signal": "datum.Categories === 'Housing' ? datum.Weight_Pct + '% (Largest Share)' : datum.Weight_Pct + '%'"
+            "signal": "datum.Categories === 'Housing' ? format(datum.Weight_Pct, '.1f') + '% (Largest Share)' : format(datum.Weight_Pct, '.1f') + '%'"
           },
           "fontSize": {
-            "signal": "(datum.x1 - datum.x0 < 60 || datum.y1 - datum.y0 < 35) ? 7.5 : 9.5"
+            "signal": "(datum.x1 - datum.x0 < 65 || datum.y1 - datum.y0 < 44) ? 8 : 10"
           },
-          "limit": {"signal": "max(8, datum.x1 - datum.x0 - 2)"},
+          "limit": {"signal": "max(8, datum.x1 - datum.x0 - 6)"},
           "fill": {
-            "signal": "datum.Classification === 'Essential' ? '#e2e8f0' : '#2b2b2b'"
+            "signal": "datum.Classification === 'Essential' ? '#e2ebd8' : '#3d301b'"
           },
-          "opacity": {"value": 1}
+          "opacity": {
+            "signal": "(datum.x1 - datum.x0 < 55 || datum.y1 - datum.y0 < 38) ? 0 : 1"
+          }
         }
       }
     },
@@ -218,9 +321,9 @@
         },
         "update": {
           "x": {"value": 0},
-          "y": {"signal": "height - 52"},
+          "y": {"signal": "height - 32"},
           "width": {"signal": "width"},
-          "height": {"value": 28}
+          "height": {"value": 26}
         }
       }
     },
@@ -231,13 +334,13 @@
         "enter": {
           "align": {"value": "center"},
           "baseline": {"value": "middle"},
-          "fontSize": {"value": 11},
+          "fontSize": {"value": 10.5},
           "fontWeight": {"value": "bold"},
           "fill": {"value": "#1b382b"}
         },
         "update": {
           "x": {"signal": "0.5 * width"},
-          "y": {"signal": "height - 38"},
+          "y": {"signal": "height - 19"},
           "text": {
             "value": "★ Core Insight: Housing (21.4%), Food (17.4%) & Transport (11.5%) command 50.3% of spending"
           }
@@ -249,6 +352,6 @@
     "top": 4,
     "left": 4,
     "right": 4,
-    "bottom": 8
+    "bottom": 4
   }
 }

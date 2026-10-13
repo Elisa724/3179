@@ -362,18 +362,17 @@ body {
 
 /* Scroll Attention Badge in Header */
 .scroll-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  display: table;              /* Ensures auto margins center the badge cleanly */
+  margin: 6px auto 0 auto;     /* Centers horizontally in the card */
+  text-align: center;
   background: #eef5f0;
   color: #1b382b;
   border: 1.5px solid #09814a;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.2px;
-  margin-top: 4px;
 }
 
 .bumpchart-expanded-card {
