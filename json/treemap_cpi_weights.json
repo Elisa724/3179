@@ -109,7 +109,7 @@
           "paddingTop": 25,
           "size": [
             {"signal": "width"},
-            {"signal": "height - 42"}
+            {"signal": "height - 46"}
           ]
         }
       ]
@@ -240,7 +240,7 @@
           },
           "fillOpacity": {"value": 0.95},
           "tooltip": {
-            "signal": "{\"Spending Category\": datum.Categories, \"Classification\": datum.Classification === 'Essential' ? 'Essential (Non-Negotiable)' : 'Discretionary (Optional)', \"Household Basket Weight\": format(datum.Weight_Pct, '.1f') + '%', \"Annual Inflation (Jun 2026)\": format(datum.Inflation_Rate_Pct, '.1f') + '%'}"
+            "signal": "{\"Spending Category\": datum.Categories, \"Classification\": datum.Classification === 'Essential' ? 'Essential (Non-Negotiable)' : 'Discretionary (Optional)', \"Household Basket Share\": format(datum.Weight_Pct, '.1f') + '%'}"
           }
         },
         "hover": {
@@ -321,9 +321,9 @@
         },
         "update": {
           "x": {"value": 0},
-          "y": {"signal": "height - 32"},
+          "y": {"signal": "height - 35"},
           "width": {"signal": "width"},
-          "height": {"value": 26}
+          "height": {"value": 28}
         }
       }
     },
@@ -334,13 +334,13 @@
         "enter": {
           "align": {"value": "center"},
           "baseline": {"value": "middle"},
-          "fontSize": {"value": 10.5},
+          "fontSize": {"value": 11},
           "fontWeight": {"value": "bold"},
           "fill": {"value": "#1b382b"}
         },
         "update": {
           "x": {"signal": "0.5 * width"},
-          "y": {"signal": "height - 19"},
+          "y": {"signal": "height - 21"},
           "text": {
             "value": "★ Core Insight: Housing (21.4%), Food (17.4%) & Transport (11.5%) command 50.3% of spending"
           }
