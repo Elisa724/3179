@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Capital City Inflation Pressures Across Australia",
-    "subtitle": "Circle size & colour encode annual CPI % change (ABS Cat 6401.0)",
+    "subtitle": "Circle size encodes annual CPI percentage change (ABS Cat 6401.0)",
     "fontSize": 15,
     "fontWeight": "bold",
     "subtitleFontSize": 12,
@@ -11,7 +11,7 @@
     "color": "#1b382b"
   },
   "width": "container",
-  "height": 410,
+  "height": 490,
   "autosize": {"type": "fit-x", "contains": "padding"},
   "params": [
     {
@@ -20,15 +20,15 @@
       "bind": {
         "input": "select",
         "options": ["2025-07", "2026-07"],
-        "labels": ["Jul 2025", "Jul 2026 (Latest)"],
-        "name": "Select CPI Period: "
+        "labels": ["Jul 2025 (Brisbane Peak)", "Jul 2026 (Latest - Southern Surge)"],
+        "name": "Select CPI Milestone: "
       }
     }
   ],
   "projection": {
     "type": "equirectangular",
-    "center": [133.5, -28.0],
-    "scale": 510
+    "center": [134.0, -28.2],
+    "scale": 615
   },
   "layer": [
     {
@@ -55,9 +55,11 @@
       ],
       "mark": {
         "type": "circle",
-        "opacity": 0.88,
-        "stroke": "#121619",
-        "strokeWidth": 1.2
+        "fill": "#09814a",
+        "fillOpacity": 0.45,
+        "stroke": "#1b382b",
+        "strokeWidth": 2.0,
+        "cursor": "pointer"
       },
       "encoding": {
         "longitude": {"field": "Lon", "type": "quantitative"},
@@ -65,35 +67,21 @@
         "size": {
           "field": "CPI_Annual_Change_Pct",
           "type": "quantitative",
-          "title": "Annual Inflation (%)",
+          "title": "Annual Inflation Rate (%)",
           "scale": {
             "domain": [2.0, 5.0],
-            "range": [120, 620]
+            "range": [500, 2500]
           },
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-            "titleFontSize": 12,
+            "titleFontSize": 11,
             "titleFontWeight": "bold",
-            "labelFontSize": 11,
-            "columnPadding": 24
-          }
-        },
-        "color": {
-          "field": "CPI_Annual_Change_Pct",
-          "type": "quantitative",
-          "title": "Inflation Rate (%)",
-          "scale": {
-            "domain": [2.0, 3.5, 4.8],
-            "range": ["#e5c687", "#d97706", "#dc2626"]
-          },
-          "legend": {
-            "orient": "bottom",
-            "direction": "horizontal",
-            "gradientLength": 160,
-            "titleFontSize": 12,
-            "titleFontWeight": "bold",
-            "labelFontSize": 11
+            "titleColor": "#1b382b",
+            "labelFontSize": 10.5,
+            "labelColor": "#5e6b64",
+            "columnPadding": 16,
+            "offset": 14
           }
         },
         "tooltip": [
@@ -113,9 +101,13 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 11,
-        "fontWeight": "bold",
-        "fill": "#121619"
+        "fontSize": 12,
+        "fontWeight": 700,
+        "fill": "#ffffff",
+        "stroke": "#ffffff",
+        "strokeWidth": 4,
+        "strokeJoin": "round",
+        "cursor": "pointer"
       },
       "encoding": {
         "longitude": {"field": "Lon", "type": "quantitative"},
@@ -136,27 +128,92 @@
         },
         "dx": {
           "condition": [
-            {"test": "datum.City == 'Canberra'", "value": -16},
-            {"test": "datum.City == 'Sydney'", "value": 16},
-            {"test": "datum.City == 'Hobart'", "value": 16},
-            {"test": "datum.City == 'Perth'", "value": -16},
-            {"test": "datum.City == 'Brisbane'", "value": 16},
-            {"test": "datum.City == 'Adelaide'", "value": -16}
+            {"test": "datum.City == 'Canberra'", "value": -26},
+            {"test": "datum.City == 'Sydney'", "value": 26},
+            {"test": "datum.City == 'Hobart'", "value": 26},
+            {"test": "datum.City == 'Perth'", "value": -26},
+            {"test": "datum.City == 'Brisbane'", "value": 26},
+            {"test": "datum.City == 'Adelaide'", "value": -26}
           ],
           "value": 0
         },
         "dy": {
           "condition": [
-            {"test": "datum.City == 'Darwin'", "value": -16},
-            {"test": "datum.City == 'Melbourne'", "value": 18},
-            {"test": "datum.City == 'Canberra'", "value": 12},
-            {"test": "datum.City == 'Sydney'", "value": -6}
+            {"test": "datum.City == 'Darwin'", "value": -24},
+            {"test": "datum.City == 'Melbourne'", "value": 28},
+            {"test": "datum.City == 'Canberra'", "value": 14},
+            {"test": "datum.City == 'Sydney'", "value": -12}
           ],
           "value": 0
-        }
+        },
+        "tooltip": [
+          {"field": "City", "type": "nominal", "title": "Capital City"},
+          {"field": "State", "type": "nominal", "title": "State / Territory"},
+          {"field": "Date", "type": "nominal", "title": "Reference Period"},
+          {"field": "CPI_Annual_Change_Pct", "type": "quantitative", "title": "Annual Inflation Rate (%)", "format": ".1f"}
+        ]
       }
     },
-   {
+    {
+      "data": {
+        "url": "data/cpi_australia_capital_city.csv"
+      },
+      "transform": [
+        {"filter": "datum.Date == selected_date"}
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 700,
+        "fill": "#181d20",
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "longitude": {"field": "Lon", "type": "quantitative"},
+        "latitude": {"field": "Lat", "type": "quantitative"},
+        "text": {"field": "City", "type": "nominal"},
+        "align": {
+          "condition": [
+            {"test": "datum.City == 'Canberra'", "value": "right"},
+            {"test": "datum.City == 'Sydney'", "value": "left"},
+            {"test": "datum.City == 'Melbourne'", "value": "center"},
+            {"test": "datum.City == 'Hobart'", "value": "left"},
+            {"test": "datum.City == 'Perth'", "value": "right"},
+            {"test": "datum.City == 'Brisbane'", "value": "left"},
+            {"test": "datum.City == 'Adelaide'", "value": "right"},
+            {"test": "datum.City == 'Darwin'", "value": "center"}
+          ],
+          "value": "center"
+        },
+        "dx": {
+          "condition": [
+            {"test": "datum.City == 'Canberra'", "value": -26},
+            {"test": "datum.City == 'Sydney'", "value": 26},
+            {"test": "datum.City == 'Hobart'", "value": 26},
+            {"test": "datum.City == 'Perth'", "value": -26},
+            {"test": "datum.City == 'Brisbane'", "value": 26},
+            {"test": "datum.City == 'Adelaide'", "value": -26}
+          ],
+          "value": 0
+        },
+        "dy": {
+          "condition": [
+            {"test": "datum.City == 'Darwin'", "value": -24},
+            {"test": "datum.City == 'Melbourne'", "value": 28},
+            {"test": "datum.City == 'Canberra'", "value": 14},
+            {"test": "datum.City == 'Sydney'", "value": -12}
+          ],
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "City", "type": "nominal", "title": "Capital City"},
+          {"field": "State", "type": "nominal", "title": "State / Territory"},
+          {"field": "Date", "type": "nominal", "title": "Reference Period"},
+          {"field": "CPI_Annual_Change_Pct", "type": "quantitative", "title": "Annual Inflation Rate (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
       "data": {
         "values": [
           {
@@ -164,7 +221,7 @@
             "Lon": 147.3272,
             "Lat": -42.8821,
             "label": [
-              "← 2026 Peak",
+              "2026 Peak:",
               "Hobart (4.5%)"
             ]
           }
@@ -177,12 +234,12 @@
         "type": "text",
         "align": "left",
         "baseline": "middle",
-        "dx": 25,
-        "dy": 0,
-        "fontSize": 10.5,
+        "dx": 30,
+        "dy": -2,
+        "fontSize": 13,
         "fontWeight": "bold",
-        "lineHeight": 13,
-        "fill": "#b91c1c"
+        "lineHeight": 16,
+        "fill": "#991b1b"
       },
       "encoding": {
         "longitude": {"field": "Lon", "type": "quantitative"},
@@ -198,7 +255,7 @@
             "Lon": 153.0251,
             "Lat": -27.4698,
             "label": [
-              "2025 Peak →",
+              "2025 Peak:",
               "Brisbane (4.8%)"
             ]
           }
@@ -211,12 +268,12 @@
         "type": "text",
         "align": "right",
         "baseline": "middle",
-        "dx": -25,
-        "dy": -12,
-        "fontSize": 10.5,
+        "dx": -30,
+        "dy": -18,
+        "fontSize": 13,
         "fontWeight": "bold",
-        "lineHeight": 13,
-        "fill": "#b91c1c"
+        "lineHeight": 16,
+        "fill": "#991b1b"
       },
       "encoding": {
         "longitude": {"field": "Lon", "type": "quantitative"},
