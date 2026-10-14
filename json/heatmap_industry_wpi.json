@@ -136,8 +136,8 @@
       "mark": {
         "type": "rect",
         "fill": null,
-        "stroke": "#dfba73",
-        "strokeWidth": 2.5,
+        "stroke": "#d97706",
+        "strokeWidth": 2.8,
         "cornerRadius": 2
       },
       "encoding": {
@@ -157,14 +157,14 @@
         "stroke": {
           "condition": {
             "test": "datum.Is_Health_2024 || datum.Is_Public_2024",
-            "value": "#b84319"
+            "value": "#d97706"
           },
           "value": null
         },
         "strokeWidth": {
           "condition": {
             "test": "datum.Is_Health_2024 || datum.Is_Public_2024",
-            "value": 2.5
+            "value": 2.8
           },
           "value": 0
         }
@@ -209,12 +209,12 @@
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11.5,
+        "fontSize": 12,
         "fontWeight": 700,
-        "fill": "#dfba73",
+        "fill": "#b45309",
         "align": "center",
         "baseline": "bottom",
-        "dy": -2
+        "dy": -3
       },
       "encoding": {
         "x": {

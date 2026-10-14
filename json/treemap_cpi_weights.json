@@ -53,13 +53,13 @@
         {
           "id": "Essential",
           "parent": "Total_Basket",
-          "name": "Essential Needs (Non-Negotiable)",
+          "name": "Essential Needs",
           "Classification": "Essential"
         },
         {
           "id": "Discretionary",
           "parent": "Total_Basket",
-          "name": "Discretionary (Optional Spending)",
+          "name": "Discretionary",
           "Classification": "Discretionary"
         }
       ]
