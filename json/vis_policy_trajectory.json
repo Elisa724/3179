@@ -38,7 +38,7 @@
       },
       "mark": {
         "type": "rect",
-        "fill": "#b84319",
+        "fill": "#b45309",
         "fillOpacity": 0.045
       },
       "encoding": {
@@ -94,12 +94,9 @@
     {
       "mark": {
         "type": "rule",
-        "color": "#b84319",
+        "color": "#b45309",
         "strokeWidth": 1.5,
-        "strokeDash": [
-          4,
-          4
-        ],
+        "strokeDash": [4, 4],
         "opacity": 0.75
       },
       "encoding": {
@@ -113,10 +110,7 @@
         "type": "rule",
         "color": "#8c7b4d",
         "strokeWidth": 1.4,
-        "strokeDash": [
-          4,
-          4
-        ],
+        "strokeDash": [4, 4],
         "opacity": 0.8
       },
       "encoding": {
@@ -127,9 +121,7 @@
     },
     {
       "data": {
-        "values": [
-          {}
-        ]
+        "values": [{}]
       },
       "mark": {
         "type": "text",
@@ -137,8 +129,8 @@
         "font": "Inter, sans-serif",
         "fontSize": 11,
         "fontWeight": 700,
-        "fill": "#b84319",
-        "opacity": 0.85,
+        "fill": "#b45309",
+        "opacity": 0.90,
         "align": "center",
         "baseline": "middle"
       },
@@ -153,9 +145,7 @@
     },
     {
       "data": {
-        "values": [
-          {}
-        ]
+        "values": [{}]
       },
       "mark": {
         "type": "text",
@@ -164,7 +154,7 @@
         "fontSize": 11,
         "fontWeight": 700,
         "fill": "#09814a",
-        "opacity": 0.85,
+        "opacity": 0.90,
         "align": "center",
         "baseline": "middle"
       },
@@ -179,17 +169,15 @@
     },
     {
       "data": {
-        "values": [
-          {}
-        ]
+        "values": [{}]
       },
       "mark": {
         "type": "text",
         "text": "Wage Parity (0%)",
         "font": "Inter, sans-serif",
-        "fontSize": 9.5,
+        "fontSize": 10,
         "fontWeight": 600,
-        "fill": "#b84319",
+        "fill": "#b45309",
         "align": "left",
         "baseline": "middle",
         "dx": 6,
@@ -206,15 +194,13 @@
     },
     {
       "data": {
-        "values": [
-          {}
-        ]
+        "values": [{}]
       },
       "mark": {
         "type": "text",
         "text": "Neutral Real Cash Rate (0%) · [↑ Restrictive | Stimulatory ↓]",
         "font": "Inter, sans-serif",
-        "fontSize": 9.5,
+        "fontSize": 10,
         "fontWeight": 600,
         "fill": "#6b5d38",
         "align": "left",
@@ -234,9 +220,9 @@
     {
       "mark": {
         "type": "line",
-        "color": "#284c3c",
-        "strokeWidth": 2.5,
-        "opacity": 0.8,
+        "color": "#1b382b",
+        "strokeWidth": 3.0,
+        "opacity": 0.85,
         "interpolate": "cardinal",
         "tension": 0.65
       },
@@ -259,10 +245,11 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "size": 220,
+        "size": 170,
+        "fill": "#09814a",
         "stroke": "#1b382b",
-        "strokeWidth": 1.8,
-        "opacity": 0.95
+        "strokeWidth": 2.2,
+        "cursor": "pointer"
       },
       "encoding": {
         "x": {
@@ -270,10 +257,7 @@
           "type": "quantitative",
           "title": "Real Wage Growth Gap (% WPI − CPI)",
           "scale": {
-            "domain": [
-              -5.0,
-              2.8
-            ]
+            "domain": [-5.0, 2.8]
           },
           "axis": {
             "titleFont": "Inter, sans-serif",
@@ -281,13 +265,10 @@
             "titleFontWeight": 600,
             "titleColor": "#1b382b",
             "labelFont": "Inter, sans-serif",
-            "labelFontSize": 10.5,
+            "labelFontSize": 11,
             "labelColor": "#5e6b64",
             "gridColor": "#e4dfd3",
-            "gridDash": [
-              3,
-              3
-            ],
+            "gridDash": [3, 3],
             "tickColor": "#bcb382",
             "domainColor": "#bcb382"
           }
@@ -297,10 +278,7 @@
           "type": "quantitative",
           "title": "Real Cash Rate (% Cash Rate − CPI)",
           "scale": {
-            "domain": [
-              -6.0,
-              2.8
-            ]
+            "domain": [-6.0, 2.8]
           },
           "axis": {
             "titleFont": "Inter, sans-serif",
@@ -308,49 +286,19 @@
             "titleFontWeight": 600,
             "titleColor": "#1b382b",
             "labelFont": "Inter, sans-serif",
-            "labelFontSize": 10.5,
+            "labelFontSize": 11,
             "labelColor": "#5e6b64",
             "gridColor": "#e4dfd3",
-            "gridDash": [
-              3,
-              3
-            ],
+            "gridDash": [3, 3],
             "tickColor": "#bcb382",
             "domainColor": "#bcb382"
-          }
-        },
-        "color": {
-          "field": "CPI_Inflation",
-          "type": "quantitative",
-          "title": "Headline CPI Inflation (%)",
-          "scale": {
-            "type": "linear",
-            "range": [
-              "#edd8ab",
-              "#d9822b",
-              "#b84319",
-              "#6e1a0b"
-            ]
-          },
-          "legend": {
-            "orient": "bottom",
-            "direction": "horizontal",
-            "gradientLength": 240,
-            "gradientThickness": 9,
-            "titleFont": "Inter, sans-serif",
-            "titleFontSize": 11,
-            "titleFontWeight": 600,
-            "titleColor": "#1b382b",
-            "labelFont": "Inter, sans-serif",
-            "labelFontSize": 9.5,
-            "labelColor": "#5e6b64"
           }
         },
         "tooltip": [
           {
             "field": "Quarter_Label",
             "type": "nominal",
-            "title": "Quarter"
+            "title": "Reference Quarter"
           },
           {
             "field": "Real_Wage_Gap",
@@ -386,15 +334,11 @@
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-21'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-21'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "left",
         "baseline": "top",
@@ -406,30 +350,17 @@
         "strokeJoin": "round"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-22'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-22'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "left",
         "baseline": "top",
@@ -441,30 +372,17 @@
         "strokeJoin": "round"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-23'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-23'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "right",
         "baseline": "bottom",
@@ -476,30 +394,17 @@
         "strokeJoin": "round"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-24'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-24'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "left",
         "baseline": "top",
@@ -511,30 +416,17 @@
         "strokeJoin": "round"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-25'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-25'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "left",
         "baseline": "middle",
@@ -546,30 +438,17 @@
         "strokeJoin": "round"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-26'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-26'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "right",
         "baseline": "bottom",
@@ -581,30 +460,17 @@
         "strokeJoin": "round"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-21'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-21'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "left",
         "baseline": "top",
@@ -613,30 +479,17 @@
         "fill": "#181d20"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-22'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-22'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "left",
         "baseline": "top",
@@ -645,30 +498,17 @@
         "fill": "#181d20"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-23'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-23'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "right",
         "baseline": "bottom",
@@ -677,30 +517,17 @@
         "fill": "#181d20"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-24'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-24'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "left",
         "baseline": "top",
@@ -709,30 +536,17 @@
         "fill": "#181d20"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-25'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-25'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "left",
         "baseline": "middle",
@@ -741,30 +555,17 @@
         "fill": "#181d20"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Quarter_Label == 'Jun-26'"
-        }
-      ],
+      "transform": [{"filter": "datum.Quarter_Label == 'Jun-26'"}],
       "mark": {
         "type": "text",
         "font": "Inter, sans-serif",
-        "fontSize": 11,
+        "fontSize": 11.5,
         "fontWeight": 700,
         "align": "right",
         "baseline": "bottom",
@@ -773,18 +574,9 @@
         "fill": "#181d20"
       },
       "encoding": {
-        "x": {
-          "field": "Real_Wage_Gap",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "Real_Cash_Rate",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Clean_Label",
-          "type": "nominal"
-        }
+        "x": {"field": "Real_Wage_Gap", "type": "quantitative"},
+        "y": {"field": "Real_Cash_Rate", "type": "quantitative"},
+        "text": {"field": "Clean_Label", "type": "nominal"}
       }
     }
   ],
