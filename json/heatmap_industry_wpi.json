@@ -136,7 +136,7 @@
       "mark": {
         "type": "rect",
         "fill": null,
-        "stroke": "#b84319",
+        "stroke": "#dfba73",
         "strokeWidth": 2.5,
         "cornerRadius": 2
       },
@@ -211,7 +211,7 @@
         "font": "Inter, sans-serif",
         "fontSize": 11.5,
         "fontWeight": 700,
-        "fill": "#b84319",
+        "fill": "#dfba73",
         "align": "center",
         "baseline": "bottom",
         "dy": -2
