@@ -471,7 +471,7 @@ div[id^="vis"] .vega-embed {
   border-radius: 6px !important;
   padding: 8px 14px !important;
   width: 58% !important;
-  max-width: 320px !important;
+  max-width: 230px !important;
   cursor: pointer !important;
   outline: none !important;
   transition: all 0.2s ease !important;

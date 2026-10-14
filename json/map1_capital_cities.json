@@ -19,8 +19,8 @@
       "value": "2026-07",
       "bind": {
         "input": "select",
-        "options": ["2025-07", "2026-07"],
-        "labels": ["Jul 2025 (Brisbane Peak)", "Jul 2026 (Latest - Southern Surge)"],
+        "options": ["2026-07", "2025-07"],
+        "labels": ["July 2026 (Latest Snapshot)", "July 2025 (Previous Year)"],
         "name": "Select CPI Milestone: "
       }
     }
@@ -51,7 +51,11 @@
         "url": "data/cpi_australia_capital_city.csv"
       },
       "transform": [
-        {"filter": "datum.Date == selected_date"}
+        {"filter": "datum.Date == selected_date"},
+        {
+          "calculate": "datum.City == 'Horbart' ? 'Hobart' : datum.City",
+          "as": "Clean_City"
+        }
       ],
       "mark": {
         "type": "circle",
@@ -85,7 +89,7 @@
           }
         },
         "tooltip": [
-          {"field": "City", "type": "nominal", "title": "Capital City"},
+          {"field": "Clean_City", "type": "nominal", "title": "Capital City"},
           {"field": "State", "type": "nominal", "title": "State / Territory"},
           {"field": "Date", "type": "nominal", "title": "Reference Period"},
           {"field": "CPI_Annual_Change_Pct", "type": "quantitative", "title": "Annual Inflation Rate (%)", "format": ".1f"}
@@ -97,7 +101,11 @@
         "url": "data/cpi_australia_capital_city.csv"
       },
       "transform": [
-        {"filter": "datum.Date == selected_date"}
+        {"filter": "datum.Date == selected_date"},
+        {
+          "calculate": "datum.City == 'Horbart' ? 'Hobart' : datum.City",
+          "as": "Clean_City"
+        }
       ],
       "mark": {
         "type": "text",
@@ -112,13 +120,13 @@
       "encoding": {
         "longitude": {"field": "Lon", "type": "quantitative"},
         "latitude": {"field": "Lat", "type": "quantitative"},
-        "text": {"field": "City", "type": "nominal"},
+        "text": {"field": "Clean_City", "type": "nominal"},
         "align": {
           "condition": [
             {"test": "datum.City == 'Canberra'", "value": "right"},
             {"test": "datum.City == 'Sydney'", "value": "left"},
             {"test": "datum.City == 'Melbourne'", "value": "center"},
-            {"test": "datum.City == 'Hobart'", "value": "left"},
+            {"test": "datum.City == 'Hobart' || datum.City == 'Horbart'", "value": "left"},
             {"test": "datum.City == 'Perth'", "value": "right"},
             {"test": "datum.City == 'Brisbane'", "value": "left"},
             {"test": "datum.City == 'Adelaide'", "value": "right"},
@@ -130,7 +138,7 @@
           "condition": [
             {"test": "datum.City == 'Canberra'", "value": -26},
             {"test": "datum.City == 'Sydney'", "value": 26},
-            {"test": "datum.City == 'Hobart'", "value": 26},
+            {"test": "datum.City == 'Hobart' || datum.City == 'Horbart'", "value": 26},
             {"test": "datum.City == 'Perth'", "value": -26},
             {"test": "datum.City == 'Brisbane'", "value": 26},
             {"test": "datum.City == 'Adelaide'", "value": -26}
@@ -145,13 +153,7 @@
             {"test": "datum.City == 'Sydney'", "value": -12}
           ],
           "value": 0
-        },
-        "tooltip": [
-          {"field": "City", "type": "nominal", "title": "Capital City"},
-          {"field": "State", "type": "nominal", "title": "State / Territory"},
-          {"field": "Date", "type": "nominal", "title": "Reference Period"},
-          {"field": "CPI_Annual_Change_Pct", "type": "quantitative", "title": "Annual Inflation Rate (%)", "format": ".1f"}
-        ]
+        }
       }
     },
     {
@@ -159,7 +161,11 @@
         "url": "data/cpi_australia_capital_city.csv"
       },
       "transform": [
-        {"filter": "datum.Date == selected_date"}
+        {"filter": "datum.Date == selected_date"},
+        {
+          "calculate": "datum.City == 'Horbart' ? 'Hobart' : datum.City",
+          "as": "Clean_City"
+        }
       ],
       "mark": {
         "type": "text",
@@ -171,13 +177,13 @@
       "encoding": {
         "longitude": {"field": "Lon", "type": "quantitative"},
         "latitude": {"field": "Lat", "type": "quantitative"},
-        "text": {"field": "City", "type": "nominal"},
+        "text": {"field": "Clean_City", "type": "nominal"},
         "align": {
           "condition": [
             {"test": "datum.City == 'Canberra'", "value": "right"},
             {"test": "datum.City == 'Sydney'", "value": "left"},
             {"test": "datum.City == 'Melbourne'", "value": "center"},
-            {"test": "datum.City == 'Hobart'", "value": "left"},
+            {"test": "datum.City == 'Hobart' || datum.City == 'Horbart'", "value": "left"},
             {"test": "datum.City == 'Perth'", "value": "right"},
             {"test": "datum.City == 'Brisbane'", "value": "left"},
             {"test": "datum.City == 'Adelaide'", "value": "right"},
@@ -189,7 +195,7 @@
           "condition": [
             {"test": "datum.City == 'Canberra'", "value": -26},
             {"test": "datum.City == 'Sydney'", "value": 26},
-            {"test": "datum.City == 'Hobart'", "value": 26},
+            {"test": "datum.City == 'Hobart' || datum.City == 'Horbart'", "value": 26},
             {"test": "datum.City == 'Perth'", "value": -26},
             {"test": "datum.City == 'Brisbane'", "value": 26},
             {"test": "datum.City == 'Adelaide'", "value": -26}
@@ -204,13 +210,7 @@
             {"test": "datum.City == 'Sydney'", "value": -12}
           ],
           "value": 0
-        },
-        "tooltip": [
-          {"field": "City", "type": "nominal", "title": "Capital City"},
-          {"field": "State", "type": "nominal", "title": "State / Territory"},
-          {"field": "Date", "type": "nominal", "title": "Reference Period"},
-          {"field": "CPI_Annual_Change_Pct", "type": "quantitative", "title": "Annual Inflation Rate (%)", "format": ".1f"}
-        ]
+        }
       }
     },
     {
@@ -239,7 +239,7 @@
         "fontSize": 13,
         "fontWeight": "bold",
         "lineHeight": 16,
-        "fill": "#991b1b"
+        "fill": "#b45309"
       },
       "encoding": {
         "longitude": {"field": "Lon", "type": "quantitative"},
@@ -273,7 +273,7 @@
         "fontSize": 13,
         "fontWeight": "bold",
         "lineHeight": 16,
-        "fill": "#991b1b"
+        "fill": "#b45309"
       },
       "encoding": {
         "longitude": {"field": "Lon", "type": "quantitative"},
