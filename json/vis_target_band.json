@@ -1,0 +1,228 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 440,
+  "autosize": {"type": "fit-x", "contains": "padding"},
+  "background": "transparent",
+  "data": {
+    "url": "data/cpi_target_band_threshold.csv"
+  },
+  "encoding": {
+    "x": {
+      "field": "Date_Str",
+      "type": "temporal",
+      "scale": {
+        "domain": ["2021-03-31", "2026-06-30"],
+        "nice": false
+      },
+      "axis": {
+        "title": "Year (Quarterly Observations: Mar 2021 – Jun 2026)",
+        "format": "%Y",
+        "values": [
+          "2021-03-31",
+          "2022-03-31",
+          "2023-03-31",
+          "2024-03-31",
+          "2025-03-31",
+          "2026-03-31"
+        ],
+        "labelAngle": 0,
+        "labelFlush": false,
+        "labelFontSize": 12,
+        "labelFontWeight": "bold",
+        "labelColor": "#181d20",
+        "titleFontSize": 13,
+        "titleFontWeight": "bold",
+        "titleColor": "#1b382b",
+        "titlePadding": 10,
+        "grid": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "fill": "#09814a",
+        "fillOpacity": 0.15
+      },
+      "encoding": {
+        "y": {
+          "field": "Target_Min",
+          "type": "quantitative",
+          "scale": {"domain": [0, 9]},
+          "axis": {
+            "title": "Annual Inflation Rate (%)",
+            "titleFontSize": 13,
+            "titleFontWeight": "bold",
+            "titleColor": "#1b382b",
+            "labelFontSize": 12,
+            "labelFontWeight": "bold",
+            "labelColor": "#181d20",
+            "tickMinStep": 1,
+            "grid": true,
+            "gridColor": "#eef2ee"
+          }
+        },
+        "y2": {"field": "Target_Max"}
+      }
+    },
+    {
+      "transform": [
+        {"calculate": "max(datum.Headline_CPI, 3.0)", "as": "Threshold_Ceiling"}
+      ],
+      "mark": {
+        "type": "area",
+        "fill": "#d97706",
+        "fillOpacity": 0.22,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "y": {"field": "Target_Max", "type": "quantitative"},
+        "y2": {"field": "Threshold_Ceiling"}
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "#09814a",
+        "strokeDash": [5, 4],
+        "strokeWidth": 1.6,
+        "opacity": 0.85
+      },
+      "encoding": {
+        "y": {"field": "Target_Max", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "#09814a",
+        "strokeDash": [5, 4],
+        "strokeWidth": 1.6,
+        "opacity": 0.85
+      },
+      "encoding": {
+        "y": {"field": "Target_Min", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#1b382b",
+        "strokeWidth": 3.2,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "y": {"field": "Headline_CPI", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 65,
+        "fill": "#ffffff",
+        "stroke": "#1b382b",
+        "strokeWidth": 2.4,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "y": {"field": "Headline_CPI", "type": "quantitative"},
+        "tooltip": [
+          {"field": "Quarter", "type": "nominal", "title": "Reference Quarter"},
+          {"field": "Headline_CPI", "type": "quantitative", "title": "Headline CPI (%)", "format": ".1f"},
+          {"field": "Excess_Inflation", "type": "quantitative", "title": "Above 3% RBA Ceiling (%)", "format": "+.1f"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Date_Str": "2022-12-31",
+            "Headline_CPI": 7.9,
+            "label": [
+              "Peak Surge: 7.9% (Dec 2022)",
+              "+4.9% Above RBA 3% Ceiling"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -12,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "lineHeight": 15,
+        "stroke": "#ffffff",
+        "strokeWidth": 4,
+        "strokeJoin": "round",
+        "fill": "#ffffff"
+      },
+      "encoding": {
+        "x": {"field": "Date_Str", "type": "temporal"},
+        "y": {"field": "Headline_CPI", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Date_Str": "2022-12-31",
+            "Headline_CPI": 7.9,
+            "label": [
+              "Peak Surge: 7.9% (Dec 2022)",
+              "+4.9% Above RBA 3% Ceiling"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -12,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "lineHeight": 15,
+        "fill": "#b45309"
+      },
+      "encoding": {
+        "x": {"field": "Date_Str", "type": "temporal"},
+        "y": {"field": "Headline_CPI", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Date_Str": "2023-06-30",
+            "y": 2.5,
+            "label": "RBA 2–3% Target Safe Zone"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 11.5,
+        "fontWeight": "bold",
+        "fill": "#09814a"
+      },
+      "encoding": {
+        "x": {"field": "Date_Str", "type": "temporal"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"},
+    "font": "Inter, sans-serif"
+  }
+}

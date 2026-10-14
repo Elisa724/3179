@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //Section 4 Visualisation
   vegaEmbed('#vis-map3', 'json/map3_state_mortgage_cartogram.json', { actions: false }).catch(console.error);
+  vegaEmbed('#vis_target_band', 'json/vis_target_band.json', {actions: false}).catch(console.error);
 });
 
 
