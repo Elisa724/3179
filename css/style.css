@@ -51,7 +51,7 @@ body {
   gap: 34px;
 }
 
-/* HERO HEADER*/
+/* HERO HEADER */
 .dashboard-header {
   background: linear-gradient(135deg, var(--color-pine) 0%, var(--color-pine-light) 100%);
   border-radius: 8px;
@@ -99,7 +99,7 @@ body {
   color: #ffffff;
 }
 
-/* DASHBOARD SECTIONS & BANNERS*/
+/* DASHBOARD SECTIONS & BANNERS */
 .dashboard-section {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
@@ -130,15 +130,19 @@ body {
   margin-top: 4px;
 }
 
-/* UNIFIED EDITORIAL NARRATIVE CARDS */
+/* ==========================================================================
+   UNIFIED EDITORIAL NARRATIVE CARDS (WITH PINE LEFT ACCENT BORDER)
+   ========================================================================== */
 .story-card,
 .narrative-col,
 .intro-card {
-  background: var(--bg-narrative);
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #fbf9f4 100%);
   border: 1px solid var(--border-card);
+  border-left: 5px solid var(--color-pine);
   border-radius: 6px;
   padding: 26px 30px;
-  box-shadow: 0 1px 3px rgba(18, 22, 25, 0.03);
+  box-shadow: 0 2px 8px rgba(18, 22, 25, 0.04);
 }
 
 .story-card h3,
@@ -175,8 +179,39 @@ body {
   font-weight: 600;
 }
 
-/* ILLUSTRATION CONTAINERS & BALANCED SIZING */
-.intro-card {
+/* Editorial Eyebrow Pill Badge on All Narrative Cards */
+.editorial-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #eef5f0;
+  color: var(--color-pine);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  border: 1px solid #d1e3d6;
+}
+
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-seagreen);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ILLUSTRATION & SIDEBAR LAYOUTS */
+.intro-card,
+.story-with-illu {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -184,7 +219,8 @@ body {
   gap: 36px;
 }
 
-.intro-text {
+.intro-text,
+.story-with-illu .story-text {
   flex: 1 1 auto;
 }
 
@@ -205,18 +241,6 @@ body {
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08));
 }
 
-.story-with-illu {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 36px;
-}
-
-.story-with-illu .story-text {
-  flex: 1 1 auto;
-}
-
 .story-with-illu .story-illu-container {
   flex: 0 0 220px;
   display: flex;
@@ -231,6 +255,12 @@ body {
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 10px rgba(18, 22, 25, 0.09));
+}
+
+.section2-narrative {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .cart-illu-container {
@@ -248,6 +278,74 @@ body {
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(18, 22, 25, 0.08));
+}
+
+/* Decorative Story Card Grid (Used for Act 1 Stat Pill Sidebar) */
+.decorative-story-card {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.story-decorative-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.stat-pill-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: 0 3px 10px rgba(27, 56, 43, 0.05);
+  border: 1px solid #e4dfd3;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-pill-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(27, 56, 43, 0.1);
+}
+
+.top-pill {
+  border-top: 3px solid #b45309;
+}
+
+.bottom-pill {
+  border-top: 3px solid var(--color-pine);
+}
+
+.pill-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: #b45309;
+  margin-bottom: 4px;
+}
+
+.bottom-pill .pill-tag {
+  color: var(--color-pine);
+}
+
+.pill-metric {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: bold;
+  color: #b45309;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.bottom-pill .pill-metric {
+  color: var(--color-pine);
+}
+
+.pill-caption {
+  font-size: 12px;
+  color: #555555;
+  line-height: 1.4;
 }
 
 /* STANDARDIZED GRID SYSTEMS */
@@ -279,6 +377,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   min-width: 0;
+}
+
+.charts-row .viz-card {
+  height: 100%;
 }
 
 .viz-card h3,
@@ -313,17 +415,6 @@ body {
 }
 
 /* ==========================================================================
-   EQUAL-HEIGHT CARD
-   ========================================================================== */
-/* Keep both visual cards perfectly matched in height and layout */
-.charts-row .viz-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-/* ==========================================================================
    HIGH-VISIBILITY INNER SCROLLBAR
    ========================================================================== */
 .map-scroll-viewport {
@@ -334,13 +425,11 @@ body {
   padding-right: 10px;
   margin: 8px 0 10px 0;
   overscroll-behavior: contain;
-  /* Firefox support with explicit colors */
   scrollbar-width: auto;
-  scrollbar-color: var(--color-pine, #1b382b) #ede8dc;
-  border-right: 2px solid #ede8dc; /* Subtle visual cue on edge */
+  scrollbar-color: var(--color-pine) #ede8dc;
+  border-right: 2px solid #ede8dc;
 }
 
-/* Chrome, Edge, Safari */
 .map-scroll-viewport::-webkit-scrollbar {
   width: 10px;
 }
@@ -351,23 +440,22 @@ body {
 }
 
 .map-scroll-viewport::-webkit-scrollbar-thumb {
-  background: var(--color-pine, #1b382b);
+  background: var(--color-pine);
   border-radius: 6px;
-  border: 2px solid #ede8dc; /* Inner padding effect */
+  border: 2px solid #ede8dc;
 }
 
 .map-scroll-viewport::-webkit-scrollbar-thumb:hover {
-  background: var(--color-seagreen, #09814a);
+  background: var(--color-seagreen);
 }
 
-/* Scroll Attention Badge in Header */
 .scroll-pill {
-  display: table;              /* Ensures auto margins center the badge cleanly */
-  margin: 6px auto 0 auto;     /* Centers horizontally in the card */
+  display: table;
+  margin: 6px auto 0 auto;
   text-align: center;
   background: #eef5f0;
-  color: #1b382b;
-  border: 1.5px solid #09814a;
+  color: var(--color-pine);
+  border: 1.5px solid var(--color-seagreen);
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 11.5px;
@@ -422,6 +510,7 @@ div[id^="vis"] .vega-embed {
 #vg-tooltip-element table tr td.value {
   color: var(--color-pine) !important;
   font-weight: 700 !important;
+  padding-left: 8px !important;
   text-align: right !important;
 }
 
@@ -443,14 +532,14 @@ div[id^="vis"] .vega-embed {
   margin-top: 0 !important;
   padding: 10px 16px !important;
   background: #f4efe4 !important;
-  border: 1.5px solid #bcb382 !important;
+  border: 1.5px solid var(--color-sage) !important;
   border-radius: 8px !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
   transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .vega-bind:hover {
-  border-color: #1b382b !important;
+  border-color: var(--color-pine) !important;
   box-shadow: 0 2px 6px rgba(27, 56, 43, 0.12) !important;
 }
 
@@ -458,16 +547,16 @@ div[id^="vis"] .vega-embed {
   font-family: var(--font-sans) !important;
   font-size: 13.5px !important;
   font-weight: 700 !important;
-  color: var(--color-pine, #1b382b) !important;
+  color: var(--color-pine) !important;
 }
 
 .vega-bind select {
   font-family: var(--font-sans) !important;
   font-size: 13.5px !important;
   font-weight: 600 !important;
-  color: var(--color-onyx, #181d20) !important;
+  color: var(--color-onyx) !important;
   background: #ffffff !important;
-  border: 1.5px solid var(--color-pine, #1b382b) !important;
+  border: 1.5px solid var(--color-pine) !important;
   border-radius: 6px !important;
   padding: 8px 14px !important;
   width: 58% !important;
@@ -532,7 +621,8 @@ div[id^="vis"] .vega-embed {
   .charts-row,
   .section2-top-row,
   .intro-card,
-  .story-with-illu {
+  .story-with-illu,
+  .decorative-story-card {
     grid-template-columns: 1fr;
     display: flex;
     flex-direction: column;
@@ -541,7 +631,8 @@ div[id^="vis"] .vega-embed {
     text-align: left;
   }
   .intro-illu-container,
-  .story-illu-container {
+  .story-illu-container,
+  .story-decorative-sidebar {
     width: 100%;
     margin-top: 14px;
   }
