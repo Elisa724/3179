@@ -1,0 +1,225 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 420,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "background": "transparent",
+  "data": {
+    "url": "data/abs_personal_finance_560127.csv"
+  },
+  "layer": [
+    {
+      "transform": [
+        {
+          "fold": [
+            "Road_Vehicles_M",
+            "Other_Personal_Loans_M",
+            "Internal_Refinancing_M",
+            "External_Refinancing_M"
+          ],
+          "as": [
+            "Loan_Purpose",
+            "Commitment_M"
+          ]
+        },
+        {
+          "calculate": "datum.Loan_Purpose == 'Road_Vehicles_M' ? 'Vehicle Loans' : datum.Loan_Purpose == 'Other_Personal_Loans_M' ? 'General Personal Loans' : datum.Loan_Purpose == 'Internal_Refinancing_M' ? 'Internal Refinancing' : 'External Refinancing'",
+          "as": "Purpose_Label"
+        },
+        {
+          "calculate": "datum.Loan_Purpose == 'Road_Vehicles_M' ? 1 : datum.Loan_Purpose == 'Other_Personal_Loans_M' ? 2 : datum.Loan_Purpose == 'Internal_Refinancing_M' ? 3 : 4",
+          "as": "Stack_Order"
+        }
+      ],
+      "mark": {
+        "type": "area",
+        "interpolate": "monotone",
+        "stroke": "#fdfbf7",
+        "strokeWidth": 1.2,
+        "opacity": 0.94
+      },
+      "encoding": {
+        "x": {
+          "field": "Date_Str",
+          "type": "temporal",
+          "title": "Quarterly Reference Period (2021–2026)",
+          "axis": {
+            "format": "%b %Y",
+            "titleFontSize": 12.5,
+            "titleFontWeight": "bold",
+            "titleColor": "#1b382b",
+            "labelFontSize": 11,
+            "grid": true,
+            "gridColor": "#f1f5f9"
+          }
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Commitment_M",
+          "type": "quantitative",
+          "stack": "center",
+          "scale": {
+            "domain": [0, 15000]
+          },
+          "title": "Quarterly New Loan Commitments ($ Millions)",
+          "axis": {
+            "titleFontSize": 12.5,
+            "titleFontWeight": "bold",
+            "titleColor": "#1b382b",
+            "labelFontSize": 11,
+            "grid": true,
+            "gridColor": "#edeae2"
+          }
+        },
+        "order": {
+          "field": "Stack_Order",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Purpose_Label",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Vehicle Loans",
+              "General Personal Loans",
+              "Internal Refinancing",
+              "External Refinancing"
+            ],
+            "range": [
+              "#1b382b",
+              "#5a8f76",
+              "#e5c687",
+              "#b45309"
+            ]
+          },
+          "legend": {
+            "title": "Borrowing Purpose:",
+            "orient": "top",
+            "direction": "horizontal",
+            "titleFontSize": 11.5,
+            "titleFontWeight": "bold",
+            "titleColor": "#1b382b",
+            "labelFontSize": 11,
+            "labelColor": "#181d20",
+            "symbolSize": 120,
+            "columnPadding": 16,
+            "offset": 6
+          }
+        },
+        "tooltip": [
+          {"field": "Quarter", "type": "nominal", "title": "Quarter"},
+          {"field": "Purpose_Label", "type": "nominal", "title": "Borrowing Category"},
+          {"field": "Commitment_M", "type": "quantitative", "title": "Commitment Value ($M)", "format": "$,.1f"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"Date_Str": "2021-09-01", "y_start": 5800, "y_end": 10000}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#1b382b",
+        "strokeWidth": 1.5,
+        "strokeDash": [3, 3]
+      },
+      "encoding": {
+        "x": {"field": "Date_Str", "type": "temporal"},
+        "y": {"field": "y_start", "type": "quantitative"},
+        "y2": {"field": "y_end"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"Date_Str": "2021-09-01", "y_pos": 10600}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 8,
+        "lineHeight": 17,
+        "fontSize": 13.5,
+        "fontWeight": "bold",
+        "fill": "#1b382b"
+      },
+      "encoding": {
+        "x": {"field": "Date_Str", "type": "temporal"},
+        "y": {"field": "y_pos", "type": "quantitative"},
+        "text": {"value": ["Q1 2021 Baseline:", "General Loans $1.63B | Refi $925M"]}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"Date_Str": "2025-12-01", "y_start": 11626, "y_end": 12700}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#b45309",
+        "strokeWidth": 1.5,
+        "strokeDash": [3, 3]
+      },
+      "encoding": {
+        "x": {"field": "Date_Str", "type": "temporal"},
+        "y": {"field": "y_start", "type": "quantitative"},
+        "y2": {"field": "y_end"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"Date_Str": "2025-06-01", "y_pos": 12700}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "lineHeight": 17,
+        "fontSize": 13.5,
+        "fontWeight": "bold",
+        "fill": "#b45309"
+      },
+      "encoding": {
+        "x": {"field": "Date_Str", "type": "temporal"},
+        "y": {"field": "y_pos", "type": "quantitative"},
+        "text": {"value": ["Total Refinancing Nearly Doubled:", "$925M → $1.76B (Mid 2026)"]}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"Date_Str": "2025-03-01", "y_pos": 7300}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 14.5,
+        "fontWeight": "bold",
+        "fill": "#ffffff"
+      },
+      "encoding": {
+        "x": {"field": "Date_Str", "type": "temporal"},
+        "y": {"field": "y_pos", "type": "quantitative"},
+        "text": {"value": "General Personal Loans More Than Tripled: $1.63B → $5.17B"}
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    },
+    "font": "Inter, sans-serif"
+  }
+}

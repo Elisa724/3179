@@ -1,0 +1,212 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 450,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "background": "transparent",
+  "data": {
+    "url": "data/rba_lending_rates_f05.csv"
+  },
+  "transform": [
+    {
+      "calculate": "max(datum.Rate_2023, datum.Rate_2026)",
+      "as": "Peak_End_Rate"
+    },
+    {
+      "calculate": "datum.Series_ID == 'FILRHL3YF' ? 'Homebuyer Fixed (3-Yr)' : datum.Series_ID == 'FILRHL3YFI' ? 'Investor Fixed (3-Yr)' : datum.Series_ID == 'FILRHLBVS' ? 'Homebuyer Standard Variable' : datum.Series_ID == 'FILRHLBVSI' ? 'Investor Standard Variable' : datum.Series_ID == 'FILRSBVOO' ? 'Small Business Overdraft' : datum.Series_ID == 'FILRHLBVO' ? 'Homebuyer Interest-Only' : datum.Series_ID == 'FILRHLBVDO' ? 'Investor Interest-Only' : datum.Series_ID == 'FILRSBVRT' ? 'Small Business Term Loan' : datum.Series_ID == 'FILRHLBVD' ? 'Homebuyer Discount Variable' : 'Investor Discount Variable'",
+      "as": "Clean_Loan_Name"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Clean_Loan_Name",
+      "type": "nominal",
+      "sort": {
+        "field": "Rate_Surge_Pts",
+        "order": "descending"
+      },
+      "title": null,
+      "axis": {
+        "labelFontSize": 12,
+        "labelFontWeight": "bold",
+        "labelColor": "#181d20",
+        "labelLimit": 210,
+        "tickSize": 0,
+        "domainColor": "#dcd7c9",
+        "grid": true,
+        "gridColor": "#f3f1eb",
+        "gridDash": [3, 3]
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#d6cfc2",
+        "strokeWidth": 5,
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "x": {
+          "field": "Rate_2021",
+          "type": "quantitative",
+          "scale": {
+            "domain": [1.0, 15.0]
+          },
+          "axis": {
+            "title": "Indicator Lending Interest Rate (% p.a.)",
+            "format": ".1f",
+            "titleFontSize": 12.5,
+            "titleFontWeight": "bold",
+            "titleColor": "#1b382b",
+            "titlePadding": 10,
+            "labelFontSize": 11.5,
+            "labelFontWeight": "bold",
+            "labelColor": "#181d20",
+            "grid": true,
+            "gridColor": "#edeae2"
+          }
+        },
+        "x2": {
+          "field": "Peak_End_Rate"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#1b382b",
+        "strokeWidth": 2.5,
+        "opacity": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "Rate_2021",
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "Rate_2026"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "fold": ["Rate_2021", "Rate_2023", "Rate_2026"],
+          "as": ["Milestone_Key", "Interest_Rate"]
+        },
+        {
+          "calculate": "datum.Milestone_Key == 'Rate_2021' ? '2021 Baseline' : datum.Milestone_Key == 'Rate_2023' ? '2023 Peak' : '2026 Regime'",
+          "as": "Milestone"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5,
+        "opacity": 1,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "x": {
+          "field": "Interest_Rate",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Milestone",
+          "type": "nominal",
+          "scale": {
+            "domain": ["2021 Baseline", "2023 Peak", "2026 Regime"],
+            "range": ["#6ca184", "#09814a", "#b45309"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "direction": "horizontal",
+            "labelFontSize": 11.5,
+            "labelFontWeight": "bold",
+            "labelColor": "#181d20",
+            "symbolSize": 110,
+            "columnPadding": 16,
+            "offset": 6
+          }
+        },
+        "shape": {
+          "field": "Milestone",
+          "type": "nominal",
+          "scale": {
+            "domain": ["2021 Baseline", "2023 Peak", "2026 Regime"],
+            "range": ["circle", "diamond", "triangle-right"]
+          },
+          "legend": null
+        },
+        "size": {
+          "condition": {
+            "test": "datum.Milestone_Key == 'Rate_2026'",
+            "value": 155
+          },
+          "value": 115
+        },
+        "tooltip": [
+          {"field": "Clean_Loan_Name", "type": "nominal", "title": "Loan Type"},
+          {"field": "Category", "type": "nominal", "title": "Lending Sector"},
+          {"field": "Milestone", "type": "nominal", "title": "Milestone Period"},
+          {"field": "Interest_Rate", "type": "quantitative", "title": "Interest Rate (% p.a.)", "format": ".2f"},
+          {"field": "Rate_Surge_Pts", "type": "quantitative", "title": "2021 to 2026 Shift (% pts)", "format": "+.2f"},
+          {"field": "Relative_Jump_Pct", "type": "quantitative", "title": "Relative Rate Increase (%)", "format": "+.1f"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.Series_ID == 'FILRHL3YF'"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 10,
+        "dy": -6,
+        "lineHeight": 16,
+        "fontSize": 13.5,
+        "fontWeight": "bold",
+        "fill": "#b45309",
+        "clip": false
+      },
+      "encoding": {
+        "x": {"field": "Rate_2026", "type": "quantitative"},
+        "text": {"value": ["+4.55% pts (Steepest)", "2.19% → 6.74%"]}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.Series_ID == 'FILRHLBVS'"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 10,
+        "dy": -6,
+        "lineHeight": 16,
+        "fontSize": 13.5,
+        "fontWeight": "bold",
+        "fill": "#1b382b",
+        "clip": false
+      },
+      "encoding": {
+        "x": {"field": "Rate_2026", "type": "quantitative"},
+        "text": {"value": ["+4.25% pts", "4.52% → 8.77%"]}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"},
+    "font": "Inter, sans-serif"
+  }
+}

@@ -1,0 +1,11 @@
+Series_ID,Loan_Product,Category,Rate_2021,Rate_2023,Rate_2026,Rate_Surge_Pts,Relative_Jump_Pct
+FILRHL3YF,Owner-Occupier: 3-Year Fixed,Housing Loans,2.19,6.38,6.74,4.55,207.8
+FILRHL3YFI,Investor: 3-Year Fixed,Housing Loans,2.56,6.5,6.82,4.26,166.4
+FILRHLBVS,Owner-Occupier: Standard Variable,Housing Loans,4.52,8.52,8.77,4.25,94.0
+FILRHLBVSI,Investor: Standard Variable,Housing Loans,5.1,9.1,9.35,4.25,83.3
+FILRSBVOO,Small Business: Variable Overdraft,Business & Personal,6.51,10.51,10.76,4.25,65.3
+FILRHLBVO,Owner-Occupier: Interest-Only,Housing Loans,5.06,9.04,9.29,4.23,83.6
+FILRHLBVDO,Investor: Interest-Only,Housing Loans,5.36,9.34,9.59,4.23,78.9
+FILRSBVRT,Small Business: Variable Term,Business & Personal,5.03,8.75,9.0,3.97,78.9
+FILRHLBVD,Owner-Occupier: Discounted Variable,Housing Loans,3.59,7.06,6.8,3.21,89.4
+FILRHLBVDI,Investor: Discounted Variable,Housing Loans,4.08,7.5,7.13,3.05,74.8

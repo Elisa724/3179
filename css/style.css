@@ -280,6 +280,24 @@ body {
   filter: drop-shadow(0 4px 8px rgba(18, 22, 25, 0.08));
 }
 
+/* Vertical story card when placed in a 2-column row beside a chart */
+.story-column-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Pushes the single summary pill cleanly to the bottom with breathing room above */
+.story-column-card .stat-pill-card {
+  margin-top: auto;
+  padding: 18px 22px;
+}
+
+.story-column-card .story-text {
+  margin-bottom: 28px;
+}
+
 /* Decorative Story Card Grid (Used for Act 1 Stat Pill Sidebar) */
 .decorative-story-card {
   display: grid;
