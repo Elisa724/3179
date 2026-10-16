@@ -5,8 +5,8 @@
   "autosize": {"type": "fit-x", "contains": "padding"},
   "projection": {
     "type": "equirectangular",
-    "center": [134.0, -28.2],
-    "scale": 760
+    "center": [136.5, -27.5],
+    "scale": 640
   },
   "layer": [
     {
@@ -153,6 +153,96 @@
           }
         }
       ]
+    },
+    {
+      "data": {
+        "values": [
+          {"lon_start": 135.2, "lat_start": -39.2, "lon_end": 141.0, "lat_end": -36.5}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#b45309",
+        "strokeWidth": 1.5,
+        "strokeDash": [3, 3]
+      },
+      "encoding": {
+        "longitude": {"field": "lon_start", "type": "quantitative"},
+        "latitude": {"field": "lat_start", "type": "quantitative"},
+        "longitude2": {"field": "lon_end"},
+        "latitude2": {"field": "lat_end"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"lon": 134.8, "lat": -39.3}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "lineHeight": 16,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "fill": "#b45309"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {
+          "value": [
+            "Steepest Drop (VIC: -32.8%)",
+            "$6.4B (2021) → $4.3B (2023)"
+          ]
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"lon_start": 147.5, "lat_start": -28.0, "lon_end": 151.0, "lat_end": -15.5}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#1b382b",
+        "strokeWidth": 1.5,
+        "strokeDash": [3, 3]
+      },
+      "encoding": {
+        "longitude": {"field": "lon_start", "type": "quantitative"},
+        "latitude": {"field": "lat_start", "type": "quantitative"},
+        "longitude2": {"field": "lon_end"},
+        "latitude2": {"field": "lat_end"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"lon": 157.0, "lat": -13.0}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "lineHeight": 16,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "fill": "#1b382b"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {
+          "value": [
+            "NSW Drop (-24.6%):",
+            "$5.7B (2021) → $4.3B (2023)"
+          ]
+        }
+      }
     }
   ],
   "config": {"view": {"stroke": null}}
