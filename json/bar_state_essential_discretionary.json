@@ -11,8 +11,11 @@
     "color": "#1b382b"
   },
   "width": "container",
-  "height": 520,
-  "autosize": {"type": "fit-x", "contains": "padding"},
+  "height": 390,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "data": {
     "url": "data/cpi_state_essential_discretionary.csv"
   },
@@ -20,7 +23,8 @@
     {
       "mark": {
         "type": "bar",
-        "cornerRadiusEnd": 3
+        "cornerRadiusEnd": 3,
+        "size": 18
       },
       "encoding": {
         "y": {
@@ -31,17 +35,28 @@
             "labelFontSize": 12,
             "labelFontWeight": "bold",
             "labelColor": "#121619"
+          },
+          "scale": {
+            "paddingInner": 0.2,
+            "paddingOuter": 0.1
           }
         },
         "yOffset": {
-          "field": "Basket_Type"
+          "field": "Basket_Type",
+          "type": "nominal",
+          "scale": {
+            "paddingInner": 0
+          }
         },
         "x": {
           "field": "Inflation_Rate_Pct",
           "type": "quantitative",
           "title": "Annual Inflation Rate (%)",
           "scale": {
-            "domain": [0, 8.2],
+            "domain": [
+              0,
+              8.2
+            ],
             "zero": true
           },
           "axis": {
@@ -58,8 +73,14 @@
           "type": "nominal",
           "title": "Expenditure Basket",
           "scale": {
-            "domain": ["Essential", "Discretionary"],
-            "range": ["#254b38", "#dfba73"]
+            "domain": [
+              "Essential",
+              "Discretionary"
+            ],
+            "range": [
+              "#254b38",
+              "#dfba73"
+            ]
           },
           "legend": {
             "orient": "bottom",
@@ -77,9 +98,22 @@
           }
         },
         "tooltip": [
-          {"field": "State", "type": "nominal", "title": "State (Capital City)"},
-          {"field": "Basket_Type", "type": "nominal", "title": "Basket Type"},
-          {"field": "Inflation_Rate_Pct", "type": "quantitative", "title": "Annual Change (%)", "format": ".1f"}
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State (Capital City)"
+          },
+          {
+            "field": "Basket_Type",
+            "type": "nominal",
+            "title": "Basket Type"
+          },
+          {
+            "field": "Inflation_Rate_Pct",
+            "type": "quantitative",
+            "title": "Annual Change (%)",
+            "format": ".1f"
+          }
         ]
       }
     },
@@ -102,15 +136,23 @@
         "baseline": "middle",
         "lineHeight": 15,
         "dx": 10,
-        "dy": 7,
+        "dy": 10,
         "fontSize": 12,
         "fontWeight": "bold",
         "fill": "#1b382b"
       },
       "encoding": {
-        "y": {"field": "State", "type": "nominal"},
-        "x": {"field": "Inflation_Rate_Pct", "type": "quantitative"},
-        "text": {"field": "annotation"}
+        "y": {
+          "field": "State",
+          "type": "nominal"
+        },
+        "x": {
+          "field": "Inflation_Rate_Pct",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "annotation"
+        }
       }
     }
   ]

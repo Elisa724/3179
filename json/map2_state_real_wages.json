@@ -8,27 +8,38 @@
       "feature": "australia_states.topojson"
     }
   },
-  "vconcat": [
+  "spacing": 20,
+  "bounds": "flush",
+  "hconcat": [
     {
       "title": {
-        "text": "1. Onset (June 2021) \u00b7 Severe Initial Wage Lag",
-        "fontSize": 13,
+        "text": "1. Onset (June 2021)",
+        "fontSize": 14,
         "font": "Georgia, serif",
         "color": "#1b382b",
         "anchor": "middle",
         "subtitle": [
-          "NT (-4.3%) and QLD (-3.4%) experience early",
-          "severe purchasing power erosion."
+          "NT (-4.3%) and QLD (-3.4%) see",
+          "early purchasing power loss."
         ],
         "subtitleColor": "#8c3014",
-        "subtitleFontSize": 11,
+        "subtitleFontSize": 11.5,
         "subtitleFont": "Inter, sans-serif",
         "subtitlePadding": 4
       },
-      "width": 460,
-      "height": 275,
+      "width": 406,
+      "height": 340,
       "projection": {
-        "type": "equirectangular"
+        "type": "equirectangular",
+        "center": [
+          133.4,
+          -27.2
+        ],
+        "scale": 540,
+        "translate": [
+          203,
+          170
+        ]
       },
       "layer": [
         {
@@ -36,13 +47,13 @@
             "type": "geoshape",
             "fill": "#ece8de",
             "stroke": "#ffffff",
-            "strokeWidth": 1.2
+            "strokeWidth": 1.1
           }
         },
         {
           "transform": [
             {
-              "calculate": "{'nsw':'new south wales','vic':'victoria','qld':'queensland','sa':'south australia','wa':'western australia','tas':'tasmania','nt':'northern territory','act':'australian capital territory'}[lower(trim(toString(datum.properties.STATE_NAME || datum.properties.name || datum.properties.NAME || datum.properties.state)))] || lower(trim(toString(datum.properties.STATE_NAME || datum.properties.name || datum.properties.NAME || datum.properties.state)))",
+              "calculate": "datum.properties.name",
               "as": "State_Key"
             },
             {
@@ -51,56 +62,48 @@
                 "data": {
                   "values": [
                     {
-                      "Key": "new south wales",
                       "State_Name": "New South Wales",
                       "Gap": -2.6,
                       "WPI": 1.5,
                       "CPI": 4.1
                     },
                     {
-                      "Key": "victoria",
                       "State_Name": "Victoria",
                       "Gap": -1.5,
                       "WPI": 1.5,
                       "CPI": 3.0
                     },
                     {
-                      "Key": "queensland",
                       "State_Name": "Queensland",
                       "Gap": -3.4,
                       "WPI": 1.6,
                       "CPI": 5.0
                     },
                     {
-                      "Key": "south australia",
                       "State_Name": "South Australia",
                       "Gap": -1.2,
                       "WPI": 1.6,
                       "CPI": 2.8
                     },
                     {
-                      "Key": "western australia",
                       "State_Name": "Western Australia",
                       "Gap": -2.8,
                       "WPI": 1.4,
                       "CPI": 4.2
                     },
                     {
-                      "Key": "tasmania",
                       "State_Name": "Tasmania",
                       "Gap": -1.8,
                       "WPI": 1.9,
                       "CPI": 3.7
                     },
                     {
-                      "Key": "northern territory",
                       "State_Name": "Northern Territory",
                       "Gap": -4.3,
                       "WPI": 1.8,
                       "CPI": 6.1
                     },
                     {
-                      "Key": "australian capital territory",
                       "State_Name": "Australian Capital Territory",
                       "Gap": -3.4,
                       "WPI": 1.4,
@@ -108,7 +111,7 @@
                     }
                   ]
                 },
-                "key": "Key",
+                "key": "State_Name",
                 "fields": [
                   "State_Name",
                   "Gap",
@@ -128,7 +131,8 @@
           "mark": {
             "type": "geoshape",
             "stroke": "#ffffff",
-            "strokeWidth": 1.2
+            "strokeWidth": 1.1,
+            "cursor": "pointer"
           },
           "encoding": {
             "color": {
@@ -150,18 +154,17 @@
                 "clamp": true
               },
               "legend": {
-                "orient": "right",
-                "direction": "vertical",
-                "gradientLength": 190,
+                "orient": "bottom",
+                "direction": "horizontal",
+                "gradientLength": 280,
                 "gradientThickness": 12,
                 "titleFont": "Inter, sans-serif",
-                "titleFontSize": 10.5,
-                "titleFontWeight": 600,
+                "titleFontSize": 11.5,
+                "titleFontWeight": 700,
                 "titleColor": "#1b382b",
                 "labelFont": "Inter, sans-serif",
-                "labelFontSize": 9.5,
+                "labelFontSize": 10.5,
                 "labelColor": "#5e6b64",
-                "type": "gradient",
                 "values": [
                   -4,
                   -3,
@@ -209,24 +212,33 @@
     },
     {
       "title": {
-        "text": "2. Peak Squeeze (June 2023) \u00b7 Widespread Purchasing Power Loss",
-        "fontSize": 13,
+        "text": "2. Peak Squeeze (June 2023)",
+        "fontSize": 14,
         "font": "Georgia, serif",
         "color": "#1b382b",
         "anchor": "middle",
         "subtitle": [
-          "SA (-3.4%) and NSW (-3.3%) reach peak contraction;",
-          "WA (-1.1%) buffers via mining."
+          "SA (-3.4%) and NSW (-3.3%) hit",
+          "peak living standard contraction."
         ],
         "subtitleColor": "#8c3014",
-        "subtitleFontSize": 11,
+        "subtitleFontSize": 11.5,
         "subtitleFont": "Inter, sans-serif",
         "subtitlePadding": 4
       },
-      "width": 460,
-      "height": 275,
+      "width": 406,
+      "height": 340,
       "projection": {
-        "type": "equirectangular"
+        "type": "equirectangular",
+        "center": [
+          133.4,
+          -27.2
+        ],
+        "scale": 540,
+        "translate": [
+          203,
+          170
+        ]
       },
       "layer": [
         {
@@ -234,13 +246,13 @@
             "type": "geoshape",
             "fill": "#ece8de",
             "stroke": "#ffffff",
-            "strokeWidth": 1.2
+            "strokeWidth": 1.1
           }
         },
         {
           "transform": [
             {
-              "calculate": "{'nsw':'new south wales','vic':'victoria','qld':'queensland','sa':'south australia','wa':'western australia','tas':'tasmania','nt':'northern territory','act':'australian capital territory'}[lower(trim(toString(datum.properties.STATE_NAME || datum.properties.name || datum.properties.NAME || datum.properties.state)))] || lower(trim(toString(datum.properties.STATE_NAME || datum.properties.name || datum.properties.NAME || datum.properties.state)))",
+              "calculate": "datum.properties.name",
               "as": "State_Key"
             },
             {
@@ -249,56 +261,48 @@
                 "data": {
                   "values": [
                     {
-                      "Key": "new south wales",
                       "State_Name": "New South Wales",
                       "Gap": -3.3,
                       "WPI": 3.3,
                       "CPI": 6.6
                     },
                     {
-                      "Key": "victoria",
                       "State_Name": "Victoria",
                       "Gap": -2.3,
                       "WPI": 3.4,
                       "CPI": 5.7
                     },
                     {
-                      "Key": "queensland",
                       "State_Name": "Queensland",
                       "Gap": -2.7,
                       "WPI": 3.6,
                       "CPI": 6.3
                     },
                     {
-                      "Key": "south australia",
                       "State_Name": "South Australia",
                       "Gap": -3.4,
                       "WPI": 3.5,
                       "CPI": 6.9
                     },
                     {
-                      "Key": "western australia",
                       "State_Name": "Western Australia",
                       "Gap": -1.1,
                       "WPI": 3.8,
                       "CPI": 4.9
                     },
                     {
-                      "Key": "tasmania",
                       "State_Name": "Tasmania",
                       "Gap": -1.7,
                       "WPI": 3.8,
                       "CPI": 5.5
                     },
                     {
-                      "Key": "northern territory",
                       "State_Name": "Northern Territory",
                       "Gap": -2.4,
                       "WPI": 2.9,
                       "CPI": 5.3
                     },
                     {
-                      "Key": "australian capital territory",
                       "State_Name": "Australian Capital Territory",
                       "Gap": -2.3,
                       "WPI": 3.3,
@@ -306,7 +310,7 @@
                     }
                   ]
                 },
-                "key": "Key",
+                "key": "State_Name",
                 "fields": [
                   "State_Name",
                   "Gap",
@@ -326,13 +330,13 @@
           "mark": {
             "type": "geoshape",
             "stroke": "#ffffff",
-            "strokeWidth": 1.2
+            "strokeWidth": 1.1,
+            "cursor": "pointer"
           },
           "encoding": {
             "color": {
               "field": "Gap",
               "type": "quantitative",
-              "title": "Real Wage Gap (%)",
               "scale": {
                 "type": "linear",
                 "domain": [
@@ -346,29 +350,6 @@
                   "#fee6ce"
                 ],
                 "clamp": true
-              },
-              "legend": {
-                "orient": "right",
-                "direction": "vertical",
-                "gradientLength": 190,
-                "gradientThickness": 12,
-                "titleFont": "Inter, sans-serif",
-                "titleFontSize": 10.5,
-                "titleFontWeight": 600,
-                "titleColor": "#1b382b",
-                "labelFont": "Inter, sans-serif",
-                "labelFontSize": 9.5,
-                "labelColor": "#5e6b64",
-                "type": "gradient",
-                "values": [
-                  -4,
-                  -3,
-                  -2,
-                  -1,
-                  0
-                ],
-                "labelExpr": "datum.label + '%'",
-                "offset": 12
               }
             },
             "tooltip": [
@@ -407,24 +388,33 @@
     },
     {
       "title": {
-        "text": "3. Stabilisation (June 2026) \u00b7 Easing Toward Parity",
-        "fontSize": 13,
+        "text": "3. Stabilisation (June 2026)",
+        "fontSize": 14,
         "font": "Georgia, serif",
         "color": "#1b382b",
         "anchor": "middle",
         "subtitle": [
-          "Wage lag dissipates nationwide: VIC (-0.3%) and",
-          "WA (-0.2%) approach parity."
+          "Wage lag eases nationwide:",
+          "VIC (-0.3%) & WA (-0.2%) near parity."
         ],
         "subtitleColor": "#09814a",
-        "subtitleFontSize": 11,
+        "subtitleFontSize": 11.5,
         "subtitleFont": "Inter, sans-serif",
         "subtitlePadding": 4
       },
-      "width": 460,
-      "height": 275,
+      "width": 406,
+      "height": 340,
       "projection": {
-        "type": "equirectangular"
+        "type": "equirectangular",
+        "center": [
+          133.4,
+          -27.2
+        ],
+        "scale": 540,
+        "translate": [
+          203,
+          170
+        ]
       },
       "layer": [
         {
@@ -432,13 +422,13 @@
             "type": "geoshape",
             "fill": "#ece8de",
             "stroke": "#ffffff",
-            "strokeWidth": 1.2
+            "strokeWidth": 1.1
           }
         },
         {
           "transform": [
             {
-              "calculate": "{'nsw':'new south wales','vic':'victoria','qld':'queensland','sa':'south australia','wa':'western australia','tas':'tasmania','nt':'northern territory','act':'australian capital territory'}[lower(trim(toString(datum.properties.STATE_NAME || datum.properties.name || datum.properties.NAME || datum.properties.state)))] || lower(trim(toString(datum.properties.STATE_NAME || datum.properties.name || datum.properties.NAME || datum.properties.state)))",
+              "calculate": "datum.properties.name",
               "as": "State_Key"
             },
             {
@@ -447,56 +437,48 @@
                 "data": {
                   "values": [
                     {
-                      "Key": "new south wales",
                       "State_Name": "New South Wales",
                       "Gap": -0.8,
                       "WPI": 3.3,
                       "CPI": 4.1
                     },
                     {
-                      "Key": "victoria",
                       "State_Name": "Victoria",
                       "Gap": -0.3,
                       "WPI": 3.2,
                       "CPI": 3.5
                     },
                     {
-                      "Key": "queensland",
                       "State_Name": "Queensland",
                       "Gap": -0.8,
                       "WPI": 3.3,
                       "CPI": 4.1
                     },
                     {
-                      "Key": "south australia",
                       "State_Name": "South Australia",
                       "Gap": -1.0,
                       "WPI": 3.4,
                       "CPI": 4.4
                     },
                     {
-                      "Key": "western australia",
                       "State_Name": "Western Australia",
                       "Gap": -0.2,
                       "WPI": 3.8,
                       "CPI": 4.0
                     },
                     {
-                      "Key": "tasmania",
                       "State_Name": "Tasmania",
                       "Gap": -1.6,
                       "WPI": 3.1,
                       "CPI": 4.7
                     },
                     {
-                      "Key": "northern territory",
                       "State_Name": "Northern Territory",
                       "Gap": -1.2,
                       "WPI": 2.6,
                       "CPI": 3.8
                     },
                     {
-                      "Key": "australian capital territory",
                       "State_Name": "Australian Capital Territory",
                       "Gap": -0.4,
                       "WPI": 3.6,
@@ -504,7 +486,7 @@
                     }
                   ]
                 },
-                "key": "Key",
+                "key": "State_Name",
                 "fields": [
                   "State_Name",
                   "Gap",
@@ -524,13 +506,13 @@
           "mark": {
             "type": "geoshape",
             "stroke": "#ffffff",
-            "strokeWidth": 1.2
+            "strokeWidth": 1.1,
+            "cursor": "pointer"
           },
           "encoding": {
             "color": {
               "field": "Gap",
               "type": "quantitative",
-              "title": "Real Wage Gap (%)",
               "scale": {
                 "type": "linear",
                 "domain": [
@@ -544,29 +526,6 @@
                   "#fee6ce"
                 ],
                 "clamp": true
-              },
-              "legend": {
-                "orient": "right",
-                "direction": "vertical",
-                "gradientLength": 190,
-                "gradientThickness": 12,
-                "titleFont": "Inter, sans-serif",
-                "titleFontSize": 10.5,
-                "titleFontWeight": 600,
-                "titleColor": "#1b382b",
-                "labelFont": "Inter, sans-serif",
-                "labelFontSize": 9.5,
-                "labelColor": "#5e6b64",
-                "type": "gradient",
-                "values": [
-                  -4,
-                  -3,
-                  -2,
-                  -1,
-                  0
-                ],
-                "labelExpr": "datum.label + '%'",
-                "offset": 12
               }
             },
             "tooltip": [
@@ -606,10 +565,10 @@
   ],
   "resolve": {
     "scale": {
-      "color": "independent"
+      "color": "shared"
     },
     "legend": {
-      "color": "independent"
+      "color": "shared"
     }
   },
   "config": {
@@ -617,16 +576,5 @@
       "stroke": "transparent"
     },
     "font": "Inter, sans-serif"
-  },
-  "spacing": 18,
-  "padding": {
-    "left": 0,
-    "right": 0,
-    "top": 4,
-    "bottom": 4
-  },
-  "autosize": {
-    "type": "pad",
-    "contains": "padding"
   }
 }

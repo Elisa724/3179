@@ -11,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
@@ -42,13 +42,19 @@
           </div>
           <h2>The Price Pressure Squeeze</h2>
           <p>
-            Between 2021 and 2026, Australian households encountered an extraordinary economic shift. Pandemic supply shocks, global trade friction, and surging housing demands pushed consumer prices to multi-decade peaks.
+            Between 2021 and 2026, supply shocks and strong housing demand pushed Australian living costs to multi-decade highs.
           </p>
           <p>
-            Much like a balloon pumped past its capacity, household budgets have stretched thin. While headline inflation has begun to ease, the compounding effect of higher living costs continues to weigh heavily across state capitals. This visual report tracks where price pressure hit hardest, which consumer categories drove the surge, and how the economic burden played out across the nation.
+            Like a balloon stretched to its limit, family budgets grew thin. Even as headline inflation cools, high everyday prices still weigh heavily across the nation.
           </p>
         </div>
-        <div class="intro-illu-container">
+
+        <div class="intro-illu-row">
+          <div class="stat-pill-card bottom-pill" style="flex: 1;">
+            <div class="pill-tag">FIVE-YEAR LIVING COST SHIFT</div>
+            <div class="pill-metric">2021–2026</div>
+            <div class="pill-caption">Tracking prices, wages, interest rates, and household credit across all 8 states and territories.</div>
+          </div>
           <img src="image/inflation_balloon.png" alt="Inflation balloon concept" class="intro-balloon-img">
         </div>
       </div>
@@ -58,46 +64,59 @@
     <section class="dashboard-section" id="section-1">
       <div class="section-banner">
         <h2>1. Where Did Prices Surge?</h2>
-        <p>Mapping capital city inflation rates and the divide between everyday essentials and optional spending.</p>
+        <p>Comparing capital city inflation shifts side by side (2025 vs. 2026) and the divide between essentials and optional spending.</p>
       </div>
 
-      <!-- Narrative Story Card -->
-      <article class="story-card story-with-illu">
-        <div class="story-text">
-          <div class="editorial-eyebrow">
-            <span class="eyebrow-dot"></span>
-            <span class="eyebrow-text">KEY TAKEAWAY: CITIES &amp; ESSENTIALS</span>
-          </div>
-          <h3>Shifting Hotspots and the Everyday Squeeze</h3>
-          <p>
-            Inflation pressure across Australia has moved over time. In 2025, <strong>Brisbane</strong> was the clear national hotspot with the highest price increases. By 2026, pressure eased in Brisbane but flared up across southern capitals, leaving <strong>Hobart (4.5%)</strong> and <strong>Adelaide (4.4%)</strong> with the steepest rates in the country. This regional shift can be seen directly by switching the period selector below the map.
-          </p>
-          <p>
-            Even as local hotspots change, one pattern remains true everywhere. Prices for daily essentials like groceries, housing, and electricity are climbing much faster than optional spending. The divide is largest in <strong>Adelaide</strong>, where essentials grew by <strong>5.9%</strong> compared to just <strong>3.0%</strong> for discretionary goods. Because households cannot walk away from basic bills, daily living costs feel heavy no matter which capital city you live in.
-          </p>
+      <!-- Tier 1 Full-Width Row: Visual 1 Side-by-Side Capital City Comparison Maps -->
+      <div class="viz-card bumpchart-expanded-card">
+        <div class="card-header-block">
+          <h3>Capital City Inflation Pressures: July 2025 vs. July 2026</h3>
+          <p class="viz-sub">Side-by-side proportional symbol maps tracking how price hotspots shifted from northern to southern capitals (% annual CPI change).</p>
         </div>
-        <div class="story-illu-container">
-          <img src="image/consumer_receipt.png" alt="Consumer with grocery receipt" class="editorial-character-img">
-        </div>
-      </article>
+        <div id="vis1_map"></div>
+        <p class="card-source-note">
+          <strong>Data Note:</strong> Sourced from ABS Cat 6401.0 <em>Consumer Price Index</em> (Table 1: All Groups CPI, Capital Cities).
+        </p>
+      </div>
 
-      <!-- Charts Row: Vis 1 & Vis 2 -->
-      <div class="charts-row">
-        <!-- Visual 1: Proportional Symbol Map -->
-        <div class="chart-card">
-          <div id="vis1_map"></div>
-          <p class="card-source-note">
-            <strong>Data Note:</strong> Sourced from ABS Cat 6401.0 <em>Consumer Price Index</em> (Table 1: All Groups CPI, Capital Cities).
-          </p>
-        </div>
-
+      <!-- Tier 2 Row: Visual 2 (Bar Chart) Paired Side-by-Side with Section 1 Narrative -->
+      <div class="chart-story-row">
         <!-- Visual 2: Essential vs Discretionary Bar Chart -->
-        <div class="chart-card">
+        <div class="viz-card">
           <div id="vis2_bar"></div>
           <p class="card-source-note">
             <strong>Data Note:</strong> Sourced from ABS Cat 6401.0 <em>Consumer Price Index</em> (Table 6: Analytical Series, Essential vs Discretionary Inflation).
           </p>
         </div>
+
+        <!-- Paired Narrative Card Directly Beside Visual 2 -->
+        <article class="story-card story-column-card">
+          <div class="story-text">
+            <div class="editorial-eyebrow">
+              <span class="eyebrow-dot"></span>
+              <span class="eyebrow-text">KEY TAKEAWAY: CITIES &amp; ESSENTIALS</span>
+            </div>
+            <h3>Shifting Hotspots and the Everyday Squeeze</h3>
+            <p>
+              As shown in the side-by-side maps above, national price pressure shifted south over time. <strong>Brisbane (4.8%)</strong> was the clear hotspot in July 2025, but by July 2026 <strong>Hobart (4.5%)</strong> and <strong>Adelaide (4.4%)</strong> recorded the steepest inflation rates.
+            </p>
+            <p>
+              Despite regional shifts, the bar chart on the left shows one consistent trend across every state: basic necessities like groceries, rent, and power rose much faster than optional spending.
+            </p>
+            <p>
+              This divide is widest in <strong>Adelaide</strong>, where essential items climbed by <strong>5.9%</strong> compared to just <strong>3.0%</strong> for discretionary goods, leaving households unable to avoid higher weekly bills.
+            </p>
+          </div>
+
+          <div class="inline-illu-pill-row">
+            <div class="stat-pill-card top-pill">
+              <div class="pill-tag">WIDEST ESSENTIALS GAP (ADELAIDE)</div>
+              <div class="pill-metric">5.9% vs 3.0%</div>
+              <div class="pill-caption">Mandatory daily bills grew nearly twice as fast as optional spending in 2026.</div>
+            </div>
+            <img src="image/consumer_receipt.png" alt="Consumer with grocery receipt" class="editorial-cart-img">
+          </div>
+        </article>
       </div>
     </section>
 
@@ -108,7 +127,7 @@
         <p>Breaking down household spending weights and tracking price shifts across key consumer categories (2021&ndash;2026).</p>
       </div>
 
-      <!-- Tier 1: Vis 3 (Treemap) + Narrative -->
+      <!-- Tier 1: Vis 3 (Treemap) + Side-by-Side Story Card -->
       <div class="section2-top-row">
         <div class="viz-card treemap-card">
           <div>
@@ -127,18 +146,24 @@
               <span class="eyebrow-dot"></span>
               <span class="eyebrow-text">KEY TAKEAWAY: HOUSEHOLD BASKET</span>
             </div>
-            <h3>Shifting Costs: The Swapping Price Pressures</h3>
+            <h3>Shifting Costs: Fuel Relief vs. Rising Service Bills</h3>
             <p>
-              Most of an average Australian family's weekly budget goes straight into three everyday needs: <strong>housing (21.4%)</strong>, <strong>food (17.4%)</strong>, and <strong>transport (11.5%)</strong>. Because people have to pay for rent, groceries, and petrol no matter what, any jump in these prices leaves very little room to cut back.
+              Half of a typical family budget goes straight into three basic needs: <strong>housing (21.4%)</strong>, <strong>food (17.4%)</strong>, and <strong>transport (11.5%)</strong>. Because families cannot skip rent or groceries, price hikes here leave little room to save.
             </p>
             <p>
-              Looking at the ranking chart below, the biggest change has been the swap between transport and medical bills. Back in 2021, big global supply issues pushed <strong>transport up to rank #1</strong>. By 2026, global oil prices settled down and government support helped keep fuel costs lower during the Middle East conflicts, dropping transport down into negative growth at <strong>-0.7% (rank #11)</strong>.
+              In the rank chart below, <strong>transport</strong> dropped from <strong>rank #1 in 2021 to rank #11 (-0.7%) in 2026</strong> as global fuel prices cooled and government energy rebates took effect.
             </p>
             <p>
-              At the same time, relief at the petrol pump was cancelled out by rising service costs. <strong>Health climbed steadily from rank #9 in 2022 to reach rank #1 by 2026 (2.2%)</strong> because of higher private health insurance fees and bigger out-of-pocket medical bills. As car expenses cooled off, ongoing domestic service fees became the main headache for household budgets.
+              However, savings at the bowser were offset by rising service bills. <strong>Health climbed from rank #9 in 2022 to rank #1 in 2026 (2.2%)</strong> driven by higher health insurance and medical fees.
             </p>
           </div>
-          <div class="cart-illu-container">
+
+          <div class="inline-illu-pill-row">
+            <div class="stat-pill-card bottom-pill">
+              <div class="pill-tag">CORE ESSENTIAL BASKET SHARE</div>
+              <div class="pill-metric">50.3%</div>
+              <div class="pill-caption">Housing (21.4%), Food (17.4%), and Transport (11.5%) command half of all spending.</div>
+            </div>
             <img src="image/shopping_cart.png" alt="Shopping cart with coin" class="editorial-cart-img">
           </div>
         </article>
@@ -161,83 +186,72 @@
     <section class="dashboard-section" id="section-3">
       <div class="section-banner">
         <h2>3. Did Pay Packets Keep Pace?</h2>
-        <p>Evaluating purchasing power loss across states alongside nominal annual wage growth trajectories across Australia's 18 major employment industries (2021&ndash;2026).</p>
+        <p>Comparing regional real wage erosion side by side (2021, 2023, and 2026) alongside industry wage growth and monetary policy.</p>
       </div>
 
-      <!-- Balanced 2-Column Row -->
-      <div class="charts-row">
-        <!-- Visual 5 / Map 2: Vertically Stacked Milestone Multiples -->
-        <div class="viz-card">
-          <div class="card-header-block">
-            <h3>Regional Real Wage Erosion Across Milestones</h3>
-            <p class="viz-sub">Track real wage gap changes across 2021, 2023, and 2026.</p>
-            <span class="scroll-pill">
-              ↕ SCROLL DOWN TO EXPLORE ALL 3 MILESTONES (2021 &bull; 2023 &bull; 2026)
-            </span>
-          </div>
-
-          <!-- Internal scrollable viewport: keeps headers and footers pinned -->
-          <div class="map-scroll-viewport">
-            <div id="vis-map2"></div>
-          </div>
-
-          <p class="card-source-note">
-            <strong>Data Note:</strong> Wage growth sourced from ABS Cat 6345.0 (Table 2a). State inflation proxied using capital city All Groups CPI from ABS Cat 6401.0 (Table 17).
-          </p>
+      <!-- Row 1 Full-Width: Visual 5 / Map 2 Side-by-Side Milestone Multiples (No Scrollbar) -->
+      <div class="viz-card bumpchart-expanded-card">
+        <div class="card-header-block">
+          <h3>Regional Real Wage Erosion Across Milestones (2021, 2023 &amp; 2026)</h3>
+          <p class="viz-sub">Side-by-side state comparison of the real wage gap (Wage Price Index growth minus Headline CPI inflation, %).</p>
         </div>
-
-        <!-- Visual 6: Industry WPI Heatmap -->
-        <div class="viz-card">
-          <div class="card-header-block">
-            <h3>Industry Wage Growth Trajectory</h3>
-            <p class="viz-sub">Annual percentage change in Wage Price Index (June quarters) across all 18 ANZSIC sectors.</p>
-          </div>
-
-          <div id="vis-heatmap"></div>
-
-          <p class="card-source-note">
-            <strong>Data Note:</strong> Sourced from ABS Cat 6345.0 Table 5b (Total hourly rates of pay excluding bonuses, all sectors, original annual % change from corresponding quarter).
-          </p>
-        </div>
+        <div id="vis-map2"></div>
+        <p class="card-source-note">
+          <strong>Data Note:</strong> Wage growth sourced from ABS Cat 6345.0 (Table 2a). State inflation proxied using capital city All Groups CPI from ABS Cat 6401.0 (Table 17).
+        </p>
       </div>
 
+      <!-- Row 2: Section 3 Story Card (sits directly under the milestone maps it explains) -->
       <article class="story-card story-with-illu">
         <div class="story-text">
           <div class="editorial-eyebrow">
             <span class="eyebrow-dot"></span>
             <span class="eyebrow-text">KEY TAKEAWAY: WAGES VS. PRICES</span>
           </div>
-          <h3>The Wage-Price Trap: Why Paychecks Couldn't Catch Up</h3>
+          <h3>The Wage-Price Trap: Why Paychecks Fell Behind</h3>
           <p>
-            In <strong>2021</strong>, record-low interest rates sparked consumer spending while pay rises stayed trapped at just <strong>1.0% to 1.6%</strong> across private services. With wages lagging rapid price hikes, early purchasing power shocks hit hardest in the Northern Territory (<strong>-4.3%</strong>) and Queensland (<strong>-3.4%</strong>).
+            In <strong>2021</strong>, private sector pay rises stayed low at <strong>1.0% to 1.6%</strong> while living costs jumped, cutting purchasing power in the Northern Territory (<strong>-4.3%</strong>) and Queensland (<strong>-3.4%</strong>).
           </p>
           <p>
-            By <strong>2023</strong>, the squeeze reached its peak nationwide. Living standards dropped over <strong>3%</strong> across most states, led by South Australia (<strong>-3.4%</strong>) and New South Wales (<strong>-3.3%</strong>), forcing the RBA to push cash rates toward <strong>4.35%</strong>. Even when essential sectors like Healthcare (<strong>6.2%</strong>) and Public Admin (<strong>5.0%</strong>) secured overdue pay deals in <strong>2024</strong>, everyday bills had already sprinted ahead.
-          </p>
-          <p>
-            By <strong>2026</strong>, sustained monetary tightening cooled demand and brought inflation down toward <strong>3.9%</strong>. State wage gaps have stabilized near balance, with Victoria (<strong>-0.3%</strong>) and Western Australia (<strong>-0.2%</strong>) nearing parity. While acute erosion has halted, the compounding lag leaves household budgets adjusted to a permanently higher cost baseline.
+            The squeeze peaked in <strong>2023</strong> as real wages fell over <strong>3%</strong> in South Australia (<strong>-3.4%</strong>) and New South Wales (<strong>-3.3%</strong>). After overdue pay rises in Healthcare (<strong>6.2%</strong>) in 2024, inflation cooled to <strong>3.9% by 2026</strong>, bringing Victoria (<strong>-0.3%</strong>) and Western Australia (<strong>-0.2%</strong>) back near balance.
           </p>
         </div>
 
-        <div class="story-illu-container">
+        <div class="intro-illu-row">
+          <div class="stat-pill-card top-pill" style="flex: 1;">
+            <div class="pill-tag">PEAK REAL WAGE LOSS (2023)</div>
+            <div class="pill-metric">-3.4%</div>
+            <div class="pill-caption">Purchasing power dropped across all states in 2023 before 2024–2026 wage deals closed the gap.</div>
+          </div>
           <img src="image/editorial-character.png" alt="Australian worker looking into empty wallet" class="editorial-character-img">
         </div>
       </article>
 
-      <!-- Visual 7: Macroeconomic Policy Trajectory -->
-      <div class="chart-card">
-        <div class="chart-header">
-          <h3 class="chart-title">Monetary Policy Trajectory &amp; Wage Squeeze</h3>
-          <p class="chart-subtitle">
-            Tracing National Wage Price Index growth against the RBA Official Cash Rate (2021–2026), colored by Headline CPI.
+      <!-- Row 3: Visual 6 (Industry WPI Heatmap) + Visual 7 (Policy Trajectory) Side by Side -->
+      <div class="charts-row">
+        <!-- Visual 6: Industry WPI Heatmap -->
+        <div class="viz-card">
+          <div class="card-header-block">
+            <h3>Industry Wage Growth Trajectory</h3>
+            <p class="viz-sub">Annual percentage change in Wage Price Index (June quarters) across all 18 ANZSIC sectors.</p>
+          </div>
+          <div id="vis-heatmap"></div>
+          <p class="card-source-note">
+            <strong>Data Note:</strong> Sourced from ABS Cat 6345.0 Table 5b (Total hourly rates of pay excluding bonuses, all sectors, original annual % change).
           </p>
         </div>
-        
-        <div id="vis-trajectory" class="chart-container"></div>
-        
-        <div class="chart-footer">
+
+        <!-- Visual 7: Macroeconomic Policy Trajectory -->
+        <div class="viz-card">
+          <div class="card-header-block">
+            <h3>Monetary Policy Trajectory &amp; Wage Squeeze</h3>
+            <p class="viz-sub">
+              Tracing National Wage Price Index growth against the RBA Official Cash Rate (2021–2026), colored by Headline CPI.
+            </p>
+          </div>
+          <div id="vis-trajectory" class="chart-container"></div>
           <p class="card-source-note">
-            <strong>Data Note:</strong> Sourced from ABS Cat 6345.0 (Table 2a: Wage Price Index), ABS Cat 6401.0 (Table 17: Consumer Price Index) &amp; Reserve Bank of Australia (Statistical Table A2: Cash Rate Target).
+            <strong>Data Note:</strong> Sourced from ABS Cat 6345.0 (Table 2a), ABS Cat 6401.0 (Table 17) &amp; RBA (Table A2: Cash Rate Target).
           </p>
         </div>
       </div>
@@ -247,10 +261,10 @@
     <section class="dashboard-section" id="section-4">
       <div class="section-banner">
         <h2>4. The Borrowing Squeeze: Unequal Lending Shocks Across States</h2>
-        <p>Evaluating the collapse in new mortgage commitments across Australian states and territories (2021&ndash;2026).</p>
+        <p>Evaluating the drop in new mortgage commitments and the shift toward personal credit (2021&ndash;2026).</p>
       </div>
 
-      <!-- Balanced 2-Column Row -->
+      <!-- Act 1 Row: Map 3 + Target Band -->
       <div class="charts-row">
         <!-- Visual 8 / Map 3: State Lending Glyphs -->
         <div class="viz-card">
@@ -277,7 +291,7 @@
         </div>
       </div>
 
-      <!-- Act 1 Narrative Story Card -->
+      <!-- Act 1 Concise Narrative Story Card -->
       <article class="story-card decorative-story-card">
         <div class="story-text">
           <div class="editorial-eyebrow">
@@ -288,34 +302,30 @@
           <h3>How High Inflation Froze First Home Buying</h3>
           
           <p>
-            When inflation climbed out of the Reserve Bank's 2% to 3% safe zone in late 2021, prices rose rapidly. By December 2022, national inflation reached a peak of <strong>7.9%</strong>, sitting <strong>4.9% above the safe target limit</strong>. To slow down spending and cool the economy, the Reserve Bank raised the official cash rate from 0.10% to 4.35%, delivering the fastest series of interest rate hikes in modern Australian history.
+            When national inflation peaked at <strong>7.9% in late 2022</strong> (sitting <strong>4.9% above the safe target limit</strong>), the Reserve Bank rapidly lifted the cash rate from 0.10% to 4.35%.
           </p>
           <p>
-            The map on the left shows how quickly these interest rate hikes hit home buyers. Because higher interest rates shrink how much money banks are willing to lend, new first home buyer loans dropped sharply across every major state by 2023. <strong>Victoria</strong> had the biggest drop, falling by <strong>32.8%</strong> as quarterly home lending fell from <strong>$6.4 billion down to $4.3 billion</strong>. Over the same two years, <strong>New South Wales</strong> dropped by <strong>24.6%</strong>, falling from <strong>$5.7 billion to $4.3 billion</strong>.
-          </p>
-          <p>
-            While buyers in Melbourne and Sydney stepped back, more affordable markets like South Australia and Western Australia stayed much steadier. By 2026, home lending has started to recover across the country, though inflation sitting at <strong>3.9%</strong> continues to keep borrowing below its 2021 boom levels.
+            Higher borrowing costs shrank loan budgets across every state by 2023. <strong>Victoria</strong> recorded the steepest drop of <strong>32.8%</strong> (falling from <strong>$6.4B to $4.3B</strong>), while <strong>New South Wales</strong> fell by <strong>24.6%</strong> (from <strong>$5.7B to $4.3B</strong>).
           </p>
         </div>
 
-        <!-- Right Side Summary Cards: One Clear Headline Stat Each -->
         <aside class="story-decorative-sidebar">
           <div class="stat-pill-card top-pill">
-            <div class="pill-tag">PEAK NATIONAL INFLATION (DEC 2022)</div>
+            <div class="pill-tag">PEAK INFLATION (DEC 2022)</div>
             <div class="pill-metric">7.9%</div>
-            <div class="pill-caption">Reached 4.9% above the RBA's 3% safe limit, triggering rapid interest rate hikes.</div>
+            <div class="pill-caption">Reached 4.9% above the RBA's 3% safe limit, triggering rapid rate hikes.</div>
           </div>
 
           <div class="stat-pill-card bottom-pill">
-            <div class="pill-tag">STEEPEST HOME LOAN DROP (VICTORIA)</div>
+            <div class="pill-tag">STEEPEST DROP (VICTORIA)</div>
             <div class="pill-metric">-32.8%</div>
-            <div class="pill-caption">Quarterly first home buyer lending fell from $6.4B in 2021 down to $4.3B in 2023.</div>
+            <div class="pill-caption">First home buyer lending fell from $6.4B in 2021 down to $4.3B in 2023.</div>
           </div>
         </aside>
       </article>
 
       <!-- Act 2 Row: Vis 10 (Arrow Range Plot) + Side-by-Side Story Card -->
-      <div class="charts-row">
+      <div class="chart-story-row">
         <!-- Visual 10: Indicator Lending Rate Surge (Arrow Range Plot) -->
         <div class="viz-card">
           <div class="card-header-block">
@@ -328,7 +338,7 @@
           </p>
         </div>
 
-        <!-- Act 2 Narrative Story Card (Uses Existing CSS Classes Only) -->
+        <!-- Act 2 Balanced Narrative Story Card -->
         <article class="story-card story-column-card">
           <div class="story-text">
             <div class="editorial-eyebrow">
@@ -339,21 +349,28 @@
             <h3>The Fixed-Rate Cliff and the Personal Credit Surge</h3>
             
             <p>
-              As the Reserve Bank lifted the official cash rate, borrowers rolling off cheap fixed-rate mortgages faced an immediate repayment shock. As shown on the left, <strong>Owner-Occupier 3-Year Fixed rates</strong> recorded the steepest jump of <strong>+4.55 percentage points</strong>, surging from a post-pandemic low of <strong>2.19% in 2021 up to 6.74% by 2026</strong>.
+              Homeowners rolling off low pandemic mortgages faced a steep repayment jump. <strong>Owner-Occupier 3-Year Fixed rates</strong> rose by <strong>+4.55 percentage points</strong>, climbing from <strong>2.19% in 2021 to 6.74% in 2026</strong>.
             </p>
             <p>
-              Standard variable housing rates followed closely behind, climbing by <strong>+4.25 percentage points</strong> from 4.52% to 8.77%. Because household savings buffers were quickly drained by higher mortgage bills, families increasingly turned to personal loans and debt restructuring to cover big-ticket costs.
+              Standard variable mortgage rates followed closely behind, jumping by <strong>+4.25 percentage points</strong> from <strong>4.52% up to 8.77%</strong> and draining family savings buffers across the country.
             </p>
             <p>
-              The streamgraph below reveals how personal finance expanded in response. Quarterly <strong>General Personal Loans</strong> more than tripled from <strong>$1.63 billion in early 2021 to $5.17 billion by mid 2026</strong>, while total loan refinancing nearly doubled from <strong>$925 million to $1.76 billion</strong> as households restructured debt to stay afloat.
+              To cover big-ticket costs and manage debt, households turned to personal credit. In the streamgraph below, quarterly <strong>General Personal Loans</strong> more than tripled from <strong>$1.63B to $5.17B</strong>, while total loan refinancing nearly doubled from <strong>$925M to $1.76B</strong>.
             </p>
           </div>
 
-          <!-- Single Un-Squeezed Summary Pill -->
-          <div class="stat-pill-card top-pill">
-            <div class="pill-tag">STEEPEST RATE JUMP (3-YEAR FIXED MORTGAGES)</div>
-            <div class="pill-metric">+4.55% pts</div>
-            <div class="pill-caption">Owner-occupier fixed rates more than tripled from 2.19% in 2021 to 6.74% in 2026, driving a 3x surge in general personal borrowing ($1.63B to $5.17B).</div>
+          <div class="stat-pill-grid-2">
+            <div class="stat-pill-card top-pill">
+              <div class="pill-tag">3-YEAR FIXED RATE JUMP</div>
+              <div class="pill-metric">+4.55% pts</div>
+              <div class="pill-caption">Surged from 2.19% in 2021 up to 6.74% by 2026.</div>
+            </div>
+
+            <div class="stat-pill-card bottom-pill">
+              <div class="pill-tag">PERSONAL LOAN SURGE</div>
+              <div class="pill-metric">3.2x Growth</div>
+              <div class="pill-caption">Quarterly general personal loans rose from $1.63B to $5.17B.</div>
+            </div>
           </div>
         </article>
       </div>
@@ -374,7 +391,6 @@
     <!-- SUBTLE COMPACT FOOTER -->
     <footer class="dashboard-footer">
       <p class="footnote-line">
-        <strong>Data Sources:</strong>
         <strong>Data Sources:</strong>
         <strong>ABS Cat 6401.0</strong> (<em>Consumer Price Index</em>: Capital City CPI, Expenditure Weights, Essential vs Discretionary, Analytical Series &amp; Target Trajectory); 
         <strong>ABS Cat 6345.0</strong> (<em>Wage Price Index</em>: State WPI Growth &amp; Industry Hourly Pay Rates); 
