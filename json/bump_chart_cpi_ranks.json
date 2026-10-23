@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 520,
+  "height": 480,
   "autosize": {
     "type": "fit",
     "contains": "padding"
@@ -10,7 +10,15 @@
     "url": "data/cpi_bump_ranks.csv"
   },
   "transform": [
-    {"calculate": "trim(toString(datum['Display Name']))", "as": "Category"}
+    {"calculate": "trim(toString(datum['Display Name']))", "as": "Category"},
+    {
+      "filter": "indexof(['Health', 'Education', 'Housing', 'Insurance & financial', 'Food & non-alcoholic', 'Alcohol & tobacco', 'Transport'], datum.Category) >= 0"
+    },
+    {
+      "window": [{"op": "rank", "as": "New_Rank"}],
+      "sort": [{"field": "Rank", "order": "ascending"}],
+      "groupby": ["Year"]
+    }
   ],
   "encoding": {
     "x": {
@@ -18,7 +26,7 @@
       "type": "ordinal",
       "scale": {
         "padding": 0,
-        "range": [14, {"signal": "width - 200"}]
+        "range": [14, {"signal": "width - 195"}]
       },
       "axis": {
         "title": "Year (June Quarter Snapshot)",
@@ -35,16 +43,16 @@
       }
     },
     "y": {
-      "field": "Rank",
+      "field": "New_Rank",
       "type": "quantitative",
       "scale": {
-        "domain": [-1.2, 13.2],
+        "domain": [0.2, 7.8],
         "reverse": true
       },
       "axis": {
         "title": "Inflation Rank (#1 Fastest Growth)",
         "tickMinStep": 1,
-        "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        "values": [1, 2, 3, 4, 5, 6, 7],
         "labelExpr": "'#' + datum.value",
         "labelFontSize": 12,
         "labelFontWeight": "bold",
@@ -78,34 +86,26 @@
           "type": "nominal",
           "scale": {
             "domain": [
-              "Alcohol & tobacco",
-              "Clothing & footwear",
-              "Communication",
-              "Education",
-              "Food & non-alcoholic",
-              "Furnishings & equipment",
               "Health",
+              "Education",
               "Housing",
               "Insurance & financial",
-              "Recreation & culture",
+              "Food & non-alcoholic",
+              "Alcohol & tobacco",
               "Transport"
             ],
             "range": [
-              "#E69F00",
-              "#6A3D9A",
-              "#F0E442",
-              "#8C510A",
-              "#999999",
-              "#CC79A7",
               "#D55E00",
+              "#8C510A",
               "#009E73",
-              "#882255",
-              "#000000",
+              "#CC79A7",
+              "#7f8c8d",
+              "#E69F00",
               "#0072B2"
             ]
           },
           "legend": {
-            "title": "Expenditure Category",
+            "title": "Expenditure Category (7 Core Groups)",
             "orient": "bottom",
             "direction": "horizontal",
             "columns": 4,
@@ -130,9 +130,9 @@
           "condition": {
             "param": "highlightCategory",
             "empty": false,
-            "value": 5
+            "value": 5.5
           },
-          "value": 3
+          "value": 3.5
         },
         "opacity": {
           "condition": {
@@ -140,16 +140,16 @@
             "empty": false,
             "value": 1.0
           },
-          "value": 0.85
+          "value": 0.9
         }
       }
     },
     {
       "mark": {
         "type": "circle",
-        "size": 95,
+        "size": 105,
         "fill": "#ffffff",
-        "strokeWidth": 2.8,
+        "strokeWidth": 3.0,
         "cursor": "pointer"
       },
       "encoding": {
@@ -158,46 +158,30 @@
           "type": "nominal",
           "scale": {
             "domain": [
-              "Alcohol & tobacco",
-              "Clothing & footwear",
-              "Communication",
-              "Education",
-              "Food & non-alcoholic",
-              "Furnishings & equipment",
               "Health",
+              "Education",
               "Housing",
               "Insurance & financial",
-              "Recreation & culture",
+              "Food & non-alcoholic",
+              "Alcohol & tobacco",
               "Transport"
             ],
             "range": [
-              "#E69F00",
-              "#6A3D9A",
-              "#F0E442",
-              "#8C510A",
-              "#999999",
-              "#CC79A7",
               "#D55E00",
+              "#8C510A",
               "#009E73",
-              "#882255",
-              "#000000",
+              "#CC79A7",
+              "#7f8c8d",
+              "#E69F00",
               "#0072B2"
             ]
           },
           "legend": null
         },
-        "opacity": {
-          "condition": {
-            "param": "highlightCategory",
-            "empty": false,
-            "value": 1.0
-          },
-          "value": 1.0
-        },
         "tooltip": [
           {"field": "Category", "type": "nominal", "title": "Category"},
           {"field": "Year", "type": "ordinal", "title": "Reference Period"},
-          {"field": "Rank", "type": "ordinal", "title": "Inflation Rank"},
+          {"field": "New_Rank", "type": "ordinal", "title": "Relative Rank (#1–#7)"},
           {"field": "Inflation_Rate", "type": "quantitative", "title": "Annual Price Change (%)", "format": ".1f"}
         ]
       }
@@ -211,7 +195,7 @@
         "align": "left",
         "baseline": "middle",
         "dx": 14,
-        "fontSize": 12,
+        "fontSize": 12.5,
         "fontWeight": "bold",
         "fill": "#181d20"
       },
@@ -219,12 +203,12 @@
         "text": {"field": "Category", "type": "nominal"}
       }
     },
-{
+    {
       "data": {
         "values": [
           {
             "Year": "2026",
-            "Rank": 1,
+            "New_Rank": 1,
             "label": [
               "Health climbs to #1 (2.2%) ↘",
               "Sticky clinical & medical fees"
@@ -237,7 +221,7 @@
         "align": "right",
         "baseline": "bottom",
         "dx": -10,
-        "dy": -15,
+        "dy": -12,
         "fontSize": 12.5,
         "fontWeight": "bold",
         "lineHeight": 16,
@@ -248,7 +232,7 @@
       },
       "encoding": {
         "x": {"field": "Year", "type": "ordinal"},
-        "y": {"field": "Rank", "type": "quantitative"},
+        "y": {"field": "New_Rank", "type": "quantitative"},
         "text": {"field": "label"}
       }
     },
@@ -257,7 +241,7 @@
         "values": [
           {
             "Year": "2026",
-            "Rank": 1,
+            "New_Rank": 1,
             "label": [
               "Health climbs to #1 (2.2%) ↘",
               "Sticky clinical & medical fees"
@@ -270,7 +254,7 @@
         "align": "right",
         "baseline": "bottom",
         "dx": -10,
-        "dy": -15,
+        "dy": -12,
         "fontSize": 12.5,
         "fontWeight": "bold",
         "lineHeight": 16,
@@ -278,7 +262,7 @@
       },
       "encoding": {
         "x": {"field": "Year", "type": "ordinal"},
-        "y": {"field": "Rank", "type": "quantitative"},
+        "y": {"field": "New_Rank", "type": "quantitative"},
         "text": {"field": "label"}
       }
     },
@@ -287,9 +271,9 @@
         "values": [
           {
             "Year": "2026",
-            "Rank": 11,
+            "New_Rank": 7,
             "label": [
-              "Transport drops to #11 (-0.7%) ↗",
+              "Transport drops to #7 (-0.7%) ↗",
               "Fuel & shipping deflation"
             ]
           }
@@ -300,7 +284,7 @@
         "align": "right",
         "baseline": "top",
         "dx": -10,
-        "dy": 13,
+        "dy": 12,
         "fontSize": 12.5,
         "fontWeight": "bold",
         "lineHeight": 16,
@@ -311,7 +295,7 @@
       },
       "encoding": {
         "x": {"field": "Year", "type": "ordinal"},
-        "y": {"field": "Rank", "type": "quantitative"},
+        "y": {"field": "New_Rank", "type": "quantitative"},
         "text": {"field": "label"}
       }
     },
@@ -320,9 +304,9 @@
         "values": [
           {
             "Year": "2026",
-            "Rank": 11,
+            "New_Rank": 7,
             "label": [
-              "Transport drops to #11 (-0.7%) ↗",
+              "Transport drops to #7 (-0.7%) ↗",
               "Fuel & shipping deflation"
             ]
           }
@@ -333,7 +317,7 @@
         "align": "right",
         "baseline": "top",
         "dx": -10,
-        "dy": 13,
+        "dy": 12,
         "fontSize": 12.5,
         "fontWeight": "bold",
         "lineHeight": 16,
@@ -341,7 +325,7 @@
       },
       "encoding": {
         "x": {"field": "Year", "type": "ordinal"},
-        "y": {"field": "Rank", "type": "quantitative"},
+        "y": {"field": "New_Rank", "type": "quantitative"},
         "text": {"field": "label"}
       }
     }
