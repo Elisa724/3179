@@ -129,7 +129,7 @@ body {
 }
 
 /* ==========================================================================
-   UNIFIED EDITORIAL NARRATIVE CARDS (STRICT <= 12 WORDS PER LINE & ZERO GAPS)
+   UNIFIED EDITORIAL NARRATIVE CARDS (STRICT <= 12 WORDS PER LINE)
    ========================================================================== */
 .story-card,
 .narrative-col,
@@ -154,7 +154,6 @@ body {
   line-height: 1.28;
 }
 
-/* Upsized 16.8px font + 42ch measure guarantees 8 to 11 words per line */
 .story-card p,
 .narrative-col p,
 .intro-text p {
@@ -203,40 +202,52 @@ body {
 }
 
 /* ==========================================================================
-   FULL-WIDTH HORIZONTAL STORY BANNERS (0.82fr TEXT | 1.18fr HIGHLIGHTS)
+   FULL-WIDTH HORIZONTAL STORY BANNERS & LARGE PROMINENT ILLUSTRATIONS
    ========================================================================== */
-.intro-card,
-.story-with-illu,
-.decorative-story-card {
+/* INTRO SECTION LARGE BALLOON & HIGHLIGHT CARD */
+.intro-card {
   display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
+  grid-template-columns: 1.15fr 1fr;
   align-items: center;
-  gap: 28px;
+  gap: 36px;
 }
 
 .intro-illu-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.intro-illu-row .stat-pill-card {
+  flex: 1;
 }
 
 .intro-balloon-img {
-  max-width: 145px;
-  max-height: 165px;
+  max-width: 290px !important;
+  max-height: 310px !important;
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.1));
 }
 
 .editorial-character-img {
-  max-width: 130px !important;
-  max-height: 160px !important;
+  max-width: 200px !important;
+  max-height: 230px !important;
   width: auto;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 10px rgba(18, 22, 25, 0.09));
+}
+
+.editorial-cart-img {
+  max-width: 190px !important;
+  max-height: 210px !important;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(18, 22, 25, 0.08));
 }
 
 /* ==========================================================================
@@ -251,34 +262,22 @@ body {
   height: 100%;
 }
 
-/* Clean separator & breathing room between text and bottom stat cards */
-.inline-illu-pill-row,
-.stat-pill-grid-2 {
-  margin-top: 14px;
-  padding-top: 18px;
-  border-top: 1px dashed #dcd7c9;
-}
-
 .inline-illu-pill-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  margin-top: 14px;
+  padding-top: 16px;
+  border-top: 1px dashed #dcd7c9;
 }
 
 .stat-pill-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-}
-
-.editorial-cart-img {
-  max-width: 120px !important;
-  max-height: 115px !important;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 8px rgba(18, 22, 25, 0.08));
+  margin-top: 14px;
+  padding-top: 18px;
+  border-top: 1px dashed #dcd7c9;
 }
 
 .story-decorative-sidebar {
@@ -336,7 +335,7 @@ body {
 }
 
 /* ==========================================================================
-   STANDARDIZED GRID SYSTEMS (62% CHART | 38% NARRATIVE COLUMN)
+   STANDARDIZED GRID SYSTEMS
    ========================================================================== */
 .charts-row,
 .charts-grid-2 {
@@ -347,13 +346,12 @@ body {
   align-items: stretch;
 }
 
-/* Chart gets 62% width, Narrative column gets 38% width (~460px = 9-11 words/line) */
 .chart-story-row,
 .section2-top-row {
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   gap: 22px;
-  align-items: stretch;
+  align-items: start; /* Allows story cards to take their natural content height without stretching */
   width: 100%;
 }
 

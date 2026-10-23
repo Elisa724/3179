@@ -11,7 +11,7 @@
     "color": "#1b382b"
   },
   "width": "container",
-  "height": 390,
+  "height": 470,
   "autosize": {
     "type": "fit-x",
     "contains": "padding"
